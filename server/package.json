@@ -1,0 +1,11 @@
+{
+  "name": "ttnd-buzz",
+  "version": "1.0.0",
+  "description": "help the organization to sync up with current ttn-buzz",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rahul Jain",
+  "license": "MIT"
+}
