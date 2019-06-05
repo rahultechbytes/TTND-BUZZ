@@ -1,0 +1,16 @@
+const mongoose = require('../utils/connection');
+
+var Schema = mongoose.Schema;
+
+var userSchema = new Schema({
+    username: { type: String },
+    emailId: { type: String, required: true },
+    googleId: { type: String, unique:true },
+    thumbnail: { type: String},
+    role: {type:String, default:'user'}
+});
+
+var userModel = mongoose.model('User', userSchema);
+
+module.exports = userModel;
+
