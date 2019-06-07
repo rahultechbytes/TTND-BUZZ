@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Login from './components/auth/Login';
-import Logout from './components/auth/Logout';
 import Token from './utils/Token';
 import Buzz from './components/Buzz/Buzz'
 
@@ -9,7 +8,6 @@ import Buzz from './components/Buzz/Buzz'
 class Routes extends Component {
 
     render() {
-        console.log('local storage value', localStorage.getItem("token"));
         return (
             <Router>
                 <Route
@@ -23,21 +21,11 @@ class Routes extends Component {
                     component={Token}
                 />
 
-                <Route
+                <PrivateRoute
                     path='/buzz'
                     component={Buzz}
                 />
 
-                {/* <PrivateRoute
-                    isLogin={localStorage.getItem("token") ? true : false}
-                    path='/buzz'
-                    component={Buzz}
-                /> */}
-
-                <Route
-                    path='/logout'
-                    component={Logout}
-                />
 
             </Router>
         )
@@ -46,15 +34,12 @@ class Routes extends Component {
 
 export default Routes
 
-const PrivateRoute = ({ component: Component, isLogin, ...restProps }) => {
+const PrivateRoute = ({ component: Component, ...restProps }) => {
     
-    console.log("local sorage ",localStorage.getItem("token"));
-    // isLogin = localStorage.getItem("token") ? true : false;
-    console.log("islogin",isLogin);
     return(
         <Route
             {...restProps}
-            render={(props) => isLogin ? <Component {...props}/> : <Redirect to={'/'} /> }
+            render={(props) => localStorage.getItem('token') ? <Component {...props}/> : <Redirect to={'/'} /> }
         />
     )
 }

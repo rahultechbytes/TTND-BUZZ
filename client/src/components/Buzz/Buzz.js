@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-// import Logout from '../auth/Logout'
-// import { Redirect } from 'react-router-dom';
+
 
 class Buzz extends Component {
 
 
     logout = () => {
-        console.log("in logout", localStorage.getItem("token"));
         localStorage.removeItem('token');
         this.props.history.push('/')
     }
 
     render() {
-        console.log("local storage", localStorage.getItem("token"));
         return (
             <div>
                 <header>

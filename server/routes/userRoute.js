@@ -16,17 +16,18 @@ router.get(
         let UserDetails = req.user;
 
         console.log("userDetails", UserDetails);
-        var token = jwt.sign(UserDetails.toJSON(),'SecretKey',{ expiresIn: '10h' },(err,token)=>{
+        jwt.sign(UserDetails.toJSON(),'SecretKey',{ expiresIn: '10h' },(err,token)=>{
             console.log("token is ====>",token);
             if(err){
                 console.log("err:",err);
             }
             else{
                 console.log("token:",token);
-                // res.redirect(`http:localhost:3000/token?q=${token}`);
+                res.redirect(`http://localhost:3000/token?q=${token}`);
             }
         });
-        res.send(UserDetails);
-    });
+        // res.send(UserDetails)
+     }
+);
 
 module.exports = router;
