@@ -7,7 +7,7 @@ class Token extends React.Component {
         const token = (this.props.location.search).split('=')[1];
         localStorage.setItem("token", token);
         // console.log("Token is here =>>>>", value);
-        this.props.history.push('/buzz');
+        this.props.history.push('/dashboard/buzz');
     }
 
     render() {

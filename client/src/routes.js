@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import {Route, Redirect } from 'react-router-dom';
 import Login from './components/auth/Login';
 import Token from './utils/Token';
-import Buzz from './components/Buzz/Buzz'
+import Dashboard from './components/Dashboard/Dashboard'
 
 
 class Routes extends Component {
 
     render() {
         return (
-            <Router>
+            <div>
+            
                 <Route
                     exact
                     path="/"
@@ -22,12 +23,11 @@ class Routes extends Component {
                 />
 
                 <PrivateRoute
-                    path='/buzz'
-                    component={Buzz}
+                    path='/dashboard'
+                    component={Dashboard}
                 />
+                </div>
 
-
-            </Router>
         )
     }
 }
@@ -35,11 +35,11 @@ class Routes extends Component {
 export default Routes
 
 const PrivateRoute = ({ component: Component, ...restProps }) => {
-    
-    return(
+
+    return (
         <Route
             {...restProps}
-            render={(props) => localStorage.getItem('token') ? <Component {...props}/> : <Redirect to={'/'} /> }
+            render={(props) => localStorage.getItem('token') ? <Component {...props} /> : <Redirect to={'/'} />}
         />
     )
 }
