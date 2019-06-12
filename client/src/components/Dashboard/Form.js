@@ -7,17 +7,17 @@ class Form extends Component {
                 <header>
                     form
                 </header>
-                <form action="">
-                    <textarea name="" id="" placeholder="Share your thoughts..." cols="30" rows="10"></textarea>
-                    <select name="" id="">
-                        <option value="">Activity</option>
-                        <option value="">Lost and Found</option>
+                <form action="http://localhost:5000/dashboard/buzz/feeds" method="POST">
+                    <textarea name="userPost" id="" placeholder="Share your thoughts..." cols="30" rows="10"></textarea>
+                    <select name="category" id="">
+                        <option hidden disabled selected>Category</option>
+                        <option value="Activity">Activity</option>
+                        <option value="Lost And Found">Lost and Found</option>
                     </select>
-                    <input type="file" accept="image/*" />
+                    <input type="file" name="image" accept="image/*" />
                     <input type="submit" value="submit" />
                 </form>
                 <footer>
-
                 </footer>
             </React.Fragment>
         )

@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
 import './LoginStyle.css'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import icon from '../../assets/images/googleIcon.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 
 class Login extends Component {
 
     render() {
-        
-        // const element = <FontAwesomeIcon icon={icon.google} />
+
+        const googleIcon = <FontAwesomeIcon icon={faGoogle} />
         return (
-            <div className="BgImage">
-                <div className="google-btn">
-                    <a href="http://localhost:5000/auth/google">
-                        <button>
-                         Sign in with gmail
-                        </button>
-                    </a>
+            <React.Fragment>
+                <div className="BgImage">
                 </div>
-            </div>
+                {/* <div className="google-btn"> */}
+                <a href="http://localhost:5000/auth/google" className="a-Btn">
+                    <button className="btn">
+                        {googleIcon}
+                        &nbsp;
+                        Sign in with gmail
+                </button>
+                </a>
+                {/* </div> */}
+            </React.Fragment>
         )
     }
 }

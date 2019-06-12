@@ -4,6 +4,7 @@ import Complaint from '../Complaint'
 import Resolve from '../Resolve';
 import { Route } from 'react-router-dom';
 import Buzz from '../Buzz';
+import Header from '../Header';
 
 class Dashboard extends Component {
 
@@ -15,11 +16,12 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                <header>
+                {/* <header>
                     <nav>
                         <button onClick={this.logout}>Logout</button>
                     </nav>
-                </header>
+                </header> */}
+                <Header history={this.props.history} />
                 <main>
                     <div>dashboard Component</div>
                     <aside>
