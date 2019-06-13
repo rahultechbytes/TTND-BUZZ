@@ -13,6 +13,6 @@ var feedSchema = new Schema({
     dislike: [{userId: { type: String}}]
 });
 
-var buzzModel = mongoose.model('UserFeeds', feedSchema);
+var buzzModel = mongoose.model('BuzzFeeds', feedSchema);
 
 module.exports = buzzModel;

@@ -1,8 +1,8 @@
-// import {combineReducer} from 'redux';
-// import authReducer from './authReducer';
+import {combineReducers} from 'redux';
+import buzzReducer from './buzzReducer';
 
-// const rootReducer = combineReducer({
-//     authReducer
-// });
+const reducers = combineReducers({
+    buzzReducer
+});
 
-// export default rootReducer;
+export default reducers;

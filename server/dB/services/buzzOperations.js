@@ -4,7 +4,7 @@ createFeed = (feeds)=>{
     return feeds.save();
 }
 
-fetchFeed = (feeds)=>{
+fetchFeed = ()=>{
     return userFeeds.find({});
 }
 

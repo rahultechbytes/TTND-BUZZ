@@ -5,7 +5,7 @@ const UserFeeds = require('../dB/model/buzzSchema');
 const upload = require('../middlewares/multer');
 const cloudinary = require('../config/cloudinary');
 
-router.post('/feeds', upload.single('image'), async (req, res) => {
+router.post('/', upload.single('attachment'), async (req, res) => {
     const formData = req.body;
     var imageFile = '';
     console.log("formData: ", formData);
@@ -21,12 +21,21 @@ router.post('/feeds', upload.single('image'), async (req, res) => {
     });
     buzzOperations.createFeed(buzzData).then(data => {
         console.log("buzz Data: ", data);
-        res.send(data);
+        res.send({message:"Data Saved",data});
     }).catch(err => {
         console.log("buzz error: ", err);
-        res.status(404).send(err);
+        res.status(404).send(err);  
     });
-    // res.send(buzzData);
 });
+
+router.get('/',(req,res)=>{
+    buzzOperations.fetchFeed().then(success=>{
+        console.log("buzz feed recieved from db: ",success)
+        res.send(success);
+    }).catch(err=>{
+        console.log("error fetching from db: ",err);
+        res.status(404).send(err);
+    })
+})
 
 module.exports = router;
