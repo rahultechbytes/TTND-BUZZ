@@ -16,7 +16,7 @@ router.get(
         let UserDetails = req.user;
 
         console.log("userDetails", UserDetails);
-        jwt.sign(UserDetails.toJSON(),'SecretKey',{ expiresIn: '10h' },(err,token)=>{
+        jwt.sign(UserDetails.toJSON(), process.env.SECRET ,{ expiresIn: '10h' },(err,token)=>{
             console.log("token is ====>",token);
             if(err){
                 console.log("err:",err);

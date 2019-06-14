@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getBuzz } from '../action/buzz.action'
+import BuzzThreads from './BuzzThreads';
 
 export class Feeds extends Component {
 
@@ -13,18 +14,12 @@ export class Feeds extends Component {
         return (
             <div>
                 <ul>
-                    {/* {this.props.userFeeds.buzzfeed.map((data) => {
-                        return <li>{data.category}</li>
-                    })} */}
+                    {this.props.userFeeds.map((data,index) => {
+                        return (
+                            <BuzzThreads feeds={data} key={index}/>
+                        )
+                    })}
                 </ul>
-                <p>
-                //userPost
-                </p>
-                <p></p> //time
-                <p></p> //category
-                <p></p> //image
-                <p></p> //like
-                <p></p> //dislike
             </div>
         )
     }
@@ -32,7 +27,7 @@ export class Feeds extends Component {
 
 const mapStateToProps = (state) => {
     console.log("mapStateToProps", state);
-    return { userFeeds: state.buzzReducer }
+    return { userFeeds: state.buzzReducer.buzzfeed}
 }
 
 const mapDispatchToProps = {

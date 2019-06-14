@@ -1,12 +1,20 @@
-import axios from 'axios';
+import axiosInstance from '../utils/axiosInterceptor';
 // import {
 //     BASE_URL, 
 //     BUZZ_FEED
 // } from '../constants/constants'
 
 //saving buzz feeds to db
+export const addBuzzFeedToState = (data)=>{
+    console.log("buzz action");
+    return{
+        type: "POST_BUZZ_FEED",
+        data
+    }
+}
+
 export const addBuzz= (formData) => dispatch =>{
-    axios({
+    axiosInstance({
         method:'post',
         url: "http://localhost:5000/dashboard/buzz",
         data: formData,
@@ -20,17 +28,20 @@ export const addBuzz= (formData) => dispatch =>{
     });
 }
 
-export const addBuzzFeedToState = (data)=>{
-    console.log("buzz action");
+
+
+//getting buzz feeds from db
+export const getBuzzFromDb = (data)=>{
+    console.log("get_BUZZ_FEED")
+    console.log(data);
     return{
-        type: "POST_BUZZ_FEED",
+        type: "GET_BUZZ_FEED",
         data
     }
 }
 
-//getting buzz feeds from db
 export const getBuzz= () => dispatch =>{
-    axios({
+    axiosInstance({
         method:'get',
         url: "http://localhost:5000/dashboard/buzz",
         config: {headers: {'Content-Type': 'multipart/form-data'}}
@@ -41,11 +52,3 @@ export const getBuzz= () => dispatch =>{
     });
 }
 
-export const getBuzzFromDb = (data)=>{
-    console.log("get_BUZZ_FEED")
-    console.log(data);
-    return{
-        type: "GET_BUZZ_FEED",
-        data
-    }
-}

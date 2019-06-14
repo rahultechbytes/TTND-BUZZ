@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './LoginStyle.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
-
+import ttnd from '../../assets/images/ttnd.jpg'
 class Login extends Component {
 
     render() {
@@ -11,16 +11,18 @@ class Login extends Component {
         return (
             <React.Fragment>
                 <div className="BgImage">
+                    <div className="card text-center" style={{ width: '18rem' }}>
+                        <img src={ttnd} className="card-img-top" alt="..." />
+                        <div className="card-body">
+                            <h5 className="card-title">Create Your Own Buzz</h5>
+                            <a href="http://localhost:5000/auth/google" className="btn">
+                                {googleIcon}
+                                &nbsp;
+                                Sign in with gmail
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                {/* <div className="google-btn"> */}
-                <a href="http://localhost:5000/auth/google" className="a-Btn">
-                    <button className="btn">
-                        {googleIcon}
-                        &nbsp;
-                        Sign in with gmail
-                </button>
-                </a>
-                {/* </div> */}
             </React.Fragment>
         )
     }

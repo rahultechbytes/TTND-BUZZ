@@ -1,6 +1,6 @@
-const InitialState = {
+const InitialState ={
     buzzfeed:[]
-}
+} 
 
 const buzzReducer = (state = InitialState, action) => {
     switch (action.type) {
@@ -13,7 +13,7 @@ const buzzReducer = (state = InitialState, action) => {
         case "GET_BUZZ_FEED":{
             return{
                 ...state,
-                buzzfeed:[action.data]
+                buzzfeed: action.data
             }
         }
         default: {

@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const buzzOperations = require('../dB/services/buzzOperations');
+const verifyToken = require('../middlewares/jwtVerification');
 const UserFeeds = require('../dB/model/buzzSchema');
 const upload = require('../middlewares/multer');
 const cloudinary = require('../config/cloudinary');
 
-router.post('/', upload.single('attachment'), async (req, res) => {
+router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
+    console.log("req.user",req.user);
     const formData = req.body;
     var imageFile = '';
     console.log("formData: ", formData);
@@ -28,7 +30,7 @@ router.post('/', upload.single('attachment'), async (req, res) => {
     });
 });
 
-router.get('/',(req,res)=>{
+router.get('/', verifyToken, (req,res)=>{
     buzzOperations.fetchFeed().then(success=>{
         console.log("buzz feed recieved from db: ",success)
         res.send(success);
