@@ -1,0 +1,19 @@
+.header {
+    /* position: -webkit-sticky;
+    position: sticky;
+    top: 0; */
+    padding: 0.6em 2em;
+    background-color: #eeeeee;
+    ;
+}
+
+.logout {
+    color: #e85600 !important;
+    cursor: pointer;
+    margin-right: 5px;
+    font-weight: 600;
+}
+
+.logout:hover {
+    color: #ff6005 !important;
+}

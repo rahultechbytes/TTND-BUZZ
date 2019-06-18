@@ -1,46 +1,39 @@
 import React, { Component } from 'react';
-import Menu from './Menu';
-import Complaint from '../Complaint'
-import Resolve from '../Resolve';
+import Menu from '../Menu/Menu';
+import ComplaintForm from '../Complaint/ComplaintForm/ComplaintForm'
+import Resolve from '../Resolve/Resolve';
 import { Route } from 'react-router-dom';
-import Buzz from '../Buzz';
-import Header from '../Header';
-
+import Buzz from '../Buzz/Buzz';
+import Header from '../Header/Header';
+import Banner from '../Banner/Banner';
+import './dashboardStyle.css'
 class Dashboard extends Component {
-
-    logout = () => {
-        localStorage.removeItem('token');
-        this.props.history.push('/')
-    }
 
     render() {
         return (
-            <div>
-                {/* <header>
-                    <nav>
-                        <button onClick={this.logout}>Logout</button>
-                    </nav>
-                </header> */}
+            <div className="bgColor">
                 <Header history={this.props.history} />
-                <main>
-                    <div>dashboard Component</div>
-                    <aside>
-                        <Menu />
-                    </aside>
-                    <section>
+                <Banner />
+                <main className="container">
+                    <div className="row">
+                        <aside className="col-4 left">
+                            <Menu />
+                        </aside>
+                        <section className="col-8 right">
                             <Route
                                 exact path={`${this.props.match.path}/buzz`}
                                 component={Buzz}
                             />
                             <Route
                                 exact path="/dashboard/complaints"
-                                component={Complaint}
+                                component={ComplaintForm}
                             />
                             <Route
                                 exact path="/dashboard/resolve"
                                 component={Resolve}
                             />
-                    </section>
+                        </section>
+                    </div>
                 </main>
             </div>
         )

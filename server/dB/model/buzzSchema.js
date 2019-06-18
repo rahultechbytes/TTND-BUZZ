@@ -5,6 +5,8 @@ const Schema = mongoose.Schema
 let category=['Activity', 'Lost and Found']
 
 var feedSchema = new Schema({
+    username: {type: String},
+    emailId: {type: String},
     description: { type: String },
     category: { type: String, enum: category, required: true },
     attachment: { type: String },

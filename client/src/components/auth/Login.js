@@ -17,8 +17,8 @@ class Login extends Component {
                             <h5 className="card-title">Create Your Own Buzz</h5>
                             <a href="http://localhost:5000/auth/google" className="btn">
                                 {googleIcon}
-                                &nbsp;
-                                Sign in with gmail
+                                
+                                <p>   Sign in with gmail</p>
                             </a>
                         </div>
                     </div>

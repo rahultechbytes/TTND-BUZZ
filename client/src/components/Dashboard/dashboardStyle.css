@@ -1,0 +1,17 @@
+.bgColor {
+    background-color: #eeeeee;
+}
+
+.container{
+    margin-top: 1.5em;
+}
+
+aside.col-4.left {
+    margin-top: 3em;
+}
+
+aside.left {
+    position: sticky;
+    height: 100%;
+    top: 20px;
+}

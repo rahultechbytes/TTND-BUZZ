@@ -1,0 +1,28 @@
+li.nav-item {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background-color: #400060;
+    /* border: 0.5px solid white; */
+    padding: 5px 10px;
+}
+
+.nav-item:hover{
+    font-size: 20px;
+    border: none;
+    z-index: 1;
+    border-radius: 0px 0px 10px 10px;
+    background-color: #5c0093;
+    box-shadow: 0px 5px 30px 7px #000;
+
+}
+.nav-link:hover{
+    color: #c10023;
+}
+
+.nav-item a {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+    color: white;
+}

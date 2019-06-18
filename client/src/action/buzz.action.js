@@ -52,3 +52,26 @@ export const getBuzz= () => dispatch =>{
     });
 }
 
+//like action and axios
+// export const getLikeFromDb = (data)=>{
+//     console.log("get_BUZZ_FEED")
+//     console.log(data);
+//     return{
+//         type: "GET_BUZZ_FEED",
+//         data
+//     }
+// }
+
+// export const postLike= (like) => dispatch =>{
+//     axiosInstance({
+//         method:'post',
+//         data:like,
+//         url: "http://localhost:5000/dashboard/buzz",
+//         config: {headers: {'Content-Type': 'multipart/form-data'}}
+//     })
+//     .then(res=>{
+//             console.log("likes data recieved from db",res);
+//             dispatch(getLikeFromDb(res.data));
+//     });
+// }
+

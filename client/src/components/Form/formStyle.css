@@ -1,0 +1,52 @@
+.form-hd {
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    color: white;
+    text-align: left;
+    padding: 2px 0px;
+    font-weight: 600;
+    background-color: #ff3f00cf;
+}
+
+svg.svg-inline--fa.fa-pen.fa-w-16 {
+    margin: 0px 10px;
+}
+
+.image>input {
+    display: none;
+}
+
+svg.svg-inline--fa.fa-image.fa-w-16 {
+    color: grey;
+    cursor: pointer;
+    font-size: 2em;
+}
+
+.submit-btn>input {
+    display: none;
+}
+
+svg.svg-inline--fa.fa-arrow-alt-circle-right.fa-w-16 {
+    cursor: pointer;
+    color: #ff3f00cf;
+    font-size: 2em;
+}
+
+select.custom-select {
+    text-align: left !important;
+    width: 30%;
+    display: inline-block !important;
+}
+
+.footer {
+    display: flex;
+}
+
+select.form-control.category {
+    width: 30%;
+}
+
+.image {
+    display: inline-block;
+    vertical-align: middle;
+}
