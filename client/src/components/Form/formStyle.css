@@ -1,4 +1,4 @@
-.form-hd {
+.form-head {
     font-size: 1.2em;
     letter-spacing: 1px;
     color: white;
@@ -32,19 +32,19 @@ svg.svg-inline--fa.fa-arrow-alt-circle-right.fa-w-16 {
     font-size: 2em;
 }
 
-select.custom-select {
+/* select.custom-select {
     text-align: left !important;
     width: 30%;
     display: inline-block !important;
-}
+} */
 
 .footer {
     display: flex;
 }
 
-select.form-control.category {
+/* select.form-control.category {
     width: 30%;
-}
+} */
 
 .image {
     display: inline-block;

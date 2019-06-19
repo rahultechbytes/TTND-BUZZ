@@ -22,7 +22,7 @@ export const addBuzz= (formData) => dispatch =>{
     })
     .then(res=>{
         if(res.data.message === "Data Saved"){
-            // console.log("data saved to server and comeback");
+            console.log("data saved to server and comeback complaint", "res.data.data");
             dispatch(addBuzzFeedToState(res.data.data));
         }
     });

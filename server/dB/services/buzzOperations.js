@@ -5,7 +5,7 @@ createFeed = (feeds) => {
 }
 
 fetchFeed = () => {
-    return userFeeds.find({});
+    return userFeeds.find({}).sort({createdAt: -1});
 }
 
 // findId = (id)=>{

@@ -55,7 +55,7 @@ class Form extends Component {
             <React.Fragment>
 
                 <form method="POST" encType="multipart/form-data" onSubmit={this.handleOnSubmit}>
-                    <header className="form-hd">
+                    <header className="form-head">
                         {pen} Create Buzz
                     </header>
                     <textarea className="form-control" name="userPost" onChange={this.handleOnChange} value={this.state.userPost} placeholder="Share your thoughts..." rows="5"></textarea>
@@ -64,7 +64,7 @@ class Form extends Component {
                             <select name="category" className="form-control category" onChange={this.handleOnChange}>
                                 <option hidden>Category</option>
                                 <option value="Activity">Activity</option>
-                                <option value="Lost And Found">Lost and Found</option>
+                                <option value="Lost and Found">Lost and Found</option>
                             </select>
                             <div className="image">
                                 <label htmlFor="file-input">

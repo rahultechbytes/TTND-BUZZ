@@ -9,6 +9,7 @@ const cloudinary = require('../config/cloudinary');
 router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
     // console.log("req.user", req.user);
     const formData = req.body;
+    // console.log("formDATA",formData);
     var imageFile = '';
     // console.log("formData: ", formData);
     if (req.file) {

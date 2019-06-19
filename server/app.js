@@ -3,6 +3,7 @@ const app = express();
 require('dotenv').config();
 const userRoute = require('./routes/userRoute');
 const buzzRoute = require('./routes/buzzRoute');
+const complaintRoute = require('./routes/complaintRoute');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const PORT = process.env.PORT;
@@ -18,6 +19,7 @@ require('./auth/google-auth');
 app.use(cors());
 app.use('/',userRoute);                 // authentication routes for user
 app.use('/dashboard/buzz',buzzRoute);   // buzz routes for activity feeds
+app.use('/dashboard/complaint',complaintRoute);
 
 app.listen(PORT,()=>{
     console.log("server running at Port:",PORT);
