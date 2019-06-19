@@ -5,73 +5,96 @@ import axiosInstance from '../utils/axiosInterceptor';
 // } from '../constants/constants'
 
 //saving buzz feeds to db
-export const addBuzzFeedToState = (data)=>{
+export const addBuzzFeedToState = (data) => {
     console.log("buzz action");
-    return{
+    return {
         type: "POST_BUZZ_FEED",
         data
     }
 }
 
-export const addBuzz= (formData) => dispatch =>{
+export const addBuzz = (formData) => dispatch => {
     axiosInstance({
-        method:'post',
+        method: 'post',
         url: "http://localhost:5000/dashboard/buzz",
         data: formData,
-        config: {headers: {'Content-Type': 'multipart/form-data'}}
+        config: { headers: { 'Content-Type': 'multipart/form-data' } }
     })
-    .then(res=>{
-        if(res.data.message === "Data Saved"){
-            console.log("data saved to server and comeback complaint", "res.data.data");
-            dispatch(addBuzzFeedToState(res.data.data));
-        }
-    });
+        .then(res => {
+            if (res.data.message === "Data Saved") {
+                console.log("data saved to server and comeback complaint", "res.data.data");
+                dispatch(addBuzzFeedToState(res.data.data));
+            }
+        });
 }
 
 
 
 //getting buzz feeds from db
-export const getBuzzFromDb = (data)=>{
+export const getBuzzFromDb = (data) => {
     console.log("get_BUZZ_FEED")
     console.log(data);
-    return{
+    return {
         type: "GET_BUZZ_FEED",
         data
     }
 }
 
-export const getBuzz= () => dispatch =>{
+export const getBuzz = () => dispatch => {
     axiosInstance({
-        method:'get',
+        method: 'get',
         url: "http://localhost:5000/dashboard/buzz",
-        config: {headers: {'Content-Type': 'multipart/form-data'}}
+        config: { headers: { 'Content-Type': 'multipart/form-data' } }
     })
-    .then(res=>{
-            console.log("feeds data recieved from db",res);
+        .then(res => {
+            console.log("feeds data recieved from db", res);
             dispatch(getBuzzFromDb(res.data));
-    });
+        });
 }
 
-//like action and axios
-// export const getLikeFromDb = (data)=>{
-//     console.log("get_BUZZ_FEED")
-//     console.log(data);
-//     return{
-//         type: "GET_BUZZ_FEED",
-//         data
-//     }
-// }
+//Likes Feature
+export const getLikeFromDb = (data) => {
+    console.log("post like feed")
+    console.log(data);
+    return {
+        type: "GET_LIKE",
+        data
+    }
+}
 
-// export const postLike= (like) => dispatch =>{
-//     axiosInstance({
-//         method:'post',
-//         data:like,
-//         url: "http://localhost:5000/dashboard/buzz",
-//         config: {headers: {'Content-Type': 'multipart/form-data'}}
-//     })
-//     .then(res=>{
-//             console.log("likes data recieved from db",res);
-//             dispatch(getLikeFromDb(res.data));
-//     });
-// }
+export const postLike = (buzzId) => (dispatch) => {
+    console.log('buzz here', buzzId);
+    axiosInstance({
+        method: 'post',
+        data: { buzzId },
+        url: "http://localhost:5000/dashboard/buzz/like"
+    })
+        .then(res => {
+            console.log("likes data recieved from db", res);
+            dispatch(getLikeFromDb(res.data));
+        }).catch((err) => { console.error(err); });
+}
+
+//Dislikes Feature
+export const getDislikeFromDb = (data) => {
+    console.log("post dislike feed")
+    console.log(data);
+    return {
+        type: "GET_DISLIKE",
+        data
+    }
+}
+
+export const postDislike = (buzzId) => (dispatch) => {
+    console.log('buzz here', buzzId);
+    axiosInstance({
+        method: 'post',
+        data: { buzzId },
+        url: "http://localhost:5000/dashboard/buzz/dislike"
+    })
+        .then(res => {
+            console.log("dislikes data recieved from db", res);
+            dispatch(getLikeFromDb(res.data));
+        }).catch((err) => { console.error(err); });
+}
 
