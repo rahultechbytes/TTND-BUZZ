@@ -18,9 +18,9 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
         });
     }
     const assignedTo = await findAdmin();       // finding admin
-    console.log("assignedTo: ",assignedTo);
+    // console.log("assignedTo: ",assignedTo);
     const id = nanoId(10)           //random id generator for IssueId
-    console.log("nanoId: ", id);
+    // console.log("nanoId: ", id);
 
     console.log("asignedTo: ",assignedTo);
     const complaintData = new Complaint({

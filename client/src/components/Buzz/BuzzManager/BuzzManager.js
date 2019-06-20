@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import Form from '../Form/Form';
-import Feeds from '../Feeds/Feeds';
+import BuzzForm from '../BuzzForm/BuzzForm';
+import BuzzFeeds from '../BuzzFeeds/BuzzFeeds';
 
 export default class Buzz extends Component {
     render() {
         return (
             <div>
-                <Form/>
+                <BuzzForm/>
                 <hr/>
-                <Feeds/>
+                <BuzzFeeds/>
             </div>
         )
     }

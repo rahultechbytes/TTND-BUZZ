@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { addBuzz } from '../../action/buzz.action';
+import { addBuzz } from '../../../action/buzz.action';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faImage, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 import './formStyle.css';
 
-class Form extends Component {
+class BuzzForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -102,4 +102,4 @@ const mapDispatchToProps = {
     addBuzz
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form)
+export default connect(mapStateToProps, mapDispatchToProps)(BuzzForm)

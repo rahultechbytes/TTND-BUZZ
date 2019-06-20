@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Menu from '../Menu/Menu';
-// import ComplaintForm from '../Complaint/ComplaintForm/ComplaintForm'
 import Resolve from '../Resolve/Resolve';
 import { Route } from 'react-router-dom';
-import Buzz from '../Buzz/Buzz';
-import ComplaintManager from '../Complaint/ComplaintManager/ComplaintManager';
+import Buzz from '../Buzz/BuzzManager/BuzzManager';
+import Complaint from '../Complaint/ComplaintManager/ComplaintManager';
 import Header from '../Header/Header';
 import Banner from '../Banner/Banner';
 import './dashboardStyle.css'
@@ -27,7 +26,7 @@ class Dashboard extends Component {
                             />
                             <Route
                                 exact path="/dashboard/complaints"
-                                component={ComplaintManager}
+                                component={Complaint}
                             />
                             <Route
                                 exact path="/dashboard/resolve"

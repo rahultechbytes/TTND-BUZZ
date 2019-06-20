@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { postLike, postDislike } from '../../action/buzz.action'
+import { postLike, postDislike } from '../../../action/buzz.action'
 
 class BuzzThreads extends Component {
 
     like = () => {
         const buzzId = this.props.feeds._id;
-        console.log("buzzId", buzzId);
+        // console.log("buzzId", buzzId);
         this.props.postLike(buzzId);
     }
     dislike = () => {
         const buzzId = this.props.feeds._id;
-        console.log("buzzId", buzzId);
+        // console.log("buzzId", buzzId);
         this.props.postDislike(buzzId);
     }
 
     render() {
-        console.log("threads", this.props)
+        // console.log("threads", this.props)
         const { username, emailId, category, description, attachment, createdAt, Like, dislike } = this.props.feeds;
         return (
             <div>

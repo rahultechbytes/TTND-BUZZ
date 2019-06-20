@@ -2,9 +2,8 @@
     /* position: -webkit-sticky;
     position: sticky;
     top: 0; */
-    padding: 0.6em 2em;
+    padding: 0.5em 2em;
     background-color: #eeeeee;
-    ;
 }
 
 .logout {
@@ -16,4 +15,14 @@
 
 .logout:hover {
     color: #ff6005 !important;
+}
+
+.img_Btn {
+    border: none;
+    padding: 0;
+    margin: 0px 15px 0px 0px;
+}
+
+img.rounded-circle {
+    width: 35px;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Route, Redirect } from 'react-router-dom';
-import Login from './components/auth/Login';
+import { Route, Redirect } from 'react-router-dom';
+import Login from './components/Login/Login';
 import Token from './utils/Token';
 import Dashboard from './components/Dashboard/Dashboard'
 
@@ -10,7 +10,7 @@ class Routes extends Component {
     render() {
         return (
             <div>
-            
+
                 <Route
                     exact
                     path="/"
@@ -26,7 +26,7 @@ class Routes extends Component {
                     path='/dashboard'
                     component={Dashboard}
                 />
-                </div>
+            </div>
 
         )
     }

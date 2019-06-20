@@ -47,31 +47,18 @@ router.post('/like', verifyToken, async (req, res) => {
     const fetchBuzz = await buzzOperations.getBuzzById(req.body.buzzId);
     let emailId = req.user.emailId;
     const {Like} = fetchBuzz;
-    console.log("Like Array: ",Like);
-    // var status=false;
-    // var isEmailExist = Like.map((item)=>{
-    //     console.log("item.userId: ",item.userId);
-    //     console.log("emailId: ",emailId);
-    //     if(item.userId != emailId){
-    //         return true;
-    //     }
-    // })  
+    // console.log("Like Array: ",Like);
+ 
     status = Like.filter((item) => {return item.userId === emailId}).length === 0 ? true : false;
-    // status = !(Like.includes(emailId))
-    // if(isEmailExist){
-    //     status=true;
-    // }
 
-    // console.log('isemailexist',isEmailExist)
-    // const status = eval(req.body.status)
-    console.log("status type: ", typeof (status));
-    console.log("status", status)
+    // console.log("status type: ", typeof (status));
+    // console.log("status", status)
     buzzOperations.likeBuzz(
         req.body.buzzId,
         req.user.emailId,
         status
     ).then(result => {
-        console.log("result is", result)
+        // console.log("result is", result)
         res.send(result);
     }).catch(err => {
         res.send(err);
@@ -82,12 +69,12 @@ router.post('/dislike', verifyToken, async (req, res) => {
     const fetchBuzz = await buzzOperations.getBuzzById(req.body.buzzId);
     let emailId = req.user.emailId;
     const {dislike} = fetchBuzz;
-    console.log("dislike Array: ",dislike);
+    // console.log("dislike Array: ",dislike);
 
     status = dislike.filter((item) => {return item.userId === emailId}).length === 0 ? true : false;
 
-    console.log("status type: ", typeof (status));
-    console.log("status: ", status)
+    // console.log("status type: ", typeof (status));
+    // console.log("status: ", status)
     buzzOperations.dislikeBuzz(
         req.body.buzzId,
         req.user.emailId,

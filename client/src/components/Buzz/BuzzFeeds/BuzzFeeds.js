@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getBuzz } from '../../action/buzz.action'
+import { getBuzz } from '../../../action/buzz.action'
 import BuzzThreads from '../BuzzThreads/BuzzThreads';
 
-export class Feeds extends Component {
+export class BuzzFeeds extends Component {
 
     componentDidMount() {
         this.props.getBuzz();
     }
 
     render() {
-        console.log("state",this.props.userFeeds);
+        // console.log("state",this.props.userFeeds);
         return (
             <div>
                 <ul>
@@ -26,7 +26,7 @@ export class Feeds extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("mapStateToProps", state);
+    // console.log("mapStateToProps", state);
     return { userFeeds: state.buzzReducer.buzzfeed}
 }
 
@@ -34,4 +34,4 @@ const mapDispatchToProps = {
     getBuzz
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feeds)
+export default connect(mapStateToProps, mapDispatchToProps)(BuzzFeeds)
