@@ -11,12 +11,14 @@ export class BuzzFeeds extends Component {
 
     render() {
         // console.log("state",this.props.userFeeds);
+        const { emailId } = this.props.loginUserData;
+        console.log("$$$$$$$$$$$",emailId);
         return (
             <div>
                 <ul>
-                    {this.props.userFeeds.map((data,index) => {
+                    {this.props.userFeeds.map((data, index) => {
                         return (
-                            <BuzzThreads feeds={data} key={index}/>
+                            <BuzzThreads feeds={data} loginUser={emailId} key={index} />
                         )
                     })}
                 </ul>
@@ -27,7 +29,10 @@ export class BuzzFeeds extends Component {
 
 const mapStateToProps = (state) => {
     // console.log("mapStateToProps", state);
-    return { userFeeds: state.buzzReducer.buzzfeed}
+    return {
+        userFeeds: state.buzzReducer.buzzfeed,
+        loginUserData: state.userReducer.userData
+    }
 }
 
 const mapDispatchToProps = {

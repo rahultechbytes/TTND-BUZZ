@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { postLike, postDislike } from '../../../action/buzz.action'
+import { postLike, postDislike, postDelete } from '../../../action/buzz.action'
 
 class BuzzThreads extends Component {
 
@@ -14,10 +14,17 @@ class BuzzThreads extends Component {
         // console.log("buzzId", buzzId);
         this.props.postDislike(buzzId);
     }
+    onDelete = () => {
+        const buzzId = this.props.feeds._id;
+        this.props.postDelete(buzzId)
+    }
 
     render() {
         // console.log("threads", this.props)
+        const { loginUser } = this.props
         const { username, emailId, category, description, attachment, createdAt, Like, dislike } = this.props.feeds;
+        console.log("currentUser: ",loginUser);
+        console.log("emailId: ",emailId);
         return (
             <div>
                 <ul>
@@ -29,6 +36,8 @@ class BuzzThreads extends Component {
                     <li>{createdAt}</li>
                     <li onClick={this.like}>Like:{Like.length}</li>
                     <li onClick={this.dislike}>Dislike:{dislike.length}</li>
+                    {/* <button onClick={this.onDelete}>delete</button> */}
+                    {loginUser === emailId ? <button onClick={this.onDelete}>delete</button> : null}
                 </ul>
                 <hr />
             </div>
@@ -37,13 +46,14 @@ class BuzzThreads extends Component {
 }
 
 // const mapStateToProps = (state) => {
-//     console.log("mapStateToProps", state);
-//     return { increaseLike: state.buzzReducer.buzzfeed}
+//     console.log("delete userReducer data", state.userReducer.userData);
+//     return { increaseLike: state.userReducer.userData}
 // }
 
 const mapDispatchToProps = {
     postLike,
-    postDislike
+    postDislike,
+    postDelete
 }
 
 export default connect(null, mapDispatchToProps)(BuzzThreads);

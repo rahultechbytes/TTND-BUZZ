@@ -98,3 +98,25 @@ export const postDislike = (buzzId) => (dispatch) => {
         }).catch((err) => { console.error(err); });
 }
 
+//Delete post
+
+export const deletePostFromDb = (data) => {
+    return{
+        type: "DELETE_BUZZ",
+        data
+    }
+}
+
+export const postDelete = (buzzId) => (dispatch) => {
+    axiosInstance({
+        method: 'DELETE',
+        url: `http://localhost:5000/dashboard/buzz/${buzzId}`,
+    }).then(res => {
+        console.log("res in delete: ", res);
+        if (res.status === 200) {
+            console.log("%%%%%%%%%%%%%%%%%%");
+            dispatch(deletePostFromDb(res.data));
+        }
+    })
+}
+

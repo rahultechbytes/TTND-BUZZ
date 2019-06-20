@@ -30,6 +30,16 @@ const buzzReducer = (state = InitialState, action) => {
                 buzzfeed: buzzDisLike
             }
         }
+        case "DELETE_BUZZ": {
+            console.log("inside delete reducer", action.data);
+            const deleteBuzz = state.buzzfeed.filter(item=>
+                action.data !== item._id
+            );
+            return {
+                ...state,
+                buzzfeed: deleteBuzz
+            }
+        }
         default: {
             return state;
         }

@@ -46,10 +46,10 @@ router.post('/like', verifyToken, async (req, res) => {
     // console.log(`body: ${JSON.stringify(req.body)}`)
     const fetchBuzz = await buzzOperations.getBuzzById(req.body.buzzId);
     let emailId = req.user.emailId;
-    const {Like} = fetchBuzz;
+    const { Like } = fetchBuzz;
     // console.log("Like Array: ",Like);
- 
-    status = Like.filter((item) => {return item.userId === emailId}).length === 0 ? true : false;
+
+    status = Like.filter((item) => { return item.userId === emailId }).length === 0 ? true : false;
 
     // console.log("status type: ", typeof (status));
     // console.log("status", status)
@@ -68,10 +68,10 @@ router.post('/like', verifyToken, async (req, res) => {
 router.post('/dislike', verifyToken, async (req, res) => {
     const fetchBuzz = await buzzOperations.getBuzzById(req.body.buzzId);
     let emailId = req.user.emailId;
-    const {dislike} = fetchBuzz;
+    const { dislike } = fetchBuzz;
     // console.log("dislike Array: ",dislike);
 
-    status = dislike.filter((item) => {return item.userId === emailId}).length === 0 ? true : false;
+    status = dislike.filter((item) => { return item.userId === emailId }).length === 0 ? true : false;
 
     // console.log("status type: ", typeof (status));
     // console.log("status: ", status)
@@ -85,6 +85,17 @@ router.post('/dislike', verifyToken, async (req, res) => {
         res.send(err);
     })
 });
+
+router.delete('/:buzzId', verifyToken, (req, res) => {
+    const id = req.params.buzzId;
+    buzzOperations.deletePost(id).then((data) => {
+        console.log("response.. ", data)
+        res.status(200).send(data.id);
+    }).catch(err => {
+        console.log("error:", err);
+        res.send(err)
+    })
+})
 
 module.exports = router;
 

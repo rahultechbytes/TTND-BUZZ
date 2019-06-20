@@ -8,9 +8,9 @@ fetchFeed = () => {
     return userFeeds.find({}).sort({createdAt: -1});
 }
 
-// findId = (id)=>{
-//     return userFeeds.findOne({ _id: id });
-// }
+deletePost = (id)=>{
+    return userFeeds.findByIdAndRemove({ _id: id });
+}
 
 likeBuzz = (id, emailId, status) => {
     if (status) {
@@ -105,4 +105,5 @@ module.exports = {
     likeBuzz,
     dislikeBuzz,
     getBuzzById,
+    deletePost
 }
