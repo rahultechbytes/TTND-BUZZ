@@ -32,8 +32,10 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
     });
 });
 
-router.get('/', verifyToken, (req, res) => {
-    buzzOperations.fetchFeed().then(success => {
+router.get('/:skip', verifyToken, (req, res) => {
+    const skip = parseInt(req.params.skip);
+    console.log("skip", skip);
+    buzzOperations.fetchFeed(skip).then(success => {
         // console.log("buzz feed recieved from db: ", success)
         res.send(success);
     }).catch(err => {

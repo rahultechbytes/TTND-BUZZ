@@ -11,9 +11,10 @@ const buzzReducer = (state = InitialState, action) => {
             };
         }
         case "GET_BUZZ_FEED": {
+            const morePost = state.buzzfeed.concat(...action.data);
             return {
                 ...state,
-                buzzfeed: action.data
+                buzzfeed: morePost
             }
         }
         case "GET_LIKE": {
@@ -31,7 +32,6 @@ const buzzReducer = (state = InitialState, action) => {
             }
         }
         case "DELETE_BUZZ": {
-            console.log("inside delete reducer", action.data);
             const deleteBuzz = state.buzzfeed.filter(item=>
                 action.data !== item._id
             );

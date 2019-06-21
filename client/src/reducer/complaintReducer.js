@@ -12,9 +12,10 @@ const complaintReducer = (state = initialState, action) => {
             }
         }
         case "SHOW_COMPLAINT": {
+            const complains = state.complaintList.concat(...action.data);
             return {
                 ...state,
-                complaintList: action.data
+                complaintList: complains
             }
         }
         default: {

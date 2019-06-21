@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Menu from '../Menu/Menu';
 import Resolve from '../Resolve/Resolve';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import NoMatch from '../Error/NoMatch';
 import Buzz from '../Buzz/BuzzManager/BuzzManager';
 import Complaint from '../Complaint/ComplaintManager/ComplaintManager';
 import Header from '../Header/Header';
@@ -20,18 +21,26 @@ class Dashboard extends Component {
                             <Menu />
                         </aside>
                         <section className="col-8 right">
-                            <Route
-                                exact path={`${this.props.match.path}/buzz`}
-                                component={Buzz}
-                            />
-                            <Route
-                                exact path="/dashboard/complaints"
-                                component={Complaint}
-                            />
-                            <Route
-                                exact path="/dashboard/resolve"
-                                component={Resolve}
-                            />
+                            <Switch>
+                                <Route
+                                    exact path={`${this.props.match.path}/buzz`}
+                                    component={Buzz}
+                                />
+                                <Route
+                                    exact path="/dashboard/complaints"
+                                    component={Complaint}
+                                />
+                                <Route
+                                    exact path="/dashboard/resolve"
+                                    component={Resolve}
+                                />
+                                <Route
+                                    // path='/404'
+                                    // exact={true}
+                                    component={NoMatch}
+                                />
+                                {/* <Redirect from='*' to='/404' /> */}
+                            </Switch>
                         </section>
                     </div>
                 </main>

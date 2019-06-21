@@ -20,7 +20,6 @@ class BuzzThreads extends Component {
     }
 
     render() {
-        // console.log("threads", this.props)
         const { loginUser } = this.props
         const { username, emailId, category, description, attachment, createdAt, Like, dislike } = this.props.feeds;
         console.log("currentUser: ",loginUser);
@@ -45,10 +44,6 @@ class BuzzThreads extends Component {
     }
 }
 
-// const mapStateToProps = (state) => {
-//     console.log("delete userReducer data", state.userReducer.userData);
-//     return { increaseLike: state.userReducer.userData}
-// }
 
 const mapDispatchToProps = {
     postLike,

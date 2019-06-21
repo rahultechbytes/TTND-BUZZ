@@ -58,11 +58,11 @@ class BuzzForm extends Component {
                     <header className="form-head">
                         {pen} Create Buzz
                     </header>
-                    <textarea className="form-control" name="userPost" onChange={this.handleOnChange} value={this.state.userPost} placeholder="Share your thoughts..." rows="5"></textarea>
+                    <textarea className="form-control" name="userPost" onChange={this.handleOnChange} value={this.state.userPost} placeholder="Share your thoughts..." rows="5" required></textarea>
                     <div className="footer">
                         <div className="lf">
-                            <select name="category" className="form-control category" onChange={this.handleOnChange}>
-                                <option hidden>Category</option>
+                            <select name="category" className="form-control category" onChange={this.handleOnChange} required>
+                                <option hidden value="">Category</option>
                                 <option value="Activity">Activity</option>
                                 <option value="Lost and Found">Lost and Found</option>
                             </select>
@@ -74,7 +74,6 @@ class BuzzForm extends Component {
                                 <input type="file" id="file-input" onChange={this.fileUpload} name="attachment" accept="image/*" />
                             </div>
                         </div>
-                        {/* <input type="file" onChange={this.fileUpload} name="attachment" accept="image/*" /> */}
                         <div className="submit-btn">
                             <label htmlFor="form-submit">
                                 {postBtn}
@@ -82,7 +81,6 @@ class BuzzForm extends Component {
 
                             <input type="submit" id="form-submit" value="submit" />
                         </div>
-                        {/* <input type="submit" value="submit" /> */}
                     </div>
                 </form>
                 <footer>

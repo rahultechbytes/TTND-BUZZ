@@ -48,8 +48,8 @@ class ComplaintForm extends Component {
         return (
             <div>
                 <form method="POST" onSubmit={this.handleOnSubmit} encType='multipart/form-data'>
-                    <select name="department" id="department" onChange={this.handleOnChange}>
-                        <option hidden>department</option>
+                    <select name="department" id="department" onChange={this.handleOnChange} required>
+                        <option hidden value="">department</option>
                         <option value="Hardware">Hardware</option>
                         <option value="Infrastructure">Infrastructure</option>
                         <option value="Others">Others</option>

@@ -4,8 +4,8 @@ createFeed = (feeds) => {
     return feeds.save();
 }
 
-fetchFeed = () => {
-    return userFeeds.find({}).sort({createdAt: -1});
+fetchFeed = (sk) => {
+    return userFeeds.find({}).sort({createdAt: -1}).limit(5).skip(sk);
 }
 
 deletePost = (id)=>{

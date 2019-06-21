@@ -40,10 +40,10 @@ export const getBuzzFromDb = (data) => {
     }
 }
 
-export const getBuzz = () => dispatch => {
+export const getBuzz = (skip) => dispatch => {
     axiosInstance({
         method: 'get',
-        url: "http://localhost:5000/dashboard/buzz",
+        url: `http://localhost:5000/dashboard/buzz/${skip}`,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     })
         .then(res => {
@@ -114,7 +114,6 @@ export const postDelete = (buzzId) => (dispatch) => {
     }).then(res => {
         console.log("res in delete: ", res);
         if (res.status === 200) {
-            console.log("%%%%%%%%%%%%%%%%%%");
             dispatch(deletePostFromDb(res.data));
         }
     })

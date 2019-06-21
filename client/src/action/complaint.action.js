@@ -31,10 +31,10 @@ export const getComplaintListToState = (data) => {
     }
 }
 
-export const showComplaintList = () => (dispatch) => {
+export const showComplaintList = (skip) => (dispatch) => {
     axiosInstance({
         method: 'get',
-        url: "http://localhost:5000/dashboard/complaint",
+        url: `http://localhost:5000/dashboard/complaint/${skip}`,
     }).then(res => {
         console.log('data fetched from db');
         dispatch(getComplaintListToState(res.data))
