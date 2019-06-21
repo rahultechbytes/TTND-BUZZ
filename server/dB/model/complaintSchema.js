@@ -15,7 +15,10 @@ const complaintSchema = new Schema({
     attachment: String,
     status: { type: String, enum: status, required: true, default: 'Pending' },
     issueId: String,
-    assignedTo: String
+    assignedTo: {
+        username: String,
+        emailId: String
+    }
 })
 
 var complaintModel = mongoose.model('Complaints', complaintSchema);

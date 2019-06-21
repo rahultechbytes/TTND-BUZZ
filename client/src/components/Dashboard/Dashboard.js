@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Menu from '../Menu/Menu';
-import Resolve from '../Resolve/Resolve';
+// import Resolve from '../Resolve/Resolve';
+import Resolve from '../Resolve/ResolveList/ResolveList';
 import { Route, Switch } from 'react-router-dom';
 import NoMatch from '../Error/NoMatch';
 import Buzz from '../Buzz/BuzzManager/BuzzManager';

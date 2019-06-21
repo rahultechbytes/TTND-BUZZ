@@ -17,12 +17,11 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
             imageFile = result.secure_url;
         });
     }
-    const assignedTo = await findAdmin();       // finding admin
-    // console.log("assignedTo: ",assignedTo);
-    const id = nanoId(10)           //random id generator for IssueId
-    // console.log("nanoId: ", id);
+    const assignedToAdmin = await findAdmin();       // finding admin
+    console.log("asignedTo: ", assignedToAdmin);
 
-    console.log("asignedTo: ",assignedTo);
+    const id = nanoId(10)           //random id generator for IssueId
+
     const complaintData = new Complaint({
         department: formData.department,
         title: formData.title,
@@ -30,24 +29,27 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
         attachment: imageFile,
         emailId: req.user.emailId,
         name: req.user.username,
-        issueId: id,    
-        assignedTo: assignedTo[0].username
+        issueId: id,
+        assignedTo: {
+            username: assignedToAdmin[0].username,
+            emailId: assignedToAdmin[0].emailId
+        }
     });
-    complaintOperations.createComplaint(complaintData).then(data=>{
-        res.send({message: "Complaint Saved", data});
-    }).catch(err=>{
-        console.log("complaint error: ",err);
+    complaintOperations.createComplaint(complaintData).then(data => {
+        res.send({ message: "Complaint Saved", data });
+    }).catch(err => {
+        console.log("complaint error: ", err);
         res.status(404).send(err);
     });
 });
 
-router.get('/:skip', verifyToken, (req,res)=>{
+router.get('/:skip', verifyToken, (req, res) => {
     const skip = parseInt(req.params.skip);
-    complaintOperations.fetchComplaint(req.user.emailId,skip).then(success=>{
+    complaintOperations.fetchComplaint(req.user.emailId, skip).then(success => {
         res.send(success);
-    }).catch(err=>{
+    }).catch(err => {
         res.status(404).send(err);
     })
 });
 
-module.exports =  router;
+module.exports = router;
