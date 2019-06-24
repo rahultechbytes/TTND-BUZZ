@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Menu from '../Menu/Menu';
 // import Resolve from '../Resolve/Resolve';
 import Resolve from '../Resolve/ResolveList/ResolveList';
@@ -12,16 +13,17 @@ import './dashboardStyle.css'
 class Dashboard extends Component {
 
     render() {
+        console.log("#########", this.props.role);
         return (
             <div className="bgColor">
                 <Header history={this.props.history} />
                 <Banner />
-                <main className="container">
+                <main className="container-fluid">
                     <div className="row">
-                        <aside className="col-4 left">
+                        <aside className="col-md-4 left">
                             <Menu />
                         </aside>
-                        <section className="col-8 right">
+                        <section className="col-md-8 right">
                             <Switch>
                                 <Route
                                     exact path={`${this.props.match.path}/buzz`}
@@ -31,16 +33,10 @@ class Dashboard extends Component {
                                     exact path="/dashboard/complaints"
                                     component={Complaint}
                                 />
+                                {(this.props.role === 'admin') ? <Route exact path="/dashboard/resolve" component={Resolve} /> : null}
                                 <Route
-                                    exact path="/dashboard/resolve"
-                                    component={Resolve}
-                                />
-                                <Route
-                                    // path='/404'
-                                    // exact={true}
                                     component={NoMatch}
                                 />
-                                {/* <Redirect from='*' to='/404' /> */}
                             </Switch>
                         </section>
                     </div>
@@ -49,5 +45,7 @@ class Dashboard extends Component {
         )
     }
 }
-
-export default Dashboard;
+const mapStateToProps = (state) => {
+    return { role: state.userReducer.userData.role }
+}
+export default connect(mapStateToProps, null)(Dashboard);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { postLike, postDislike, postDelete } from '../../../action/buzz.action'
+import moment from 'moment';
 
 class BuzzThreads extends Component {
 
@@ -21,18 +22,20 @@ class BuzzThreads extends Component {
 
     render() {
         const { loginUser } = this.props
-        const { username, emailId, category, description, attachment, createdAt, Like, dislike } = this.props.feeds;
-        console.log("currentUser: ",loginUser);
-        console.log("emailId: ",emailId);
+        const { username, emailId, category, description, attachment, createdAt, Like, dislike, thumbNail } = this.props.feeds;
+        // console.log("currentUser: ",loginUser);
+        // console.log("emailId: ",emailId);
+        // console.log("###########################",moment(createdAt).fromNow());
         return (
             <div>
                 <ul>
+                    <li><img src={thumbNail} height={'50px'} width={'50px'} alt="" role='presentation' /></li>
                     <li>{username}</li>
                     <li>{emailId}</li>
                     <li>{category}</li>
                     <li>{description}</li>
                     <li><img src={attachment} height={'200px'} width={'100px'} alt='' role='presentation' /></li>
-                    <li>{createdAt}</li>
+                    <li>{moment(createdAt).fromNow()}</li>
                     <li onClick={this.like}>Like:{Like.length}</li>
                     <li onClick={this.dislike}>Dislike:{dislike.length}</li>
                     {/* <button onClick={this.onDelete}>delete</button> */}

@@ -54,12 +54,12 @@ class BuzzForm extends Component {
         return (
             <React.Fragment>
 
-                <form method="POST" encType="multipart/form-data" onSubmit={this.handleOnSubmit}>
+                <form method="POST"  className="form" encType="multipart/form-data" onSubmit={this.handleOnSubmit}>
                     <header className="form-head">
                         {pen} Create Buzz
                     </header>
                     <textarea className="form-control" name="userPost" onChange={this.handleOnChange} value={this.state.userPost} placeholder="Share your thoughts..." rows="5" required></textarea>
-                    <div className="footer">
+                    <footer className="footer">
                         <div className="lf">
                             <select name="category" className="form-control category" onChange={this.handleOnChange} required>
                                 <option hidden value="">Category</option>
@@ -81,10 +81,9 @@ class BuzzForm extends Component {
 
                             <input type="submit" id="form-submit" value="submit" />
                         </div>
-                    </div>
+                    </footer>
                 </form>
-                <footer>
-                </footer>
+
             </React.Fragment>
         )
     }

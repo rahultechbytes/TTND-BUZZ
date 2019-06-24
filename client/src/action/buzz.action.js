@@ -46,10 +46,10 @@ export const getBuzz = (skip) => dispatch => {
         url: `http://localhost:5000/dashboard/buzz/${skip}`,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     })
-        .then(res => {
-            // console.log("feeds data recieved from db", res);
-            dispatch(getBuzzFromDb(res.data));
-        });
+    .then(res => {
+        // console.log("feeds data recieved from db", res);
+        dispatch(getBuzzFromDb(res.data));
+    });
 }
 
 //Likes Feature

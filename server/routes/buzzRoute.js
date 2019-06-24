@@ -22,7 +22,8 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
         emailId: req.user.emailId,
         description: formData.userPost,
         category: formData.category,
-        attachment: imageFile
+        attachment: imageFile,
+        thumbNail: req.user.thumbnail
     });
     buzzOperations.createFeed(buzzData).then(data => {
         res.send({ message: "Data Saved", data });

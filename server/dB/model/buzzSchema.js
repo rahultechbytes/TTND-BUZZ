@@ -10,9 +10,10 @@ var feedSchema = new Schema({
     description: { type: String },
     category: { type: String, enum: category, required: true },
     attachment: { type: String },
-    createdAt: { type: Date, default: Date.now() },
+    createdAt: { type: Date, default: Date.now },
     Like: [{userId: { type: String}}],
-    dislike: [{userId: { type: String}}]
+    dislike: [{userId: { type: String}}],
+    thumbNail: String
 });
 
 var buzzModel = mongoose.model('BuzzFeeds', feedSchema);

@@ -2,9 +2,11 @@
     background-color: #eeeeee;
 }
 
-.container{
-    margin-top: 1.5em;
+.container-fluid {
+    margin: 0px;
+    padding: 30px 50px;
 }
+
 
 aside.col-4.left {
     margin-top: 3em;
@@ -15,3 +17,4 @@ aside.left {
     height: 100%;
     top: 20px;
 }
+

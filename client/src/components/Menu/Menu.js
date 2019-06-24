@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './menuStyle.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { connect } from 'react-redux';
 
 class Menu extends Component {
     render() {
@@ -13,7 +14,7 @@ class Menu extends Component {
                 <ul className="nav flex-column">
                     <li className="nav-item">
                         <Link to="/dashboard/buzz" className="nav-link">
-                             Buzz {rightArrow}
+                            Buzz {rightArrow}
                         </Link>
                     </li>
                     <li className="nav-item">
@@ -21,11 +22,15 @@ class Menu extends Component {
                             Complaint {rightArrow}
                         </Link>
                     </li>
-                    <li className="nav-item">
-                        <Link to="/dashboard/resolve" className="nav-link">
-                             Resolve {rightArrow}
-                        </Link>
-                    </li>
+                    {
+                        (this.props.role === 'admin') ?
+                            <li className="nav-item">
+                                <Link to="/dashboard/resolve" className="nav-link">
+                                    Resolve {rightArrow}
+                                </Link>
+                            </li>
+                        : null
+                    }
                 </ul>
 
 
@@ -33,5 +38,7 @@ class Menu extends Component {
         )
     }
 }
-
-export default Menu
+const mapStateToProps = (state) => {
+    return { role: state.userReducer.userData.role }
+}
+export default connect(mapStateToProps, null)(Menu)
