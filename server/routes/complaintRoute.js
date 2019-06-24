@@ -17,8 +17,8 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
             imageFile = result.secure_url;
         });
     }
-    const assignedToAdmin = await findAdmin();       // finding admin
-    console.log("asignedTo: ", assignedToAdmin);
+    const assignedToAdmin = await findAdmin(req.body.department);       // finding admin
+    console.log("asignedTo: ", assignedToAdmin.username);
 
     const id = nanoId(10)           //random id generator for IssueId
 

@@ -1,8 +1,11 @@
 const user = require('../model/userSchema');
 
-const findAdmin = () => {
+const findAdmin = (department) => {
     return user.find({
-        role: 'admin'
+        $and: [
+            { role: 'admin' },
+            { department }
+        ]
     })
 }
 

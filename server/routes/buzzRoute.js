@@ -45,8 +45,9 @@ router.get('/:skip', verifyToken, (req, res) => {
     })
 });
 
-router.post('/like', verifyToken, async (req, res) => {
+router.patch('/like', verifyToken, async (req, res) => {
     // console.log(`body: ${JSON.stringify(req.body)}`)
+    // console.log("%%%%%%%%%%%%%%%55",req.body);
     const fetchBuzz = await buzzOperations.getBuzzById(req.body.buzzId);
     let emailId = req.user.emailId;
     const { Like } = fetchBuzz;
@@ -68,7 +69,7 @@ router.post('/like', verifyToken, async (req, res) => {
     })
 });
 
-router.post('/dislike', verifyToken, async (req, res) => {
+router.patch('/dislike', verifyToken, async (req, res) => {
     const fetchBuzz = await buzzOperations.getBuzzById(req.body.buzzId);
     let emailId = req.user.emailId;
     const { dislike } = fetchBuzz;

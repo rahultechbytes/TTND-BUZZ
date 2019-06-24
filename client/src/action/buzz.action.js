@@ -65,7 +65,7 @@ export const getLikeFromDb = (data) => {
 export const postLike = (buzzId) => (dispatch) => {
     // console.log('buzz here', buzzId);
     axiosInstance({
-        method: 'post',
+        method: 'patch',
         data: { buzzId },
         url: "http://localhost:5000/dashboard/buzz/like"
     })
@@ -88,7 +88,7 @@ export const getDislikeFromDb = (data) => {
 export const postDislike = (buzzId) => (dispatch) => {
     // console.log('buzz here', buzzId);
     axiosInstance({
-        method: 'post',
+        method: 'patch',
         data: { buzzId },
         url: "http://localhost:5000/dashboard/buzz/dislike"
     })
