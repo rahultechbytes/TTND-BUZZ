@@ -9,4 +9,6 @@ dbConnection.once('open',()=>{
     console.log('db started..');
 });
 
+// mongoose.set("debug",true);
+
 module.exports = mongoose;

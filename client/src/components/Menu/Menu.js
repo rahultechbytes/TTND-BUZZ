@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import {NavLink } from 'react-router-dom';
 import './menuStyle.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
@@ -13,21 +13,21 @@ class Menu extends Component {
 
                 <ul className="nav flex-column">
                     <li className="nav-item">
-                        <Link to="/dashboard/buzz" className="nav-link">
+                        <NavLink to="/dashboard/buzz" className="nav-link">
                             Buzz {rightArrow}
-                        </Link>
+                        </NavLink>
                     </li>
                     <li className="nav-item">
-                        <Link to="/dashboard/complaints" className="nav-link">
+                        <NavLink to="/dashboard/complaints" className="nav-link">
                             Complaint {rightArrow}
-                        </Link>
+                        </NavLink>
                     </li>
                     {
                         (this.props.role === 'admin') ?
                             <li className="nav-item">
-                                <Link to="/dashboard/resolve" className="nav-link">
+                                <NavLink to="/dashboard/resolve" className="nav-link">
                                     Resolve {rightArrow}
-                                </Link>
+                                </NavLink>
                             </li>
                         : null
                     }

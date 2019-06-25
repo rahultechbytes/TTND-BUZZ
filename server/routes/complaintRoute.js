@@ -43,9 +43,8 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
     });
 });
 
-router.get('/:skip', verifyToken, (req, res) => {
-    const skip = parseInt(req.params.skip);
-    complaintOperations.fetchComplaint(req.user.emailId, skip).then(success => {
+router.get('/', verifyToken, (req, res) => {
+    complaintOperations.fetchComplaint(req.user.emailId).then(success => {
         res.send(success);
     }).catch(err => {
         res.status(404).send(err);
