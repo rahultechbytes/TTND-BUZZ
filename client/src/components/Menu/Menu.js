@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './menuStyle.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
@@ -29,7 +29,7 @@ class Menu extends Component {
                                     Resolve {rightArrow}
                                 </NavLink>
                             </li>
-                        : null
+                            : null
                     }
                 </ul>
 
