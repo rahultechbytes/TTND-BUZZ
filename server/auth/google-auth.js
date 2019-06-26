@@ -13,6 +13,8 @@ passport.use(
         },
         function (accessToken, refreshToken, profile, done) {
             // roles
+            let department;
+            let role;
             if (profile._json.email === roleData.role.Hardware.email) {
                 department = 'Hardware';
                 role = "admin"
@@ -25,6 +27,10 @@ passport.use(
                 department = 'Others',
                 role = "admin"
             }
+            // else{
+            //     department = "technology",
+            //     role = "user"
+            // }
 
             //roles
             var googleId = profile.id;

@@ -4,6 +4,7 @@ import { addBuzz } from '../../../action/buzz.action';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faImage, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 import './formStyle.css';
+import Swal from 'sweetalert2'
 
 class BuzzForm extends Component {
     constructor(props) {
@@ -36,6 +37,14 @@ class BuzzForm extends Component {
             category: "",
         });
         e.target.reset();
+        Swal.fire({
+            position: 'top-end',
+            type: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+        })
+
     }
 
     fileUpload = () => {
@@ -54,7 +63,7 @@ class BuzzForm extends Component {
         return (
             <React.Fragment>
 
-                <form method="POST"  className="form" encType="multipart/form-data" onSubmit={this.handleOnSubmit}>
+                <form method="POST" className="form" encType="multipart/form-data" onSubmit={this.handleOnSubmit}>
                     <header className="form-head">
                         {pen} Create Buzz
                     </header>

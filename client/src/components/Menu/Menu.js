@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 class Menu extends Component {
     render() {
+        console.log("role:",this.props.role);
         const rightArrow = <FontAwesomeIcon icon={faChevronRight} />
         return (
             <div>
@@ -28,8 +29,7 @@ class Menu extends Component {
                                 <NavLink to="/dashboard/resolve" className="nav-link">
                                     Resolve {rightArrow}
                                 </NavLink>
-                            </li>
-                            : null
+                            </li>: null
                     }
                 </ul>
 
