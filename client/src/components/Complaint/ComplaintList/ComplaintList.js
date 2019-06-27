@@ -4,9 +4,20 @@ import { connect } from 'react-redux'
 import ComplaintThread from '../ComplaintThread/ComplaintThread';
 import './table.css';
 class ComplaintList extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            filter: "All Complaints"
+        }
+    }
     componentDidMount() {
         this.props.showComplaintList();
+    }
+
+    handleOnChange = (event) => {
+        this.setState({
+            filter: event.target.value
+        })
     }
 
     render() {
@@ -17,7 +28,8 @@ class ComplaintList extends Component {
                         Your Complaints
                     </span>
                     <span className="right">
-                        <select name="" id="">
+                        <select name="filter" onChange={this.handleOnChange}>
+                            <option value="All Complaints">All Complaints</option>
                             <option value="Pending">Pending</option>
                             <option value="In Progress">In Progress</option>
                             <option value="Resolved">Resolved</option>
@@ -34,10 +46,21 @@ class ComplaintList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.list.map((data, index) => {
+                        {/* {this.props.list.map((data, index) => {
                             return (
                                 <ComplaintThread list={data} key={index} />
                             )
+                        })} */}
+                        {this.props.list.map((data, index) => {
+                            if (this.state.filter === "All Complaints") {
+                                return (
+                                    <ComplaintThread list={data} key={index} />
+                                )
+                            } else if (this.state.filter === data.status) {
+                                return (
+                                    <ComplaintThread list={data} key={index} />
+                                )
+                            }
                         })}
                     </tbody>
                 </table>
