@@ -1,16 +1,16 @@
 import axiosInstance from '../utils/axiosInterceptor';
-// import {
-//     POST_BUZZ_FEED,
-//     GET_BUZZ_FEED,
-//     GET_LIKE,
-//     GET_DISLIKE,
-//     DELETE_BUZZ
-// } from './actionTypes'
+import {
+    POST_BUZZ_FEED,
+    GET_BUZZ_FEED,
+    GET_LIKE,
+    GET_DISLIKE,
+    DELETE_BUZZ
+} from './actionTypes'
 
 //saving buzz feeds to db
 export const addBuzzFeedToState = (data) => {
     return {
-        type: "POST_BUZZ_FEED",
+        type: POST_BUZZ_FEED,
         data
     }
 }
@@ -34,7 +34,7 @@ export const addBuzz = (formData) => dispatch => {
 //getting buzz feeds from db
 export const getBuzzFromDb = (data) => {
     return {
-        type: "GET_BUZZ_FEED",
+        type: GET_BUZZ_FEED,
         data
     }
 }
@@ -45,9 +45,9 @@ export const getBuzz = (skip) => dispatch => {
         url: `http://localhost:5000/dashboard/buzz/${skip}`,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     })
-    .then(res => {
-        dispatch(getBuzzFromDb(res.data));
-    });
+        .then(res => {
+            dispatch(getBuzzFromDb(res.data));
+        });
 }
 
 //Likes Feature
@@ -55,7 +55,7 @@ export const getLikeFromDb = (data) => {
     // console.log("post like feed")
     // console.log(data);
     return {
-        type: "GET_LIKE",
+        type: GET_LIKE,
         data
     }
 }
@@ -78,7 +78,7 @@ export const getDislikeFromDb = (data) => {
     // console.log("post dislike feed")
     // console.log(data);
     return {
-        type: "GET_DISLIKE",
+        type: GET_DISLIKE,
         data
     }
 }
@@ -99,8 +99,8 @@ export const postDislike = (buzzId) => (dispatch) => {
 //Delete post
 
 export const deletePostFromDb = (data) => {
-    return{
-        type: "DELETE_BUZZ",
+    return {
+        type: DELETE_BUZZ,
         data
     }
 }
