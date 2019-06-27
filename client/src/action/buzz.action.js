@@ -26,12 +26,10 @@ export const addBuzz = (formData) => dispatch => {
             if (res.status === 200) {
                 dispatch(addBuzzFeedToState(res.data.data));
             }
-        }).catch((res) => {
-            console.log("Error occured at adding buzz => ", res.err);
+        }).catch((err) => {
+            console.log("Error occured at adding buzz => ", err);
         });
 }
-
-
 
 //getting buzz feeds from db
 export const getBuzzFromDb = (data) => {
@@ -50,8 +48,8 @@ export const getBuzz = (skip) => dispatch => {
         if (res.status === 200) {
             dispatch(getBuzzFromDb(res.data))
         }
-    }).catch((res) => {
-        console.log("Error occured at showing buzz => ", res.err);
+    }).catch((err) => {
+        console.log("Error occured at showing buzz => ", err);
     });
 }
 
@@ -72,8 +70,8 @@ export const postLike = (buzzId) => (dispatch) => {
         if (res.status === 200) {
             dispatch(getLikeFromDb(res.data));
         }
-    }).catch((res) => {
-        console.error("Error occured while liking post", res.err);
+    }).catch((err) => {
+        console.error("Error occured while liking post", err);
     });
 }
 
@@ -94,8 +92,8 @@ export const postDislike = (buzzId) => (dispatch) => {
         if (res.status === 200) {
             dispatch(getLikeFromDb(res.data));
         }
-    }).catch((res) => {
-        console.log("Error occured while disliking post", res.err)
+    }).catch((err) => {
+        console.log("Error occured while disliking post", err)
     });
 }
 
@@ -115,8 +113,8 @@ export const postDelete = (buzzId) => (dispatch) => {
         if (res.status === 200) {
             dispatch(deletePostFromDb(res.data));
         }
-    }).catch((res) => {
-        console.log("Error occured while deleting post", res.err)
+    }).catch((err) => {
+        console.log("Error occured while deleting post", err)
     })
 }
 

@@ -3,6 +3,10 @@
     border: 1px solid lightgrey;
 }
 
+table.table.table-hover {
+    background-color: white;
+}
+
 .table-header {
     display: flex;
     justify-content: space-between;
@@ -13,6 +17,7 @@
     font-size: 1.1em;
     letter-spacing: 1px;
 }
-.thead-dark{
+
+.thead-dark {
     letter-spacing: 1px;
 }
