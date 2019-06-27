@@ -11,7 +11,6 @@ const mailer = require('../config/nodeMailer');
 
 router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
     const formData = req.body;
-    // console.log("req.user: ",req.user);
     var imageFile = '';
     if (req.file) {
         await cloudinary.uploader.upload(req.file.path, (error, result) => {
@@ -19,7 +18,6 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
         });
     }
     const assignedToAdmin = await findAdmin(req.body.department);       // finding admin
-    console.log("asignedTo: ", assignedToAdmin[0].username);
 
     const id = nanoId(10)           //random id generator for IssueId
 
@@ -37,7 +35,6 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
         }
     });
     complaintOperations.createComplaint(complaintData).then(data => {
-        // console.log("$$$$$$$$$$$$$$4", data);
         mailer({
             email: data.emailId,
             name: data.name,
@@ -54,7 +51,6 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
         });
         res.send({ message: "Complaint Saved", data });
     }).catch(err => {
-        console.log("complaint error: ", err);
         res.status(404).send(err);
     });
 });

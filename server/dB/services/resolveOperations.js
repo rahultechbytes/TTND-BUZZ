@@ -5,7 +5,6 @@ fetchComplaint = (emailId) => {
 }
 
 updateComplaint = (status, issueId) => {
-    console.log("in resolve operation --------", status, issueId);
     return complaint.findOneAndUpdate({ issueId }, { $set: { status } }, { new: true });
 }
 

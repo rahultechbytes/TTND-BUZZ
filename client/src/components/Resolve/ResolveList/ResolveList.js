@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { showComplaintList } from '../../../action/resolve.action';
 import { connect } from 'react-redux'
 import ResolveThread from '../ResolveThread/ResolveThread';
+import './resolveListStyle.css' 
 
 class ResolveList extends Component {
     constructor(props) {

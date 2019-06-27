@@ -15,18 +15,14 @@ router.get(
     function(req, res) {
         let UserDetails = req.user;
 
-        console.log("userDetails", UserDetails);
         jwt.sign(UserDetails.toJSON(), process.env.SECRET ,{ expiresIn: '10h' },(err,token)=>{
-            console.log("token is ====>",token);
             if(err){
                 console.log("err:",err);
             }
             else{
-                console.log("token:",token);
                 res.redirect(`http://localhost:3000/token?q=${token}`);
             }
         });
-        // res.send(UserDetails)
      }
 );
 

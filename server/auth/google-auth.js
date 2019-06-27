@@ -27,15 +27,9 @@ passport.use(
                 department = 'Others',
                 role = "admin"
             }
-            // else{
-            //     department = "technology",
-            //     role = "user"
-            // }
 
-            //roles
             var googleId = profile.id;
             userOperations.findOne(googleId).then(data => {
-                // console.log("findOne",data);
                 if (!data) {
                     var userData = new User({
                         username: profile._json.name,
@@ -51,10 +45,9 @@ passport.use(
                     done(null, data);
                 }
             }).catch(err => {
-                console.log("error is:", err);
+                console.log(`error in catch at passport ${err}`);
             })
 
-            // console.log("profile data is", profile._json);
 
         }
     )

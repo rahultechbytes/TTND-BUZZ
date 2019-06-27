@@ -14,7 +14,6 @@ deletePost = (id)=>{
 
 likeBuzz = (id, emailId, status) => {
     if (status) {
-        console.log("status in IF",status)
         return userFeeds.findOneAndUpdate(
             { _id: id },
             {
@@ -36,7 +35,6 @@ likeBuzz = (id, emailId, status) => {
         )
     }
     else{
-        console.log("status in ELSE",status);
         return userFeeds.findOneAndUpdate(
             { _id: id },
             {
@@ -56,7 +54,6 @@ likeBuzz = (id, emailId, status) => {
 
 dislikeBuzz = (id, emailId,status) => {
     if (status) {
-        console.log("status in IF",status);
         return userFeeds.findOneAndUpdate(
             { _id: id },
             {
@@ -78,7 +75,6 @@ dislikeBuzz = (id, emailId,status) => {
         )
     }
     else{
-        console.log("status in ELSE",status)
         return userFeeds.findOneAndUpdate(
             { _id: id },
             {

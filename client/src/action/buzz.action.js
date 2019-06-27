@@ -1,12 +1,14 @@
 import axiosInstance from '../utils/axiosInterceptor';
 // import {
-//     BASE_URL, 
-//     BUZZ_FEED
-// } from '../constants/constants'
+//     POST_BUZZ_FEED,
+//     GET_BUZZ_FEED,
+//     GET_LIKE,
+//     GET_DISLIKE,
+//     DELETE_BUZZ
+// } from './actionTypes'
 
 //saving buzz feeds to db
 export const addBuzzFeedToState = (data) => {
-    // console.log("buzz action");
     return {
         type: "POST_BUZZ_FEED",
         data
@@ -22,7 +24,6 @@ export const addBuzz = (formData) => dispatch => {
     })
         .then(res => {
             if (res.data.message === "Data Saved") {
-                // console.log("data saved to server and comeback complaint", "res.data.data");
                 dispatch(addBuzzFeedToState(res.data.data));
             }
         });
@@ -32,8 +33,6 @@ export const addBuzz = (formData) => dispatch => {
 
 //getting buzz feeds from db
 export const getBuzzFromDb = (data) => {
-    // console.log("get_BUZZ_FEED")
-    // console.log(data);
     return {
         type: "GET_BUZZ_FEED",
         data
@@ -47,7 +46,6 @@ export const getBuzz = (skip) => dispatch => {
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     })
     .then(res => {
-        // console.log("feeds data recieved from db", res);
         dispatch(getBuzzFromDb(res.data));
     });
 }
