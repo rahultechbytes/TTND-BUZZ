@@ -22,10 +22,12 @@ export const addBuzz = (formData) => dispatch => {
         data: formData,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     })
-        .then(res => {
-            if (res.data.message === "Data Saved") {
+        .then((res) => {
+            if (res.status === 200) {
                 dispatch(addBuzzFeedToState(res.data.data));
             }
+        }).catch((res) => {
+            console.log("Error occured at adding buzz => ", res.err);
         });
 }
 
@@ -44,16 +46,17 @@ export const getBuzz = (skip) => dispatch => {
         method: 'get',
         url: `http://localhost:5000/dashboard/buzz/${skip}`,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
-    })
-        .then(res => {
-            dispatch(getBuzzFromDb(res.data));
-        });
+    }).then(res => {
+        if (res.status === 200) {
+            dispatch(getBuzzFromDb(res.data))
+        }
+    }).catch((res) => {
+        console.log("Error occured at showing buzz => ", res.err);
+    });
 }
 
 //Likes Feature
 export const getLikeFromDb = (data) => {
-    // console.log("post like feed")
-    // console.log(data);
     return {
         type: GET_LIKE,
         data
@@ -61,22 +64,21 @@ export const getLikeFromDb = (data) => {
 }
 
 export const postLike = (buzzId) => (dispatch) => {
-    // console.log('buzz here', buzzId);
     axiosInstance({
         method: 'patch',
         data: { buzzId },
         url: "http://localhost:5000/dashboard/buzz/like"
-    })
-        .then(res => {
-            // console.log("likes data recieved from db", res);
+    }).then(res => {
+        if (res.status === 200) {
             dispatch(getLikeFromDb(res.data));
-        }).catch((err) => { console.error(err); });
+        }
+    }).catch((res) => {
+        console.error("Error occured while liking post", res.err);
+    });
 }
 
 //Dislikes Feature
 export const getDislikeFromDb = (data) => {
-    // console.log("post dislike feed")
-    // console.log(data);
     return {
         type: GET_DISLIKE,
         data
@@ -84,20 +86,20 @@ export const getDislikeFromDb = (data) => {
 }
 
 export const postDislike = (buzzId) => (dispatch) => {
-    // console.log('buzz here', buzzId);
     axiosInstance({
         method: 'patch',
         data: { buzzId },
         url: "http://localhost:5000/dashboard/buzz/dislike"
-    })
-        .then(res => {
-            // console.log("dislikes data recieved from db", res);
+    }).then(res => {
+        if (res.status === 200) {
             dispatch(getLikeFromDb(res.data));
-        }).catch((err) => { console.error(err); });
+        }
+    }).catch((res) => {
+        console.log("Error occured while disliking post", res.err)
+    });
 }
 
 //Delete post
-
 export const deletePostFromDb = (data) => {
     return {
         type: DELETE_BUZZ,
@@ -110,10 +112,11 @@ export const postDelete = (buzzId) => (dispatch) => {
         method: 'DELETE',
         url: `http://localhost:5000/dashboard/buzz/${buzzId}`,
     }).then(res => {
-        console.log("res in delete: ", res);
         if (res.status === 200) {
             dispatch(deletePostFromDb(res.data));
         }
+    }).catch((res) => {
+        console.log("Error occured while deleting post", res.err)
     })
 }
 
