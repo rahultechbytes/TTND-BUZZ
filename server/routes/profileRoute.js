@@ -6,6 +6,8 @@ const userOperations = require('../dB/services/userOperations');
 router.get('/', verifyToken, (req, res) => {
     userOperations.findOne(req.user.googleId).then((data) => {
         res.send(data)
+    }).catch((err) => {
+        res.status(400).send(err);
     });
 })
 

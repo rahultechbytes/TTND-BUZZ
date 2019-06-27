@@ -17,7 +17,8 @@ router.get(
 
         jwt.sign(UserDetails.toJSON(), process.env.SECRET ,{ expiresIn: '10h' },(err,token)=>{
             if(err){
-                console.log("err:",err);
+                // console.log("err:",err);
+                res.status(400).send(err);
             }
             else{
                 res.redirect(`http://localhost:3000/token?q=${token}`);

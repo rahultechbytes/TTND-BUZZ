@@ -51,7 +51,7 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
         });
         res.send({ message: "Complaint Saved", data });
     }).catch(err => {
-        res.status(404).send(err);
+        res.status(400).send(err);
     });
 });
 
@@ -59,7 +59,7 @@ router.get('/', verifyToken, (req, res) => {
     complaintOperations.fetchComplaint(req.user.emailId).then(success => {
         res.send(success);
     }).catch(err => {
-        res.status(404).send(err);
+        res.status(400).send(err);
     })
 });
 

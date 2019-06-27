@@ -27,3 +27,4 @@ const mail = (mailDetails) => {
 
 module.exports = mail
 
+

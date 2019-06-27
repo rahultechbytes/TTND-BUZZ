@@ -25,7 +25,7 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
     buzzOperations.createFeed(buzzData).then(data => {
         res.send({ message: "Data Saved", data });
     }).catch(err => {
-        res.status(404).send(err);
+        res.status(400).send(err);
     });
 });
 
@@ -34,7 +34,7 @@ router.get('/:skip', verifyToken, (req, res) => {
     buzzOperations.fetchFeed(skip).then(success => {
         res.send(success);
     }).catch(err => {
-        res.status(404).send(err);
+        res.status(400).send(err);
     })
 });
 
@@ -52,7 +52,7 @@ router.patch('/like', verifyToken, async (req, res) => {
     ).then(result => {
         res.send(result);
     }).catch(err => {
-        res.send(err);
+        res.status(400).send(err);
     })
 });
 
@@ -71,7 +71,7 @@ router.patch('/dislike', verifyToken, async (req, res) => {
     ).then(result => {
         res.send(result);
     }).catch(err => {
-        res.send(err);
+        res.status(400).send(err);
     })
 });
 
@@ -80,7 +80,7 @@ router.delete('/:buzzId', verifyToken, (req, res) => {
     buzzOperations.deletePost(id).then((data) => {
         res.status(200).send(data.id);
     }).catch(err => {
-        res.send(err)
+        res.status(400).send(err);
     })
 })
 
