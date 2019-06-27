@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import './issueIdStyle.css';
 class IssueId extends Component {
 
     constructor(props, context) {
@@ -35,9 +36,9 @@ class IssueId extends Component {
         const IssueId = this.props.id
         return (
             <div>
-                <Button variant="primary" onClick={this.handleOnClick}>
+                <a className="issue_id" variant="primary" onClick={this.handleOnClick}>
                     <span >{IssueId}</span>
-                </Button>
+                </a>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>

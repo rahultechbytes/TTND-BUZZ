@@ -19,7 +19,7 @@ class ResolveThread extends Component {
                 <td>{name}</td>
                 <td>{username}</td>
                 <td>
-                    <select onChange={this.handleOnChange} className={(status === 'Pending' ? "status-pending" : (status === 'In Progress') ? "status-in-progress" : "status-resolved")} name="status" >
+                    <select onChange={this.handleOnChange} className={(status === 'Pending' ? "status-pending" : (status === 'In Progress') ? "status-in-progress" : "status-resolved")} name="status" value={status} >
                         <option value="Pending">Pending</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Resolved">Resolved</option>

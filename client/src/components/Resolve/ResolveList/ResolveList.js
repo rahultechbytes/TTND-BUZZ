@@ -11,24 +11,38 @@ class ResolveList extends Component {
 
     render() {
         return (
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Department</th>
-                        <th scope="col">Issue Id</th>
-                        <th scope="col">Locked By</th>
-                        <th scope="col">Assigned To</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.props.list.map((data, index) => {
-                        return (
-                            <ResolveThread list={data} key={index} />
-                        )
-                    })}
-                </tbody>
-            </table>
+            <div className="table-wrapper">
+                <header className="table-header">
+                    <span className="left">
+                        Your Complaints
+                    </span>
+                    <span className="right">
+                        <select name="" id="">
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Resolved">Resolved</option>
+                        </select>
+                    </span>
+                </header>
+                <table className="table table-striped">
+                    <thead className="thead-dark">
+                        <tr>
+                            <th scope="col">Department</th>
+                            <th scope="col">Issue Id</th>
+                            <th scope="col">Locked By</th>
+                            <th scope="col">Assigned To</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.list.map((data, index) => {
+                            return (
+                                <ResolveThread list={data} key={index} />
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
         )
     }
 }

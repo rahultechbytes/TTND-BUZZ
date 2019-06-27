@@ -1,0 +1,179 @@
+.complaintForm {
+    font-family: roboto;
+    background-color: white;
+    padding-bottom: 10px;
+    border: 1px solid lightgrey;
+}
+
+.complaint-hd {
+    border-bottom: 1.5px solid lightgrey;
+    font-size: 1.1em;
+    color: white;
+    padding: 5px 20px;
+    text-align: left;
+    font-weight: 600;
+    background-color: #ff3f00cf;
+}
+
+.extra {
+    padding: 7px 20px 0px 20px;
+    margin-bottom: 0px;
+}
+
+.complaintForm label {
+    font-size: 0.9em;
+    margin-bottom: 2px;
+    text-align: left;
+    display: block;
+    color: grey;
+}
+
+.complaintForm select {
+    color: grey;
+}
+
+.attachment>input {
+    display: none;
+}
+
+.attachment label {
+    display: block;
+    text-align: right;
+}
+
+.imgName {
+    vertical-align: super;
+    margin-right: 5px;
+}
+
+.complainBtn {
+    background-color: #ff3f00cf !important;
+    padding: 0.6em 2.5em !important;
+    font-size: 0.8em;
+    display: block;
+    border: 0;
+    margin: 7px 20px 0px 20px;
+}
+
+.complainBtn:hover {
+    color: #ff3f00cf !important;
+    background-color: #f4f7fb !important;
+    border: 1.2px solid #ff3f00cf;
+}
+
+@media(min-width:992px) and (max-width:1024px) {
+    .complaint-hd {
+        font-size: 1em;
+        padding: 4px 18px;
+    }
+    .extra {
+        padding: 6px 18px 0px 18px;
+        margin-bottom: 0px;
+    }
+    .complaintForm input, .complaintForm select, .complaintForm textarea {
+        font-size: 0.9em;
+    }
+    .complaintForm label {
+        font-size: 0.8em;
+        margin-bottom: 2px;
+    }
+    .complainBtn {
+        padding: 0.6em 2.5em !important;
+        font-size: 0.8em;
+        margin: 6px 18px 0px 18px;
+    }
+    .complainBtn:hover {
+        border: 1.2px solid #ff3f00cf;
+    }
+}
+
+@media(min-width:768px) and (max-width:991px) {
+    .complaint-hd {
+        font-size: 0.9em;
+        padding: 4px 18px;
+    }
+    .extra {
+        padding: 4px 15px 0px 15px;
+        margin-bottom: 0px;
+    }
+    .complaintForm input, .complaintForm select, .complaintForm textarea {
+        font-size: 0.8em;
+    }
+    .complaintForm label {
+        font-size: 0.75em;
+        margin-bottom: 1px;
+    }
+    .imgName {
+        vertical-align: text-bottom;
+    }
+    .complainBtn {
+        padding: 0.6em 2em !important;
+        font-size: 0.7em;
+        margin: 6px 15px 0px 15px;
+    }
+    .complainBtn:hover {
+        border: 1.2px solid #ff3f00cf;
+    }
+}
+
+@media(min-width:481px) and (max-width:767px) {
+    .complaint-hd {
+        font-size: 0.9em;
+        padding: 4px 18px;
+    }
+    .extra {
+        padding: 4px 15px 0px 15px;
+        margin-bottom: 0px;
+    }
+    .complaintForm input, .complaintForm select, .complaintForm textarea {
+        font-size: 0.8em;
+    }
+    .complaintForm label {
+        font-size: 0.75em;
+        margin-bottom: 1px;
+    }
+    .imgName {
+        vertical-align: middle;
+    }
+    .complainBtn {
+        padding: 0.6em 2em !important;
+        font-size: 0.7em;
+        margin: 6px 15px 0px 15px;
+    }
+    .complainBtn:hover {
+        border: 1.2px solid #ff3f00cf;
+    }
+}
+
+@media(min-width:320px) and (max-width:480px) {
+    .complaint-hd {
+        font-size: 0.85em;
+        padding: 3px 12px;
+    }
+    .extra {
+        padding: 2px 12px 0px 12px;
+        margin-bottom: 0px;
+    }
+    .complaintForm input, .complaintForm select, .complaintForm textarea {
+        font-size: 0.7em;
+    }
+    .complaintForm label {
+        font-size: 0.65em;
+        margin-bottom: 1px;
+    }
+    .complaintForm textarea {
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        border: 1px solid #ced4da;
+    }
+    .imgName {
+        vertical-align: middle;
+    }
+    .complainBtn {
+        padding: 0.6em 2em !important;
+        font-size: 0.7em;
+        margin: 6px 15px 0px 15px;
+    }
+    .complainBtn:hover {
+        border: 1.2px solid #ff3f00cf;
+    }
+}

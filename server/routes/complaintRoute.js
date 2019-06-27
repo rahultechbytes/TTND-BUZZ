@@ -47,7 +47,7 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
         });
         mailer({
             email: data.assignedTo.emailId,
-            name: data.name,
+            name: data.assignedTo.username,
             concern: data.concern,
             title: data.title,
             subject: "Complain is assigned to you",

@@ -1,0 +1,18 @@
+.table-wrapper {
+    margin: 3em 0em;
+    border: 1px solid lightgrey;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+    font-weight: 600;
+    background-color: #e2e4e8;
+    color: black;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
+.thead-dark{
+    letter-spacing: 1px;
+}

@@ -1,0 +1,15 @@
+.status-pending{
+    color: red;
+    background: transparent;
+    border: none;
+}
+.status-in-progress{
+    color: blue;
+    background: transparent;
+    border: none;
+}
+.status-resolved{
+    color: green;
+    background: transparent;
+    border: none;
+}

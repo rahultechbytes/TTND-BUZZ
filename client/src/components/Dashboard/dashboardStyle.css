@@ -1,12 +1,11 @@
 .bgColor {
-    background-color: #eeeeee;
+    background-color: #f4f7fb;
 }
 
 .container-fluid {
     margin: 0px;
     padding: 30px 50px;
 }
-
 
 aside.col-4.left {
     margin-top: 3em;
@@ -18,3 +17,9 @@ aside.left {
     top: 20px;
 }
 
+@media(min-width:320px) and (max-width:480px) {
+    .container-fluid {
+        margin: 0px;
+        padding: 10px;
+    }
+}

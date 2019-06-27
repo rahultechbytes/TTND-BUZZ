@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import {addComplaint} from '../../../action/complaint.action';
-import {connect} from 'react-redux';
+import { addComplaint } from '../../../action/complaint.action';
+import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faImage } from '@fortawesome/free-solid-svg-icons'
+import './complaintFormStyle.css';
 class ComplaintForm extends Component {
     constructor(props) {
         super(props);
@@ -45,20 +48,57 @@ class ComplaintForm extends Component {
     }
 
     render() {
+        const image = <FontAwesomeIcon icon={faImage} />
+
         return (
             <div>
-                <form method="POST" onSubmit={this.handleOnSubmit} encType='multipart/form-data'>
+                {/* <form method="POST" onSubmit={this.handleOnSubmit} encType='multipart/form-data'>
+                    <input name='title' placeholder='Issue Title' onChange={this.handleOnChange} type="text" required />
                     <select name="department" id="department" onChange={this.handleOnChange} required>
                         <option hidden value="">department</option>
                         <option value="Hardware">Hardware</option>
                         <option value="Infrastructure">Infrastructure</option>
                         <option value="Others">Others</option>
                     </select>
-                    <input name='title' placeholder='Issue Title' onChange={this.handleOnChange} type="text" required />
                     <textarea name="concern" id="concern" cols="30" rows="10" onChange={this.handleOnChange} placeholder='Concern' required></textarea>
                     <input type="file" name="attachment" onChange={this.fileUpload} accept='image/*' id="attachment" />
                     <input type="submit" value="Submit" />
+                </form> */}
+
+                {/* ******************************************************************************* */}
+                <form method="POST" className="complaintForm" onSubmit={this.handleOnSubmit} encType='multipart/form-data'>
+                    <header className="complaint-hd">
+                        Complaint Box
+                    </header>
+                    <div className="form-row extra">
+                        <div className="form-group col-md-6">
+                            <label htmlFor="inputText">Issue Title</label>
+                            <input type="text" name='title' className="form-control" id="inputText" placeholder='Issue Title' onChange={this.handleOnChange} required />
+                        </div>
+                        <div className="form-group col-md-6">
+                            <label htmlFor="department">Select Department</label>
+                            <select name="department" id="department" className="form-control" onChange={this.handleOnChange} required>
+                                <option hidden value="">Department</option>
+                                <option value="Hardware">Hardware</option>
+                                <option value="Infrastructure">Infrastructure</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="form-group extra">
+                        <label htmlFor="concern">Your Concern</label>
+                        <textarea name="concern" className="form-control" id="concern" rows="7" onChange={this.handleOnChange} placeholder='Concern' required></textarea>
+                    </div>
+                    <div className="form-group attachment extra">
+                        <label htmlFor="file-input">
+                            <span className="imgName">Attachment</span> {image}
+                        </label>
+                        <input type="file" id="file-input" onChange={this.fileUpload} name="attachment" accept="image/*" />
+                    </div>
+                    <button type="submit" className="btn btn-secondary ml-auto complainBtn">Submit</button>
+
                 </form>
+
             </div>
         )
     }

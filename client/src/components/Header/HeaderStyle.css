@@ -1,6 +1,6 @@
 .header {
     padding: 0.5em 2em;
-    background-color: #eeeeee;
+    background-color: #eeeeee !important;
 }
 
 .logout {
