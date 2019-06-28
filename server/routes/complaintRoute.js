@@ -59,7 +59,7 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
             AssignedTo: "null",
             adminEmail: "null"
         });
-        res.send({ message: "Complaint Saved", data });
+        res.send(data);
     }).catch(err => {
         res.status(400).send(err);
     });

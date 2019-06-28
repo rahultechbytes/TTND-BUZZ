@@ -22,7 +22,6 @@ export const showComplaintList = () => (dispatch) => {
         url: 'http://localhost:5000/dashboard/resolve',
     }).then(res => {
         if (res.status === 200) {
-            console.log('resolve data fetched from db');
             dispatch(getComplaintListToState(res.data));
         }
     }).catch((err) => {
@@ -48,7 +47,6 @@ export const updateComplaint = (updatedData) => (dispatch) => {
         data: updatedData
     }).then((res) => {
         if (res.status === 200) {
-            console.log("complain updated");
             dispatch(updateComplaintInState(res.data));
             successAlert("Status Updated successfully");
         }

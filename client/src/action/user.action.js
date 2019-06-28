@@ -5,7 +5,6 @@ import {
 import { errorAlert } from './actionAlert';
 
 export const getUserToState = (data) => {
-    console.log("profile user action");
     return {
         type: ShOW_USER_PROFILE,
         data

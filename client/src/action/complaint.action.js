@@ -21,8 +21,8 @@ export const addComplaint = (formData) => (dispatch) => {
         data: formData,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     }).then(res => {
-        if (res.data.message === "Complaint Saved") {
-            dispatch(addComplaintToState(res.data.data));
+        if (res.status === 200) {
+            dispatch(addComplaintToState(res.data));
             successAlert("Complaint Registered");
         }
     }).catch((err) => {
@@ -33,7 +33,6 @@ export const addComplaint = (formData) => (dispatch) => {
 
 // GET REQUEST FOR COMPLAINT LIST
 export const getComplaintListToState = (data) => {
-    console.log("complaint action show");
     return {
         type: SHOW_COMPLAINT,
         data
@@ -46,7 +45,6 @@ export const showComplaintList = () => (dispatch) => {
         url: `http://localhost:5000/dashboard/complaint`,
     }).then((res) => {
         if (res.status === 200) {
-            console.log('data fetched from db');
             dispatch(getComplaintListToState(res.data));
         }
     }).catch((err) => {
