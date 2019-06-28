@@ -37,17 +37,27 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
     complaintOperations.createComplaint(complaintData).then(data => {
         mailer({
             email: data.emailId,
-            name: data.name,
-            concern: data.concern,
             subject: "Your Complain is registered",
-            text: "your complain will be resolve soon",
+            name: data.name,
+            issueId: data.issueId,
+            department: data.department,
+            title: data.title,
+            concern: data.concern,
+            image: data.attachment,
+            adminEmail: data.assignedTo.emailId,
+            AssignedTo: data.assignedTo.username
         });
         mailer({
             email: data.assignedTo.emailId,
-            name: data.assignedTo.username,
-            concern: data.concern,
-            title: data.title,
             subject: "Complain is assigned to you",
+            name: data.assignedTo.username,
+            issueId: data.issueId,
+            department: data.department,
+            title: data.title,
+            concern: data.concern,
+            image: data.attachment,
+            AssignedTo: "null",
+            adminEmail: "null"
         });
         res.send({ message: "Complaint Saved", data });
     }).catch(err => {

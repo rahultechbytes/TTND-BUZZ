@@ -23,9 +23,6 @@ class BuzzThreads extends Component {
     render() {
         const { loginUser } = this.props
         const { username, emailId, category, description, attachment, createdAt, Like, dislike, thumbNail } = this.props.feeds;
-        // console.log("currentUser: ",loginUser);
-        // console.log("emailId: ",emailId);
-        // console.log("###########################",moment(createdAt).fromNow());
         return (
             <div>
                 <ul>
@@ -38,7 +35,6 @@ class BuzzThreads extends Component {
                     <li>{moment(createdAt).fromNow()}</li>
                     <li onClick={this.like}>Like:{Like.length}</li>
                     <li onClick={this.dislike}>Dislike:{dislike.length}</li>
-                    {/* <button onClick={this.onDelete}>delete</button> */}
                     {loginUser === emailId ? <button onClick={this.onDelete}>delete</button> : null}
                 </ul>
                 <hr />
