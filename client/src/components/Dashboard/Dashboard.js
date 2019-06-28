@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Menu from '../Menu/Menu';
 // import Resolve from '../Resolve/Resolve';
 import Resolve from '../Resolve/ResolveList/ResolveList';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import NoMatch from '../Error/NoMatch';
 import Buzz from '../Buzz/BuzzManager/BuzzManager';
 import Complaint from '../Complaint/ComplaintManager/ComplaintManager';
@@ -34,9 +34,12 @@ class Dashboard extends Component {
                                     component={Complaint}
                                 />
                                 {(this.props.role === 'admin') ? <Route exact path="/dashboard/resolve" component={Resolve} /> : null}
+
                                 <Route
+                                    path='/404'
                                     component={NoMatch}
                                 />
+                                <Redirect from='*' to='/404' />
                             </Switch>
                         </section>
                     </div>

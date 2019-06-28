@@ -27,11 +27,10 @@ class Routes extends Component {
                         component={Dashboard}
                     />
                     <Route
-                        // path='/404'
-                        // exact={true}
+                        path='/404'
                         component={NoMatch}
                     />
-                    {/* <Redirect from='*' to='/404' /> */}
+                    <Redirect from='*' to='/404' />
 
                 </Switch>
             </div>
