@@ -56,3 +56,15 @@
     height: 5em;
   }
 }
+
+.filtercategory{
+  margin-bottom: 20px;
+  margin-top: 10px;
+  text-align: right;
+  position: sticky;
+  top: 1%;
+}
+.filtericon{
+  padding-right: 10px;
+  color: blue;
+}

@@ -5,9 +5,10 @@ import {
     GET_LIKE,
     GET_DISLIKE,
     DELETE_BUZZ
-} from './actionTypes'
+} from './actionTypes';
+import { successAlert, errorAlert } from './actionAlert'
 
-//saving buzz feeds to db
+// POST REQUEST FOR BUZZ
 export const addBuzzFeedToState = (data) => {
     return {
         type: POST_BUZZ_FEED,
@@ -21,17 +22,18 @@ export const addBuzz = (formData) => dispatch => {
         url: "http://localhost:5000/dashboard/buzz",
         data: formData,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
-    })
-        .then((res) => {
-            if (res.status === 200) {
-                dispatch(addBuzzFeedToState(res.data.data));
-            }
-        }).catch((err) => {
-            console.log("Error occured at adding buzz => ", err);
-        });
+    }).then((res) => {
+        if (res.status === 200) {
+            dispatch(addBuzzFeedToState(res.data.data));
+            successAlert("Buzz Created")
+        }
+    }).catch((err) => {
+        console.log("Error occured at adding buzz => ", err);
+        errorAlert("Something went wrong while adding buzz")
+    });
 }
 
-//getting buzz feeds from db
+// GET REQUEST FOR BUZZ FEED
 export const getBuzzFromDb = (data) => {
     return {
         type: GET_BUZZ_FEED,
@@ -50,10 +52,11 @@ export const getBuzz = (skip) => dispatch => {
         }
     }).catch((err) => {
         console.log("Error occured at showing buzz => ", err);
+        errorAlert("Something went wrong while fetching buzz");
     });
 }
 
-//Likes Feature
+// FOR LIKE 
 export const getLikeFromDb = (data) => {
     return {
         type: GET_LIKE,
@@ -72,6 +75,7 @@ export const postLike = (buzzId) => (dispatch) => {
         }
     }).catch((err) => {
         console.error("Error occured while liking post", err);
+        errorAlert("Something Went Wrong while liking post");
     });
 }
 
@@ -94,6 +98,7 @@ export const postDislike = (buzzId) => (dispatch) => {
         }
     }).catch((err) => {
         console.log("Error occured while disliking post", err)
+        errorAlert("Something Went Wrong while disliking post");
     });
 }
 
@@ -114,7 +119,8 @@ export const postDelete = (buzzId) => (dispatch) => {
             dispatch(deletePostFromDb(res.data));
         }
     }).catch((err) => {
-        console.log("Error occured while deleting post", err)
+        console.log("Error occured while deleting post", err);
+        errorAlert("Something Went Wrong while Deleting post");
     })
 }
 

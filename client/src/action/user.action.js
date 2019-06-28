@@ -2,6 +2,7 @@ import axiosInstance from '../utils/axiosInterceptor';
 import {
     ShOW_USER_PROFILE
 } from './actionTypes';
+import { errorAlert } from './actionAlert';
 
 export const getUserToState = (data) => {
     console.log("profile user action");
@@ -16,6 +17,11 @@ export const getUser = () => (dispatch) => {
         method: 'GET',
         url: 'http://localhost:5000/user'
     }).then((res) => {
-        dispatch(getUserToState(res.data));
+        if (res.status === 200) {
+            dispatch(getUserToState(res.data));
+        }
+    }).catch((err) => {
+        console.log("Error occured while fetching user details", err);
+        errorAlert("Something went wrong while getting User Info");
     });
 }

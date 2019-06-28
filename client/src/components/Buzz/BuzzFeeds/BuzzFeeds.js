@@ -4,6 +4,9 @@ import { getBuzz } from '../../../action/buzz.action'
 import BuzzThreads from '../BuzzThreads/BuzzThreads';
 import InfiniteScroll from 'react-infinite-scroller';
 import './BuzzFeedStyle.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFilter } from '@fortawesome/free-solid-svg-icons'
+
 export class BuzzFeeds extends Component {
     constructor(props) {
         super(props);
@@ -34,17 +37,21 @@ export class BuzzFeeds extends Component {
 
     render() {
         // console.log("state",this.props.userFeeds);
+        const filterbtn = <FontAwesomeIcon icon={faFilter} />
         const { emailId } = this.props.loginUserData;
         console.log("skip", this.state.skip);
         console.log("buzzfeedssssss", this.props.userFeeds.length)
         return (
             <div>
-                <select id='buzz-filter' onChange={this.handleOnChange} name="filter">
-                    <option value="Most Recent">Most Recent Buzz</option>
-                    <option value="Activity">Activity Buzz</option>
-                    <option value="Lost and Found">Lost and Found Buzz</option>
-                    <option value="My Buzz">My Buzz</option>
-                </select>
+                <div className='filtercategory'>
+                    <span className='filtericon'>{filterbtn}</span>
+                    <select id='buzz-filter' onChange={this.handleOnChange} name="filter">
+                        <option value="Most Recent">Most Recent Buzz</option>
+                        <option value="Activity">Activity Buzz</option>
+                        <option value="Lost and Found">Lost and Found Buzz</option>
+                        <option value="My Buzz">My Buzz</option>
+                    </select>
+                </div>
                 <InfiniteScroll
                     pageStart={0}
                     loadMore={this.loadFunc}
