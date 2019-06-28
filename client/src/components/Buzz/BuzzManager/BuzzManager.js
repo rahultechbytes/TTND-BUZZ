@@ -7,7 +7,6 @@ export default class Buzz extends Component {
         return (
             <div>
                 <BuzzForm/>
-                <hr/>
                 <BuzzFeeds/>
             </div>
         )

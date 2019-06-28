@@ -48,7 +48,7 @@ class BuzzThreads extends Component {
                 <div className='buzzHeader'>
                     <div className='nameActivity'>
                         <div className='userimgcontainer'>
-                            <img src={thumbNail} height={'45px'} width={'45px'} alt="" role='presentation' className='userimg' />
+                            <img src={thumbNail} alt="" role='presentation' className='userimg' />
                         </div>
                         <div className='usernameactivity'>
                             <span className='username'>{username}</span>
@@ -68,12 +68,13 @@ class BuzzThreads extends Component {
                         }
                     </div>
                 </div>
+                <hr className="headerBorder"/>
                 <div className='buzzContentContainer'>
                     <div className='buzzContent'>
                         {description}
                     </div>
                     <div className='uploadedimg'>
-                        <img src={attachment} height={'200px'} width={'200px'} alt='' role='presentation' />
+                        <img src={attachment}  alt='' role='presentation' />
                     </div>
                 </div>
                 <div className='buzzFooter'>

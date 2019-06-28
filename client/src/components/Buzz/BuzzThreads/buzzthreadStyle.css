@@ -1,8 +1,9 @@
 .buzzContainer {
     width: 100%;
     max-width: 100%;
+    font-size: 1em;
     padding: 10px;
-    box-shadow: -1px 1px 25px 3px rgba(0,0,0,0.75);
+    box-shadow: -1px 1px 25px 3px rgba(0, 0, 0, 0.75);
     margin-bottom: 40px;
     background-color: #fff;
     border-radius: 10px;
@@ -13,88 +14,145 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 10px;
-    border-bottom: 1px;
-    border-bottom-style: dashed;
-    border-bottom-color: blue;
+
 }
-.userimgcontainer{
+
+.headerBorder {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.userimgcontainer {
     border-radius: 50%;
     /* border: 1px solid orange; */
 }
-.userimg{
-    border-radius: 50%;    
+
+.userimg {
+    width: 100%;
+    height: auto;
+    max-width: 45px;
+    border-radius: 50%;
 }
-.usernameactivity{
+
+.usernameactivity {
     margin-left: 10px;
 }
-.username{
+
+.username {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 1em;
 }
-.buzzCategory{
+
+.buzzCategory {
     letter-spacing: 1px;
-    font-size: 16px;
+    vertical-align: text-bottom;
+    font-size: 1em;
     margin-left: 10px;
     font-weight: 900;
 }
-.timestamp{
+
+.timestamp {
     text-align: left;
     color: #777575;
     font-weight: 900;
 }
-.nameActivity{
+
+.nameActivity {
     /* border: 1px solid red; */
     display: flex;
     justify-content: flex-start;
-    flex-basis: 50%;
+    flex-basis: 75%;
 }
-.deleteBuzz{
+
+.deleteBuzz {
     text-align: right;
-    margin-right: 20px;
+    margin-right: 10px;
     /* border: 1px solid yellow; */
-    flex-basis: 50%;
+    flex-basis: 25%;
 }
-.deleteicon{
-    font-size: 25px;
+
+.deleteicon {
+    font-size: 1.8em;
     overflow: visible;
     color: red;
 }
 
-.buzzContentContainer{
+.buzzContentContainer {
     /* border: 1px solid green; */
     padding-top: 10px;
     padding-left: 5px;
     padding-right: 5px;
     text-align: left;
 }
-.buzzContent{
+
+.buzzContent {
     color: #525252;
-    font-size: 17px;
+    font-size: 1.1em;
 }
-.uploadedimg{
+
+.uploadedimg {
     padding-top: 10px;
-    padding-left: 5px;
     padding-bottom: 10px;
 }
-.buzzFooter{
+
+.uploadedimg img {
+    width: 100%;
+    height: auto;
+}
+
+.buzzFooter {
     margin-top: 10px;
     text-align: right;
-    border-top: 1px;
     padding-top: 10px;
-    border-top-style: dashed;
-    border-top-color: blue;
+    border-top: 2px solid lightgrey;
 }
-.likeicon{
+
+.likeicon {
+    font-size: 1.2em;
     margin-right: 10px;
     cursor: pointer;
-    color:green;
+    color: green;
 }
-.unlikeicon{
+
+.unlikeicon {
+    font-size: 1.2em;
     margin-left: 10px;
     margin-right: 10px;
     cursor: pointer;
     color: red;
 }
-.deleteicon{
+
+.deleteicon {
     cursor: pointer;
+}
+
+@media(min-width:768px) and (max-width:1024px) {
+    .buzzContainer {
+        font-size: 0.9em;
+    }
+    .userimg {
+        max-width: 40px;
+        border-radius: 50%;
+    }
+}
+
+@media(min-width:481px) and (max-width:767px) {
+    .buzzContainer {
+        font-size: 0.80em;
+    }
+    .userimg {
+        max-width: 35px;
+        border-radius: 50%;
+    }
+}
+
+@media(min-width:320px) and (max-width:480px) {
+    .buzzContainer {
+        font-size: 0.65em;
+    }
+    .userimg {
+        max-width: 30px;
+        border-radius: 50%;
+    }
 }
