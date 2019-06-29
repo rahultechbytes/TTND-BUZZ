@@ -32,19 +32,6 @@ class BuzzThreads extends Component {
         const { username, emailId, category, description, attachment, createdAt, Like, dislike, thumbNail } = this.props.feeds;
         return (
             <div className='buzzContainer'>
-                {/* <ul>
-                    <li><img src={thumbNail} height={'50px'} width={'50px'} alt="" role='presentation' /></li>
-                    <li>{username}</li>
-                    <li>{emailId}</li>
-                    <li>{category}</li>
-                    <li>{description}</li>
-                    <li><img src={attachment} height={'200px'} width={'100px'} alt='' role='presentation' /></li>
-                    <li>{moment(createdAt).fromNow()}</li>
-                    <li onClick={this.like}>Like:{Like.length}</li>
-                    <li onClick={this.dislike}>Dislike:{dislike.length}</li>
-                    {loginUser === emailId ? <button onClick={this.onDelete}>delete</button> : null}
-                </ul> */}
-
                 <div className='buzzHeader'>
                     <div className='nameActivity'>
                         <div className='userimgcontainer'>
@@ -62,7 +49,6 @@ class BuzzThreads extends Component {
                     </div>
 
                     <div className='deleteBuzz'>
-                        {/* <span>{removeIcon}</span> */}
                         {
                             loginUser === emailId ? <span onClick={this.onDelete} className='deleteicon'>{removeIcon}</span> : null
                         }

@@ -25,7 +25,7 @@ class ComplaintList extends Component {
             <div className="table-wrapper">
                 <header className="table-header">
                     <span className="left">
-                        Your Complaints
+                        {this.state.filter}
                     </span>
                     <span className="right">
                         <select name="filter" onChange={this.handleOnChange}>
@@ -46,11 +46,6 @@ class ComplaintList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {this.props.list.map((data, index) => {
-                            return (
-                                <ComplaintThread list={data} key={index} />
-                            )
-                        })} */}
                         {this.props.list.map((data, index) => {
                             if (this.state.filter === "All Complaints") {
                                 return (

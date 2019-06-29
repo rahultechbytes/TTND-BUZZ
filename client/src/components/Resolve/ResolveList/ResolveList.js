@@ -26,7 +26,7 @@ class ResolveList extends Component {
             <div className="table-wrapper">
                 <header className="table-header">
                     <span className="left">
-                        Your Complaints
+                        {this.state.filter}
                     </span>
                     <span className="right">
                         <select name="filter" onChange={this.handleOnChange}>
@@ -37,8 +37,8 @@ class ResolveList extends Component {
                         </select>
                     </span>
                 </header>
-                <table className="table table-striped">
-                    <thead className="thead-dark">
+                <table className="table table-hover">
+                    <thead className="thead-light">
                         <tr>
                             <th scope="col">Department</th>
                             <th scope="col">Issue Id</th>
@@ -48,12 +48,6 @@ class ResolveList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {this.props.list.map((data, index) => {
-                            return (
-                                <ResolveThread list={data} key={index} />
-                            )
-                        })} */}
-
                         {this.props.list.map((data, index) => {
                             if (this.state.filter === "All Complaints") {
                                 return (

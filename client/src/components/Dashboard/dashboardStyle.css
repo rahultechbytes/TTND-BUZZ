@@ -17,9 +17,21 @@ aside.left {
     top: 20px;
 }
 
+@media(min-width:481px) and (max-width:767px){
+    aside.left {
+        position: unset;
+        height: 100%;
+        top: 20px;
+    }
+}
+
 @media(min-width:320px) and (max-width:480px) {
     .container-fluid {
         margin: 0px;
-        padding: 10px;
+    }
+    aside.left {
+        position: unset;
+        height: 100%;
+        top: 20px;
     }
 }

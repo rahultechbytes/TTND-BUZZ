@@ -43,9 +43,9 @@ export class BuzzFeeds extends Component {
         console.log("buzzfeedssssss", this.props.userFeeds.length)
         return (
             <div>
-                <div className='filtercategory'>
+                <div className='filtercategory' onChange={this.handleOnChange}>
                     <span className='filtericon'>{filterbtn}</span>
-                    <select id='buzz-filter' onChange={this.handleOnChange} name="filter">
+                    <select id='buzz-filter' className="buzzFilter" name="filter">
                         <option value="Most Recent">Most Recent Buzz</option>
                         <option value="Activity">Activity Buzz</option>
                         <option value="Lost and Found">Lost and Found Buzz</option>
@@ -59,11 +59,6 @@ export class BuzzFeeds extends Component {
                     loader={<div className="loader" key={0}>Loading ...</div>}
                 >
                     <div>
-                        {/* {this.props.userFeeds.map((data, index) => {
-                            return (
-                                <BuzzThreads feeds={data} loginUser={emailId} key={index} />
-                            )
-                        })} */}
                         {this.props.userFeeds.map((data, index) => {
                             if (this.state.filter === "Most Recent") {
                                 return (
@@ -91,7 +86,6 @@ export class BuzzFeeds extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log("********************", state.buzzReducer.buzzfeed);
     return {
         userFeeds: state.buzzReducer.buzzfeed,
         loginUserData: state.userReducer.userData

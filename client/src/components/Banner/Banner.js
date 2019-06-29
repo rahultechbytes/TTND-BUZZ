@@ -1,15 +1,13 @@
 import React from 'react';
 import './BannerStyle.css'
+import logo from '../../assets/images/logo.png'
 
 const Banner = () => {
-    // const onChange = () => {
-    //     var path = window.location.pathname;
-
-    //     if(path="/dashboard/buzz"){ return "posting your thoughts never been so easy"}
-    //     else{return "rahuljain"}
-    // }
     return (
         <div className="banner">
+            <div className="headerLogo">
+                <img src={logo} alt=""/>
+            </div>
             <h2>
                 posting your thoughts
                 <br/>
