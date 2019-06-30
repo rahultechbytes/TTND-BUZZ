@@ -5,8 +5,14 @@ import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 import ttnd from '../../assets/images/ttnd.jpg'
 class Login extends Component {
 
-    render() {
+    // componentDidMount = () => {
+    //     if (localStorage.getItem('token')) {
+    //         console.log('in login=>>>>', this.props)
+    //         this.props.history.push('/dashboard/buzz')
+    //     }
+    // }
 
+    render() {
         const googleIcon = <FontAwesomeIcon icon={faGoogle} />
         return (
             <React.Fragment>
@@ -17,7 +23,7 @@ class Login extends Component {
                             <h5 className="card-title">Create Your Own Buzz</h5>
                             <a href="http://localhost:5000/auth/google" className="btn">
                                 {googleIcon}
-                                
+
                                 <p>   Sign in with gmail</p>
                             </a>
                         </div>

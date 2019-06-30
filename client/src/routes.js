@@ -11,7 +11,7 @@ class Routes extends Component {
         return (
             <div>
                 <Switch>
-                    <Route
+                    <LoginRoute
                         exact
                         path="/"
                         component={Login}
@@ -42,11 +42,19 @@ class Routes extends Component {
 export default Routes
 
 const PrivateRoute = ({ component: Component, ...restProps }) => {
-
     return (
         <Route
             {...restProps}
             render={(props) => localStorage.getItem('token') ? <Component {...props} /> : <Redirect to={'/'} />}
+        />
+    )
+}
+
+const LoginRoute = ({ component: Component, ...restProps }) => {
+    return (
+        <Route
+            {...restProps}
+            render={(props) => localStorage.getItem('token') ? <Redirect to={'/dashboard/buzz'}/> : <Component {...props}/>}
         />
     )
 }
