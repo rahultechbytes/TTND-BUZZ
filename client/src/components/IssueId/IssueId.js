@@ -32,7 +32,6 @@ class IssueId extends Component {
 
     render() {
         const { name, attachment, concern, createdAt, emailId } = this.state;
-        // console.log("this.state", this.state);
         const IssueId = this.props.id
         return (
             <div>

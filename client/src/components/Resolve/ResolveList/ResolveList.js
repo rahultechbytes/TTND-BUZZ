@@ -37,8 +37,8 @@ class ResolveList extends Component {
                         </select>
                     </span>
                 </header>
-                <table className="table table-hover">
-                    <thead className="thead-light">
+                <table className="table table-striped">
+                    <thead className="thead-dark">
                         <tr>
                             <th scope="col">Department</th>
                             <th scope="col">Issue Id</th>

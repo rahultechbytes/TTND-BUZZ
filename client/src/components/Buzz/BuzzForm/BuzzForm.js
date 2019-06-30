@@ -4,6 +4,8 @@ import { addBuzz } from '../../../action/buzz.action';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faImage, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 import './formStyle.css';
+import {warningAlert} from '../../../utils/actionAlert';
+
 
 class BuzzForm extends Component {
     constructor(props) {
@@ -24,25 +26,24 @@ class BuzzForm extends Component {
     handleOnSubmit = (e) => {
         e.preventDefault();
         const newBuzz = this.state;
-        // console.log("newBuzz: ", newBuzz);
         const formData = new FormData();
         formData.append("userPost", newBuzz.userPost);
         formData.append("category", newBuzz.category);
         formData.append("attachment", newBuzz.attachment);
 
-        this.props.addBuzz(formData);
+        if (this.state.userPost.replace(/^\s+|\s+$/gm, '') === "") {
+            warningAlert("Text area left Empty")
+        }
+        else{
+            this.props.addBuzz(formData);
+        }
+
         this.setState({
             userPost: "",
             category: "",
         });
         e.target.reset();
-        // Swal.fire({
-        //     position: 'top-end',
-        //     type: 'success',
-        //     title: 'Your work has been saved',
-        //     showConfirmButton: false,
-        //     timer: 1500
-        // })
+
 
     }
 
@@ -57,8 +58,7 @@ class BuzzForm extends Component {
         const pen = <FontAwesomeIcon icon={faPen} />
         const image = <FontAwesomeIcon icon={faImage} />
         const postBtn = <FontAwesomeIcon icon={faArrowAltCircleRight} />
-        // console.log("userPost: ", this.state.userPost);
-        // console.log("category: ",this.state.category);
+
         return (
             <React.Fragment>
 
