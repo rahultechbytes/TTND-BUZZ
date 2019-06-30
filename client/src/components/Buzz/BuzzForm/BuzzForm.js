@@ -4,7 +4,6 @@ import { addBuzz } from '../../../action/buzz.action';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faImage, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 import './formStyle.css';
-// import Swal from 'sweetalert2'
 
 class BuzzForm extends Component {
     constructor(props) {

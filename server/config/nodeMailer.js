@@ -10,7 +10,7 @@ const mail = (mailDetails) => {
         }
     });
 
-    const { email, subject, name, issueId, department, title, concern, image,adminEmail, AssignedTo } = mailDetails;
+    const { email, subject, name, issueId, department, title, concern, adminEmail, AssignedTo } = mailDetails;
 
     // send mail with defined transport object
     let info = transporter.sendMail({
@@ -36,16 +36,20 @@ const mail = (mailDetails) => {
                         <th style="border: 1px solid">Concern</th>
                         <td>${concern}</td>
                     </tr>
-                    <tr style="border: 1px solid">
-                        <th style="border: 1px solid">Assigned To</th>
-                        <td>${AssignedTo}</td>
-                    </tr>
-                    <tr style="border: 1px solid">
-                        <th style="border: 1px solid">Admin Email</th>
-                        <td>${adminEmail}</td>
-                    </tr>
+                    ${(AssignedTo != "null")
+                ?
+                `   <tr style="border: 1px solid">
+                            <th style="border: 1px solid">Assigned To</th>
+                            <td>${AssignedTo}</td>
+                        </tr>
+                        <tr style="border: 1px solid">
+                            <th style="border: 1px solid">Admin Email</th>
+                            <td>${adminEmail}</td>
+                        </tr>
+                    `: ""}
                 </table>
-                `
+                <h3>Want to know more <a href="http://localhost:3000">click here</a> to check</h3>
+            `
     });
 
 }

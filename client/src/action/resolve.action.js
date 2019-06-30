@@ -4,7 +4,7 @@ import {
     UPDATE_COMPLAINT_STATUS
 } from '../constants/actionTypes';
 import { BASE_URL } from '../constants/urlConstants';
-import { successAlert, errorAlert } from './actionAlert';
+import { successAlert, errorAlert } from '../utils/actionAlert';
 
 
 // GET REQUEST FOR COMPLAINT LIST

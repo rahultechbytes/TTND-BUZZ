@@ -3,7 +3,7 @@ import {
     ShOW_USER_PROFILE
 } from '../constants/actionTypes';
 import { BASE_URL } from '../constants/urlConstants';
-import { errorAlert } from './actionAlert';
+import { errorAlert } from '../utils/actionAlert';
 
 export const getUserToState = (data) => {
     return {

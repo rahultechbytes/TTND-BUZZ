@@ -4,7 +4,7 @@ import {
     SHOW_COMPLAINT
 } from '../constants/actionTypes';
 import { BASE_URL } from '../constants/urlConstants';
-import { successAlert, errorAlert } from './actionAlert';
+import { successAlert, errorAlert } from '../utils/actionAlert';
 
 // POST REQUEST FOR COMPLAINT
 export const addComplaintToState = (data) => {

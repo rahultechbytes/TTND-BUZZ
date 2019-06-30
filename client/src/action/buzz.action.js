@@ -7,7 +7,7 @@ import {
     DELETE_BUZZ
 } from '../constants/actionTypes';
 import { BASE_URL } from '../constants/urlConstants';
-import { successAlert, errorAlert } from './actionAlert'
+import { successAlert, errorAlert } from '../utils/actionAlert'
 
 // POST REQUEST FOR BUZZ
 export const addBuzzFeedToState = (data) => {

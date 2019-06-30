@@ -43,7 +43,6 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
             department: data.department,
             title: data.title,
             concern: data.concern,
-            image: data.attachment,
             adminEmail: data.assignedTo.emailId,
             AssignedTo: data.assignedTo.username
         });
@@ -55,7 +54,6 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
             department: data.department,
             title: data.title,
             concern: data.concern,
-            image: data.attachment,
             AssignedTo: "null",
             adminEmail: "null"
         });
