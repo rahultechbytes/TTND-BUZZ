@@ -1,0 +1,25 @@
+#dev mode
+NODE_ENV = 
+PORT = 
+
+# google key
+CLIENT_ID = 
+CLIENT_SECRET = 
+
+#db Configurations
+dbURL = 
+
+# multer
+MULTER_FILE_SIZE = 
+
+#cloudinary
+CLOUD_NAME = 
+API_KEY = 
+API_SECRET = 
+
+#jwtVerification
+SECRET = 
+
+#nodeMailer
+USER_ID = 
+PASSWORD = 
