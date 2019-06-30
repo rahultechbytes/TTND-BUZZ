@@ -3,14 +3,8 @@ import './LoginStyle.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 import ttnd from '../../assets/images/ttnd.jpg'
+import {BASE_URL} from '../../constants/urlConstants';
 class Login extends Component {
-
-    // componentDidMount = () => {
-    //     if (localStorage.getItem('token')) {
-    //         console.log('in login=>>>>', this.props)
-    //         this.props.history.push('/dashboard/buzz')
-    //     }
-    // }
 
     render() {
         const googleIcon = <FontAwesomeIcon icon={faGoogle} />
@@ -21,7 +15,7 @@ class Login extends Component {
                         <img src={ttnd} className="card-img-top" alt="..." />
                         <div className="card-body">
                             <h5 className="card-title">Create Your Own Buzz</h5>
-                            <a href="http://localhost:5000/auth/google" className="btn">
+                            <a href={`${BASE_URL}/auth/google`} className="btn">
                                 {googleIcon}
 
                                 <p>   Sign in with gmail</p>
