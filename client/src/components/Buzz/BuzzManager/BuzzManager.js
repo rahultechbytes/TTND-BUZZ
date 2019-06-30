@@ -1,15 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import BuzzForm from '../BuzzForm/BuzzForm';
 import BuzzFeeds from '../BuzzFeeds/BuzzFeeds';
 
-export default class Buzz extends Component {
-    render() {
-        return (
-            <div>
-                <BuzzForm/>
-                <BuzzFeeds/>
-            </div>
-        )
-    }
+const Buzz = (props) => {
+    return (
+        <div>
+            <BuzzForm />
+            <BuzzFeeds />
+        </div>
+    )
 }
+export default Buzz
 

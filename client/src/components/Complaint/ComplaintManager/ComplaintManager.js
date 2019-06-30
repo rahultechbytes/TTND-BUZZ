@@ -1,16 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ComplaintForm from '../ComplaintForm/ComplaintForm'
 import ComplaintList from '../ComplaintList/ComplaintList';
 
-class ComplaintManager extends Component {
-    render() {
+const ComplaintManager = (props) => {
         return (
             <div>
                 <ComplaintForm />
                 <ComplaintList />
             </div>
         )
-    }
 }
 
 export default ComplaintManager
