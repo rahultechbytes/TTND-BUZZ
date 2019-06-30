@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 class Menu extends Component {
     render() {
-        console.log("role:",this.props.role);
         const rightArrow = <FontAwesomeIcon icon={faChevronRight} />
         return (
             <div>

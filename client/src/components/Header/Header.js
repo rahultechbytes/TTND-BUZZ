@@ -17,7 +17,6 @@ class Header extends Component {
 
     render() {
         const { thumbnail, username, department, emailId, role } = this.props.profile
-        console.log("this.props.profile", this.props.profile);
         const signOut = <FontAwesomeIcon icon={faSignOutAlt} />
         return (
             <header className="header text-right">
@@ -58,7 +57,6 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("profile: ", state);
     return { profile: state.userReducer.userData }
 }
 

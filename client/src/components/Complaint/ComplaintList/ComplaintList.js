@@ -66,7 +66,6 @@ class ComplaintList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("state of complaint reducer get", state.complaintReducer.complaintList);
     return { list: state.complaintReducer.complaintList }
 }
 

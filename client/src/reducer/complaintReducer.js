@@ -3,7 +3,6 @@ const initialState = {
 }
 
 const complaintReducer = (state = initialState, action) => {
-    console.log("complaintList: ", state.complaintList);
     switch (action.type) {
         case "ADD_COMPLAINT": {
             return {
@@ -12,7 +11,6 @@ const complaintReducer = (state = initialState, action) => {
             }
         }
         case "SHOW_COMPLAINT": {
-            // const complains = state.complaintList.concat(...action.data);
             return {
                 ...state,
                 complaintList: action.data

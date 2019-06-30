@@ -13,7 +13,6 @@ import './dashboardStyle.css'
 class Dashboard extends Component {
 
     render() {
-        console.log("#########", this.props.role);
         return (
             <div className="bgColor">
                 <Header history={this.props.history} />

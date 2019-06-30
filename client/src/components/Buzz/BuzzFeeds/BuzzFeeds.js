@@ -36,11 +36,9 @@ export class BuzzFeeds extends Component {
     }
 
     render() {
-        // console.log("state",this.props.userFeeds);
         const filterbtn = <FontAwesomeIcon icon={faFilter} />
         const { emailId } = this.props.loginUserData;
-        console.log("skip", this.state.skip);
-        console.log("buzzfeedssssss", this.props.userFeeds.length)
+
         return (
             <div>
                 <div className='filtercategory' onChange={this.handleOnChange}>
