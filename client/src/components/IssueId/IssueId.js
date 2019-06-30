@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Modal } from 'react-bootstrap';
+import moment from 'moment';
 import './issueIdStyle.css';
 class IssueId extends Component {
 
@@ -31,7 +32,7 @@ class IssueId extends Component {
 
 
     render() {
-        const { name, attachment, concern, createdAt, emailId } = this.state;
+        const { name, attachment, concern, createdAt, emailId, title } = this.state;
         const IssueId = this.props.id
         return (
             <div>
@@ -41,13 +42,26 @@ class IssueId extends Component {
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>{name}</Modal.Title>
+                        <Modal.Title className="u_name">{title}</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
-                        <img className="img-fluid" width="200px" src={attachment} alt="" />
-                        <h6>{concern}</h6>
-                        <h6>{createdAt}</h6>
-                        <h6>{emailId}</h6>
+                    <Modal.Body className="complaintBody">
+                        {attachment ? <img className="complaintImg" width="200px" src={attachment} alt="" /> : ""}
+                        <h6>
+                            <b>Name: </b>
+                            {name}
+                        </h6>
+                        <h6>
+                            <b>Concern: </b>
+                            {concern}
+                        </h6>
+                        <h6>
+                            <b>Complaint Time: </b>
+                            {moment(createdAt).calendar()}
+                        </h6>
+                        <h6>
+                            <b>Email Id: </b>
+                            {emailId}
+                        </h6>
                     </Modal.Body>
                 </Modal>
             </div>

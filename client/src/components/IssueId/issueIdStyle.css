@@ -1,5 +1,19 @@
-.issue_id{
+.issue_id {
     text-decoration: underline !important;
     color: blue !important;
     cursor: pointer;
+}
+
+.u_name {
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.complaintImg {
+    border: 4px double black;
+    margin-bottom: 5px;
+}
+
+.complaintBody {
+    color: grey;
 }
