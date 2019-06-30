@@ -29,6 +29,27 @@ img.rounded-circle {
     width: 35px;
 }
 
+/* modal CSS*/
+
+.modal-title{
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 1.5em;
+}
+.modal-body{
+    text-align: left;
+    color: grey;
+}
+.modal-body img{
+    border: 4px double black;
+    margin-bottom: 5px;
+    border-radius: 20%;
+}
+.modal-body b{
+    color: black;
+}
+
+/* modal  CSS*/
 
 @media(min-width:768px) and (max-width:1024px) {
     .header {

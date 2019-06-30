@@ -37,9 +37,18 @@ class Header extends Component {
                             </div>
                             <div className="modal-body">
                                 <img className="img-fluid" width="200px" src={thumbnail} alt="" />
-                                <h6>{emailId}</h6>
-                                <h6>{department}</h6>
-                                <h6>{role}</h6>
+                                <h6>
+                                    <b>EmailId: </b>
+                                    {emailId}
+                                </h6>
+                                <h6>
+                                    <b>Department: </b>
+                                    {department}
+                                </h6>
+                                <h6>
+                                    <b>Role: </b>
+                                    {role}
+                                </h6>
                             </div>
                         </div>
                     </div>
