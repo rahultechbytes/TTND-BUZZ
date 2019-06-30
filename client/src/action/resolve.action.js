@@ -2,7 +2,8 @@ import axiosInstance from '../utils/axiosInterceptor';
 import {
     SHOW_COMPLAINT,
     UPDATE_COMPLAINT_STATUS
-} from './actionTypes';
+} from '../constants/actionTypes';
+import { BASE_URL } from '../constants/urlConstants';
 import { successAlert, errorAlert } from './actionAlert';
 
 
@@ -19,7 +20,7 @@ export const showComplaintList = () => (dispatch) => {
     console.log("inside AXIOS SHOWCOMPLAINLIST")
     axiosInstance({
         method: 'GET',
-        url: 'http://localhost:5000/dashboard/resolve',
+        url: `${BASE_URL}/dashboard/resolve`,
     }).then(res => {
         if (res.status === 200) {
             dispatch(getComplaintListToState(res.data));
@@ -43,7 +44,7 @@ export const updateComplaint = (updatedData) => (dispatch) => {
     console.log("updatedData: ", updatedData);
     axiosInstance({
         method: 'PATCH',
-        url: "http://localhost:5000/dashboard/resolve",
+        url: `${BASE_URL}/dashboard/resolve`,
         data: updatedData
     }).then((res) => {
         if (res.status === 200) {

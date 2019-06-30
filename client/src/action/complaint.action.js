@@ -2,7 +2,8 @@ import axiosInstance from '../utils/axiosInterceptor';
 import {
     ADD_COMPLAINT,
     SHOW_COMPLAINT
-} from './actionTypes'
+} from '../constants/actionTypes';
+import { BASE_URL } from '../constants/urlConstants';
 import { successAlert, errorAlert } from './actionAlert';
 
 // POST REQUEST FOR COMPLAINT
@@ -17,7 +18,7 @@ export const addComplaintToState = (data) => {
 export const addComplaint = (formData) => (dispatch) => {
     axiosInstance({
         method: 'post',
-        url: "http://localhost:5000/dashboard/complaint",
+        url: `${BASE_URL}/dashboard/complaint`,
         data: formData,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     }).then(res => {
@@ -42,7 +43,7 @@ export const getComplaintListToState = (data) => {
 export const showComplaintList = () => (dispatch) => {
     axiosInstance({
         method: 'get',
-        url: `http://localhost:5000/dashboard/complaint`,
+        url: `${BASE_URL}/dashboard/complaint`,
     }).then((res) => {
         if (res.status === 200) {
             dispatch(getComplaintListToState(res.data));

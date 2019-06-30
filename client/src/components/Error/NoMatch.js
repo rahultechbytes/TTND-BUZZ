@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { faBorderNone } from '@fortawesome/free-solid-svg-icons';
 
 const divStyle = {
     padding: '8em 8em 19em 8em',

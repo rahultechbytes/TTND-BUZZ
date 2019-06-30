@@ -5,7 +5,8 @@ import {
     GET_LIKE,
     GET_DISLIKE,
     DELETE_BUZZ
-} from './actionTypes';
+} from '../constants/actionTypes';
+import { BASE_URL } from '../constants/urlConstants';
 import { successAlert, errorAlert } from './actionAlert'
 
 // POST REQUEST FOR BUZZ
@@ -19,7 +20,7 @@ export const addBuzzFeedToState = (data) => {
 export const addBuzz = (formData) => dispatch => {
     axiosInstance({
         method: 'post',
-        url: "http://localhost:5000/dashboard/buzz",
+        url: `${BASE_URL}/dashboard/buzz`,
         data: formData,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     }).then((res) => {
@@ -44,7 +45,7 @@ export const getBuzzFromDb = (data) => {
 export const getBuzz = (skip) => dispatch => {
     axiosInstance({
         method: 'get',
-        url: `http://localhost:5000/dashboard/buzz/${skip}`,
+        url: `${BASE_URL}/dashboard/buzz/${skip}`,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     }).then(res => {
         if (res.status === 200) {
@@ -68,7 +69,7 @@ export const postLike = (buzzId) => (dispatch) => {
     axiosInstance({
         method: 'patch',
         data: { buzzId },
-        url: "http://localhost:5000/dashboard/buzz/like"
+        url: `${BASE_URL}/dashboard/buzz/like`
     }).then(res => {
         if (res.status === 200) {
             dispatch(getLikeFromDb(res.data));
@@ -91,7 +92,7 @@ export const postDislike = (buzzId) => (dispatch) => {
     axiosInstance({
         method: 'patch',
         data: { buzzId },
-        url: "http://localhost:5000/dashboard/buzz/dislike"
+        url: `${BASE_URL}/dashboard/buzz/dislike`
     }).then(res => {
         if (res.status === 200) {
             dispatch(getLikeFromDb(res.data));
@@ -113,7 +114,7 @@ export const deletePostFromDb = (data) => {
 export const postDelete = (buzzId) => (dispatch) => {
     axiosInstance({
         method: 'DELETE',
-        url: `http://localhost:5000/dashboard/buzz/${buzzId}`,
+        url: `${BASE_URL}/dashboard/buzz/${buzzId}`,
     }).then(res => {
         if (res.status === 200) {
             dispatch(deletePostFromDb(res.data));
