@@ -4,7 +4,6 @@ const axiosInstance = axios.create();
 
 axiosInstance.interceptors.request.use(config => {
     config.headers.authentication = localStorage.getItem('token');
-    console.log('in interceptor ', config.headers.authentication)
     return config;
 });
 

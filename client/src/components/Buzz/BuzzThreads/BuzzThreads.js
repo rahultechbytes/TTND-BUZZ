@@ -4,22 +4,28 @@ import { postLike, postDislike, postDelete } from '../../../action/buzz.action'
 import moment from 'moment';
 import './buzzthreadStyle.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import {deleteAlert} from '../../../utils/actionAlert'
 class BuzzThreads extends Component {
 
     like = () => {
         const buzzId = this.props.feeds._id;
-        // console.log("buzzId", buzzId);
         this.props.postLike(buzzId);
     }
     dislike = () => {
         const buzzId = this.props.feeds._id;
-        // console.log("buzzId", buzzId);
         this.props.postDislike(buzzId);
     }
     onDelete = () => {
         const buzzId = this.props.feeds._id;
-        this.props.postDelete(buzzId)
+        
+        let val = deleteAlert();
+        val.then(result => {
+            console.log("$$$$$$$$$$",result);
+            if(result.value){
+                this.props.postDelete(buzzId)
+            }
+        })
     }
 
     render() {
