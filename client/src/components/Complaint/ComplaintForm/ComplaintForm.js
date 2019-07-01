@@ -52,20 +52,6 @@ class ComplaintForm extends Component {
 
         return (
             <div>
-                {/* <form method="POST" onSubmit={this.handleOnSubmit} encType='multipart/form-data'>
-                    <input name='title' placeholder='Issue Title' onChange={this.handleOnChange} type="text" required />
-                    <select name="department" id="department" onChange={this.handleOnChange} required>
-                        <option hidden value="">department</option>
-                        <option value="Hardware">Hardware</option>
-                        <option value="Infrastructure">Infrastructure</option>
-                        <option value="Others">Others</option>
-                    </select>
-                    <textarea name="concern" id="concern" cols="30" rows="10" onChange={this.handleOnChange} placeholder='Concern' required></textarea>
-                    <input type="file" name="attachment" onChange={this.fileUpload} accept='image/*' id="attachment" />
-                    <input type="submit" value="Submit" />
-                </form> */}
-
-                {/* ******************************************************************************* */}
                 <form method="POST" className="complaintForm" onSubmit={this.handleOnSubmit} encType='multipart/form-data'>
                     <header className="complaint-hd">
                         Complaint Box
@@ -91,7 +77,11 @@ class ComplaintForm extends Component {
                     </div>
                     <div className="form-group attachment extra">
                         <label htmlFor="file-input">
-                            <span className="imgName">Attachment</span> {image}
+                            {this.state.attachment.name?
+                            <span className="imgName">{this.state.attachment.name}</span>
+                            : <span className="imgName">Attachment</span>
+                            } 
+                            {image}
                         </label>
                         <input type="file" id="file-input" onChange={this.fileUpload} name="attachment" accept="image/*" />
                     </div>

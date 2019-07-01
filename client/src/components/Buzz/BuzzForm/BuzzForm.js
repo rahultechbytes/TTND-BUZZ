@@ -41,6 +41,7 @@ class BuzzForm extends Component {
         this.setState({
             userPost: "",
             category: "",
+            attachment: ""
         });
         e.target.reset();
 
@@ -80,6 +81,11 @@ class BuzzForm extends Component {
                                 </label>
 
                                 <input type="file" id="file-input" onChange={this.fileUpload} name="attachment" accept="image/*" />
+                                {this.state.attachment.name?
+                                <span className='imagename'>{this.state.attachment.name}</span>
+                                : <span className='imagename'>Attachment</span>
+                                }
+                                
                             </div>
                         </div>
                         <div className="submit-btn">
