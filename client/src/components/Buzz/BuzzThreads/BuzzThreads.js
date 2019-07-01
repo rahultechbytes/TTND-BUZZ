@@ -21,7 +21,6 @@ class BuzzThreads extends Component {
         
         let val = deleteAlert();
         val.then(result => {
-            console.log("$$$$$$$$$$",result);
             if(result.value){
                 this.props.postDelete(buzzId)
             }

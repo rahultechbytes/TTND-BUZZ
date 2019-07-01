@@ -87,6 +87,7 @@
 }
 
 .buzzContent {
+    word-wrap: break-word;
     color: #525252;
     font-size: 1.1em;
 }

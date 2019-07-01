@@ -12,7 +12,7 @@ const routes = require('./routes/routeManager');
 app.use(bodyParser.urlencoded({ extended: false }));            //bodyParser
 app.use(bodyParser.json());
 
-app.use(passport.initialize());                         
+app.use(passport.initialize());                         //passport
 require('./auth/google-auth');
 
 app.use(cors());                    //cors

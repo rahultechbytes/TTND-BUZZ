@@ -24,10 +24,8 @@ export const addBuzz = (formData) => dispatch => {
         data: formData,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     }).then((res) => {
-        if (res.status === 200) {
-            dispatch(addBuzzFeedToState(res.data.data));
-            successAlert("Buzz Created")
-        }
+        dispatch(addBuzzFeedToState(res.data.data));
+        successAlert("Buzz Created")
     }).catch((err) => {
         console.log("Error occured at adding buzz => ", err);
         errorAlert("Something went wrong while adding buzz")
@@ -48,9 +46,7 @@ export const getBuzz = (skip) => dispatch => {
         url: `${BASE_URL}/dashboard/buzz/${skip}`,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     }).then(res => {
-        if (res.status === 200) {
-            dispatch(getBuzzFromDb(res.data))
-        }
+        dispatch(getBuzzFromDb(res.data))
     }).catch((err) => {
         console.log("Error occured at showing buzz => ", err);
         errorAlert("Something went wrong while fetching buzz");
@@ -71,9 +67,7 @@ export const postLike = (buzzId) => (dispatch) => {
         data: { buzzId },
         url: `${BASE_URL}/dashboard/buzz/like`
     }).then(res => {
-        if (res.status === 200) {
-            dispatch(getLikeFromDb(res.data));
-        }
+        dispatch(getLikeFromDb(res.data));
     }).catch((err) => {
         console.error("Error occured while liking post", err);
         errorAlert("Something Went Wrong while liking post");
@@ -94,9 +88,7 @@ export const postDislike = (buzzId) => (dispatch) => {
         data: { buzzId },
         url: `${BASE_URL}/dashboard/buzz/dislike`
     }).then(res => {
-        if (res.status === 200) {
-            dispatch(getLikeFromDb(res.data));
-        }
+        dispatch(getLikeFromDb(res.data));
     }).catch((err) => {
         console.log("Error occured while disliking post", err)
         errorAlert("Something Went Wrong while disliking post");
@@ -116,9 +108,7 @@ export const postDelete = (buzzId) => (dispatch) => {
         method: 'DELETE',
         url: `${BASE_URL}/dashboard/buzz/${buzzId}`,
     }).then(res => {
-        if (res.status === 200) {
-            dispatch(deletePostFromDb(res.data));
-        }
+        dispatch(deletePostFromDb(res.data));
     }).catch((err) => {
         console.log("Error occured while deleting post", err);
         errorAlert("Something Went Wrong while Deleting post");

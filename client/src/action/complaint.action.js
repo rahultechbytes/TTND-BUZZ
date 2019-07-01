@@ -22,10 +22,8 @@ export const addComplaint = (formData) => (dispatch) => {
         data: formData,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     }).then(res => {
-        if (res.status === 200) {
-            dispatch(addComplaintToState(res.data));
-            successAlert("Complaint Registered");
-        }
+        dispatch(addComplaintToState(res.data));
+        successAlert("Complaint Registered");
     }).catch((err) => {
         console.log("Error occured in adding complaint", err);
         errorAlert("Something went wrong while Registering Complaint");
@@ -45,9 +43,7 @@ export const showComplaintList = () => (dispatch) => {
         method: 'get',
         url: `${BASE_URL}/dashboard/complaint`,
     }).then((res) => {
-        if (res.status === 200) {
-            dispatch(getComplaintListToState(res.data));
-        }
+        dispatch(getComplaintListToState(res.data));
     }).catch((err) => {
         console.log('Error occured while fetching complaint', err);
         errorAlert("Something went wrong while Fetching Complaints");

@@ -17,9 +17,7 @@ export const getUser = () => (dispatch) => {
         method: 'GET',
         url: `${BASE_URL}/user`
     }).then((res) => {
-        if (res.status === 200) {
-            dispatch(getUserToState(res.data));
-        }
+        dispatch(getUserToState(res.data));
     }).catch((err) => {
         console.log("Error occured while fetching user details", err);
         errorAlert("Something went wrong while getting User Info");
