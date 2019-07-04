@@ -39,3 +39,12 @@ export const deleteAlert = () => {
         confirmButtonText: 'Yes, delete it!'
     })
 }
+
+export const loadingAlert = (title) => {
+    Swal.fire({
+        title,
+        onBeforeOpen: () => {
+            Swal.showLoading()
+        }
+    })
+}

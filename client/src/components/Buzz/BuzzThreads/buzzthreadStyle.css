@@ -113,7 +113,10 @@
     font-size: 1.2em;
     margin-right: 10px;
     cursor: pointer;
-    color: green;
+    color: grey;
+}
+.liked{
+    color: green !important;
 }
 
 .unlikeicon {
@@ -121,7 +124,11 @@
     margin-left: 10px;
     margin-right: 10px;
     cursor: pointer;
-    color: red;
+    color: grey;
+}
+
+.disliked{
+    color: red !important;
 }
 
 .deleteicon {

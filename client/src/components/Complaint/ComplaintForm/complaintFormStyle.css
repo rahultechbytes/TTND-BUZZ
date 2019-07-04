@@ -117,6 +117,9 @@
 }
 
 @media(min-width:481px) and (max-width:767px) {
+    .form-container {
+        margin-top: 20px;
+    }
     .complaint-hd {
         font-size: 0.9em;
         padding: 4px 18px;
@@ -146,6 +149,9 @@
 }
 
 @media(min-width:320px) and (max-width:480px) {
+    .form-container {
+        margin-top: 20px;
+    }
     .complaint-hd {
         font-size: 0.85em;
         padding: 3px 12px;

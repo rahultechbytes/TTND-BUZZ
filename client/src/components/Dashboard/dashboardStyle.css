@@ -23,11 +23,17 @@ aside.left {
         height: 100%;
         top: 20px;
     }
+    .container-fluid {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 }
 
 @media(min-width:320px) and (max-width:480px) {
     .container-fluid {
         margin: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
     aside.left {
         position: unset;

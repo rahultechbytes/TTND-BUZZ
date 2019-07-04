@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons'
 import './complaintFormStyle.css';
+import { loadingAlert, warningAlert } from '../../../utils/actionAlert'
 class ComplaintForm extends Component {
     constructor(props) {
         super(props);
@@ -27,17 +28,28 @@ class ComplaintForm extends Component {
         });
     }
 
+    loading = (formData) => {
+        if (this.state.concern.replace(/^\s+|\s+$/gm, '') === "") {
+            warningAlert("Concern left empty")
+        } else if (this.state.title.replace(/^\s+|\s+$/gm, '') === "") {
+            warningAlert("Title left empty")
+        } else {
+            this.props.addComplaint(formData);
+            loadingAlert("Complaint is getting saved");
+        }
+    }
+
     handleOnSubmit = (e) => {
         e.preventDefault();
         const complaintData = this.state;
-        console.log("complaintData: ", complaintData);
         const formData = new FormData();
         formData.append("department", complaintData.department);
         formData.append("title", complaintData.title);
         formData.append("concern", complaintData.concern);
         formData.append("attachment", complaintData.attachment);
 
-        this.props.addComplaint(formData);
+        this.loading(formData);
+
         this.setState({
             department: "",
             title: "",
@@ -51,7 +63,7 @@ class ComplaintForm extends Component {
         const image = <FontAwesomeIcon icon={faImage} />
 
         return (
-            <div>
+            <div className="form-container">
                 <form method="POST" className="complaintForm" onSubmit={this.handleOnSubmit} encType='multipart/form-data'>
                     <header className="complaint-hd">
                         Complaint Box
@@ -77,10 +89,10 @@ class ComplaintForm extends Component {
                     </div>
                     <div className="form-group attachment extra">
                         <label htmlFor="file-input">
-                            {this.state.attachment.name?
-                            <span className="imgName">{this.state.attachment.name}</span>
-                            : <span className="imgName">Attachment</span>
-                            } 
+                            {this.state.attachment.name ?
+                                <span className="imgName">{this.state.attachment.name}</span>
+                                : <span className="imgName">Attachment</span>
+                            }
                             {image}
                         </label>
                         <input type="file" id="file-input" onChange={this.fileUpload} name="attachment" accept="image/*" />

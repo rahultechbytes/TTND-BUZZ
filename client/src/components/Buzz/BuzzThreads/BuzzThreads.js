@@ -5,7 +5,7 @@ import moment from 'moment';
 import './buzzthreadStyle.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
-import {deleteAlert} from '../../../utils/actionAlert'
+import { deleteAlert } from '../../../utils/actionAlert'
 class BuzzThreads extends Component {
 
     like = () => {
@@ -18,23 +18,33 @@ class BuzzThreads extends Component {
     }
     onDelete = () => {
         const buzzId = this.props.feeds._id;
-        
+
         let val = deleteAlert();
         val.then(result => {
-            if(result.value){
+            if (result.value) {
                 this.props.postDelete(buzzId)
             }
         })
+    }
+    checkUserLike = (id, like) => {
+
+        const liked = like.find((item) => (item.userId === id));
+        return liked ? 'liked' : ''
+    }
+    checkUserDislike = (id, dislike) => {
+        const disliked = dislike.find((item) => (item.userId === id));
+        return disliked ? 'disliked' : ''
     }
 
     render() {
         const removeIcon = <FontAwesomeIcon icon={faTimes} />
         const like = <FontAwesomeIcon icon={faThumbsUp} />
         const unlike = <FontAwesomeIcon icon={faThumbsDown} />
-
-
         const { loginUser } = this.props
         const { username, emailId, category, description, attachment, createdAt, Like, dislike, thumbNail } = this.props.feeds;
+        const liked = this.checkUserLike(loginUser, Like);
+        const disliked = this.checkUserDislike(loginUser, dislike);
+
         return (
             <div className='buzzContainer'>
                 <div className='buzzHeader'>
@@ -59,18 +69,18 @@ class BuzzThreads extends Component {
                         }
                     </div>
                 </div>
-                <hr className="headerBorder"/>
+                <hr className="headerBorder" />
                 <div className='buzzContentContainer'>
                     <div className='buzzContent'>
                         {description}
                     </div>
                     <div className='uploadedimg'>
-                        <img src={attachment}  alt='' role='presentation' />
+                        <img src={attachment} alt='' role='presentation' />
                     </div>
                 </div>
                 <div className='buzzFooter'>
-                    <span className='likeicon' onClick={this.like}>{like}&nbsp;{Like.length}</span>
-                    <span className='unlikeicon' onClick={this.dislike}>{unlike}&nbsp;{dislike.length}</span>
+                    <span className={`likeicon ${liked}`} onClick={this.like}>{like}&nbsp;{Like.length}</span>
+                    <span className={`unlikeicon ${disliked}`} onClick={this.dislike}>{unlike}&nbsp;{dislike.length}</span>
                 </div>
             </div>
         )

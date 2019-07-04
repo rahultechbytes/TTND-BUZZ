@@ -36,29 +36,29 @@ class ComplaintList extends Component {
                         </select>
                     </span>
                 </header>
-                <table className="table table-hover">
-                    <thead className="thead-dark">
-                        <tr>
-                            <th scope="col">Department</th>
-                            <th scope="col">Issue Id</th>
-                            <th scope="col">Assigned To</th>
-                            <th scope="col">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.list.map((data, index) => {
-                            if (this.state.filter === "All Complaints") {
-                                return (
-                                    <ComplaintThread list={data} key={index} />
-                                )
-                            } else if (this.state.filter === data.status) {
-                                return (
-                                    <ComplaintThread list={data} key={index} />
-                                )
-                            }
-                        })}
-                    </tbody>
-                </table>
+                    <table className="table table-hover">
+                        <thead className="thead-dark">
+                            <tr>
+                                <th scope="col">Department</th>
+                                <th scope="col">Issue Id</th>
+                                <th scope="col">Assigned To</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.props.list.map((data, index) => {
+                                if (this.state.filter === "All Complaints") {
+                                    return (
+                                        <ComplaintThread list={data} key={index} />
+                                    )
+                                } else if (this.state.filter === data.status) {
+                                    return (
+                                        <ComplaintThread list={data} key={index} />
+                                    )
+                                }
+                            })}
+                        </tbody>
+                    </table>
             </div>
 
         )

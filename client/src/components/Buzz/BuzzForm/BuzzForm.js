@@ -4,7 +4,7 @@ import { addBuzz } from '../../../action/buzz.action';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faImage, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 import './formStyle.css';
-import {warningAlert} from '../../../utils/actionAlert';
+import { warningAlert, loadingAlert } from '../../../utils/actionAlert';
 
 
 class BuzzForm extends Component {
@@ -23,6 +23,16 @@ class BuzzForm extends Component {
         })
     }
 
+    loading = (formData) => {
+        if (this.state.userPost.replace(/^\s+|\s+$/gm, '') === "") {
+            warningAlert("Text area left Empty")
+        }
+        else {
+            this.props.addBuzz(formData);
+            loadingAlert("Your Buzz is getting saved")
+        }
+    }
+
     handleOnSubmit = (e) => {
         e.preventDefault();
         const newBuzz = this.state;
@@ -31,12 +41,7 @@ class BuzzForm extends Component {
         formData.append("category", newBuzz.category);
         formData.append("attachment", newBuzz.attachment);
 
-        if (this.state.userPost.replace(/^\s+|\s+$/gm, '') === "") {
-            warningAlert("Text area left Empty")
-        }
-        else{
-            this.props.addBuzz(formData);
-        }
+        this.loading(formData)
 
         this.setState({
             userPost: "",
@@ -44,8 +49,6 @@ class BuzzForm extends Component {
             attachment: ""
         });
         e.target.reset();
-
-
     }
 
     fileUpload = () => {
@@ -81,11 +84,11 @@ class BuzzForm extends Component {
                                 </label>
 
                                 <input type="file" id="file-input" onChange={this.fileUpload} name="attachment" accept="image/*" />
-                                {this.state.attachment.name?
-                                <span className='imagename'>{this.state.attachment.name}</span>
-                                : <span className='imagename'>Attachment</span>
+                                {this.state.attachment.name ?
+                                    <span className='imagename'>{this.state.attachment.name}</span>
+                                    : <span className='imagename'>Attachment</span>
                                 }
-                                
+
                             </div>
                         </div>
                         <div className="submit-btn">
@@ -106,9 +109,6 @@ const mapStateToProps = (state) => {
     return { userfeed: state.buzzReducer }
 }
 
-// const mapDispatchToProps = (dispatch) => ({
-//     addBuzz: (data) => dispatch(addBuzz(data))
-// });
 const mapDispatchToProps = {
     addBuzz
 }

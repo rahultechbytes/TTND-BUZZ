@@ -29,8 +29,8 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
     });
 });
 
-router.get('/:skip', verifyToken, (req, res) => {
-    const skip = parseInt(req.params.skip);
+router.get('/', verifyToken, (req, res) => {
+    const skip = parseInt(req.query.offset);
     buzzOperations.fetchFeed(skip).then(success => {
         res.send(success);
     }).catch(err => {

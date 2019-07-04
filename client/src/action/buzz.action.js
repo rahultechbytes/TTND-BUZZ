@@ -43,7 +43,7 @@ export const getBuzzFromDb = (data) => {
 export const getBuzz = (skip) => dispatch => {
     axiosInstance({
         method: 'get',
-        url: `${BASE_URL}/dashboard/buzz/${skip}`,
+        url: `${BASE_URL}/dashboard/buzz?offset=${skip}`,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     }).then(res => {
         dispatch(getBuzzFromDb(res.data))

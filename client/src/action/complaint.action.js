@@ -8,7 +8,6 @@ import { successAlert, errorAlert } from '../utils/actionAlert';
 
 // POST REQUEST FOR COMPLAINT
 export const addComplaintToState = (data) => {
-    console.log("complaint action add");
     return {
         type: ADD_COMPLAINT,
         data

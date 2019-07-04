@@ -23,7 +23,7 @@ class ResolveList extends Component {
 
     render() {
         return (
-            <div className="table-wrapper">
+            <div className="table-container">
                 <header className="table-header">
                     <span className="left">
                         {this.state.filter}
@@ -39,7 +39,7 @@ class ResolveList extends Component {
                 </header>
                 <table className="table table-striped">
                     <thead className="thead-dark">
-                        <tr>
+                        <tr className="table-row">
                             <th scope="col">Department</th>
                             <th scope="col">Issue Id</th>
                             <th scope="col">Locked By</th>
