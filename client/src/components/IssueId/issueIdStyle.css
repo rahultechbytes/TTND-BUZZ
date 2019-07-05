@@ -1,7 +1,11 @@
-.issue_id {
+.modal-btn {
     text-decoration: underline !important;
-    color: blue !important;
     cursor: pointer;
+    color: blue !important;
+}
+
+.modal-btn:hover {
+    color:rgb(85, 186, 211) !important;
 }
 
 .u_name {

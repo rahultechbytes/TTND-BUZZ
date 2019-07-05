@@ -1,78 +1,84 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Modal } from 'react-bootstrap';
+import React from 'react';
 import moment from 'moment';
-import './issueIdStyle.css';
-class IssueId extends Component {
+import './issueIdStyle.css'
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            name: "",
-            attachment: "",
-            concern: "",
-            createdAt: "",
-            emailId: "",
-            show: false,
-        }
-    }
-    handleOnClick = () => {
-        const data = this.props.complaintData.filter((item) => {
-            return item.issueId === this.props.id
-        });
-        this.setState({
-            ...data[0],
-            show: true
-        })
+const IssueId = (props) => {
+    const { issueId, name, attachment, concern, createdAt, emailId, title, department, assignedTo, status } = props.complaintDetails;
+    return (
+        <React.Fragment>
+            <a
+                className="modal-btn "
+                data-toggle="modal"
+                data-target={`#myModal${issueId}`}
+                >
+                {issueId}
+            </a>
+            <div className="modal fade" id={`myModal${issueId}`}>
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h4 className="modal-title">Complain Details</h4>
+                            <button type="button" className="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div className="modal-body">
+                            <table style={{ 'width': '100%' }}>
+                                <tbody>
+                                    <tr style={{ 'border': 'none%' }}>
+                                        <th>Issue ID:</th>
+                                        <td>{issueId}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Title:</th>
+                                        <td>{title}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Details:</th>
+                                        <td>{concern}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Created At:</th>
+                                        <td>{moment(createdAt).format('LL')}</td>
+                                    </tr>
+                                    {(attachment) ?
+                                        <tr>
+                                            <th>Image:</th>
+                                            <td><img src={attachment} width={'100px'} height={'100px'} alt='' /></td>
+                                        </tr>
+                                        : null
+                                    }
+                                    <tr>
+                                        <th>Department:</th>
+                                        <td>{department}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email Id:</th>
+                                        <td>{emailId}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Raised By:</th>
+                                        <td>{name}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Assigned To:</th>
+                                        <td>{assignedTo.username}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Status:</th>
+                                        <td>{status}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
 
-    }
-    handleClose = () => {
-        this.setState({ show: false });
-    }
-
-
-    render() {
-        const { name, attachment, concern, createdAt, emailId, title } = this.state;
-        const IssueId = this.props.id
-        return (
-            <div>
-                <a className="issue_id" variant="primary" onClick={this.handleOnClick}>
-                    <span >{IssueId}</span>
-                </a>
-
-                <Modal show={this.state.show} onHide={this.handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title className="u_name">{title}</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="complaintBody">
-                        {attachment ? <img className="complaintImg" width="200px" src={attachment} alt="" /> : ""}
-                        <h6>
-                            <b>Name: </b>
-                            {name}
-                        </h6>
-                        <h6>
-                            <b>Concern: </b>
-                            {concern}
-                        </h6>
-                        <h6>
-                            <b>Complaint Time: </b>
-                            {moment(createdAt).calendar()}
-                        </h6>
-                        <h6>
-                            <b>Email Id: </b>
-                            {emailId}
-                        </h6>
-                    </Modal.Body>
-                </Modal>
+                    </div>
+                </div>
             </div>
+        </React.Fragment>
+    )
 
-        )
-    }
 }
+export default IssueId;
 
-const mapStateToProps = (state) => {
-    return { complaintData: state.complaintReducer.complaintList }
-}
-
-
-export default connect(mapStateToProps, null)(IssueId)

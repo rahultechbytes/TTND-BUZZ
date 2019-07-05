@@ -10,13 +10,11 @@ class ResolveThread extends Component {
     }
 
     render() {
-        const { department, name, status, issueId, assignedTo: { username } } = this.props.list;
-        // console.log("status: ", status);
+        const { department, name, status, assignedTo: { username } } = this.props.list;
         return (
             <tr className="table-row">
                 <td data-label="department">{department}</td>
-                {/* <td>{issueId}</td> */}
-                <td data-label="Issue Id"><IssueId id={issueId} /></td>
+                <td data-label="Issue Id"><IssueId complaintDetails={this.props.list} /></td>
                 <td data-label="Locked By">{name}</td>
                 <td data-label="Assigned To">{username}</td>
                 <td data-label="Status">
