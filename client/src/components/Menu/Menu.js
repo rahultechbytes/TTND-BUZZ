@@ -6,7 +6,9 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 
 class Menu extends Component {
+    
     render() {
+        console.log("hello")
         const rightArrow = <FontAwesomeIcon icon={faChevronRight} />
         return (
             <div>

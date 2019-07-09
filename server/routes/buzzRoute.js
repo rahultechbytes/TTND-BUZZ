@@ -31,7 +31,9 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
 
 router.get('/', verifyToken, (req, res) => {
     const skip = parseInt(req.query.offset);
-    buzzOperations.fetchFeed(skip).then(success => {
+    const filter = req.query.filter
+    let emailId = req.user.emailId;
+    buzzOperations.fetchFeed(skip,filter,emailId).then(success => {
         res.send(success);
     }).catch(err => {
         res.status(400).send(err);

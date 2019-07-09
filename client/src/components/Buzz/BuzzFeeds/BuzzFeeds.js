@@ -1,47 +1,52 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { getBuzz } from '../../../action/buzz.action'
+// import { connect } from 'react-redux'
+// import { getBuzz, clearBuzz } from '../../../action/buzz.action'
 import BuzzThreads from '../BuzzThreads/BuzzThreads';
 import InfiniteScroll from 'react-infinite-scroller';
 import './BuzzFeedStyle.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter } from '@fortawesome/free-solid-svg-icons'
 
-export class BuzzFeeds extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            skip: 0,
-            filter: "Most Recent"
-        }
-    }
-    componentDidMount() {
-        this.props.getBuzz(0);   //skip = 0
-    }
+class BuzzFeeds extends Component {
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         skip: 0,
+    //         filter: "Most Recent"
+    //     }
+    // }
 
-    handleOnChange = (event) => {
-        this.setState({
-            filter: event.target.value
-        })
-    }
+    // componentDidMount() {
+    //     this.props.getBuzz(0, this.state.filter);   //Initial skip = 0 and filter = most recent buzz
+    // }
 
-    loadFunc = () => {
-        setTimeout(() => {
-            this.setState({
-                skip: this.state.skip + 5
-            }, () => {
-                this.props.getBuzz(this.state.skip);
-            })
-        }, 500);
-    }
+    // handleOnChange = (event) => {
+    //     this.setState({
+    //         filter: event.target.value,
+    //         skip: 0
+    //     }, () => {
+    //         this.props.getBuzz(this.state.skip, this.state.filter);
+    //     })
+    // }
+
+    // loadFunc = () => {
+    //     setTimeout(() => {
+    //         this.setState({
+    //             skip: this.state.skip + 5
+    //         }, () => {
+    //             this.props.getBuzz(this.state.skip, this.state.filter);
+    //         })
+    //     }, 500);
+    // }
 
     render() {
         const filterbtn = <FontAwesomeIcon icon={faFilter} />
-        const { emailId } = this.props.loginUserData;
-
+        const { emailId } = this.props.loggedInUser;
+        const userFeeds = this.props.userFeeds;
+        const skip = this.props.skip;
         return (
             <div>
-                <div className='filtercategory' onChange={this.handleOnChange}>
+                <div className='filtercategory' onChange={()=>this.props.handleOnChange(event)}>
                     <span className='filtericon'>{filterbtn}</span>
                     <select id='buzz-filter' className="buzzFilter" name="filter">
                         <option value="Most Recent">Most Recent Buzz</option>
@@ -52,28 +57,22 @@ export class BuzzFeeds extends Component {
                 </div>
                 <InfiniteScroll
                     pageStart={0}
-                    loadMore={this.loadFunc}
-                    hasMore={this.state.skip < this.props.userFeeds.length}
+                    loadMore={()=>{this.props.loadFunc()}}
+                    hasMore={skip < userFeeds.length}
                     loader={<div className="loader" key={0}>Loading ...</div>}
                 >
                     <div>
-                        {this.props.userFeeds.map((data, index) => {
-                            if (this.state.filter === "Most Recent") {
-                                return (
-                                    <BuzzThreads feeds={data} loginUser={emailId} key={index} />
-                                )
-                            } else if (this.state.filter === data.category) {
-                                return (
-                                    <BuzzThreads feeds={data} loginUser={emailId} key={index} />
-                                )
-                            } else if (this.state.filter === "My Buzz") {
-                                if (data.emailId === emailId) {
-                                    return (
-                                        <BuzzThreads feeds={data} loginUser={emailId} key={index} />
-                                    )
-                                }
-
-                            }
+                        {userFeeds.map((data, index) => {
+                            return (
+                                <BuzzThreads 
+                                    feeds={data} 
+                                    loginUser={emailId} 
+                                    key={index} 
+                                    postDelete={this.props.postDelete}
+                                    postLike= {this.props.postLike}
+                                    postDislike={this.props.postDislike} 
+                                />
+                            )
                         })}
                     </div>
                 </InfiniteScroll>
@@ -83,15 +82,17 @@ export class BuzzFeeds extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        userFeeds: state.buzzReducer.buzzfeed,
-        loginUserData: state.userReducer.userData
-    }
-}
+// const mapStateToProps = (state) => {
+//     return {
+//         // userFeeds: state.buzzReducer.buzzfeed,
+//         // loginUserData: state.userReducer.userData
+//     }
+// }
 
-const mapDispatchToProps = {
-    getBuzz
-}
+// const mapDispatchToProps = {
+//     getBuzz,
+//     clearBuzz
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuzzFeeds)
+// export default connect(mapStateToProps, mapDispatchToProps)(BuzzFeeds)
+export default BuzzFeeds;

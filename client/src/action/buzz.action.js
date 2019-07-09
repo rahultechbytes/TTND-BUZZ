@@ -4,7 +4,8 @@ import {
     GET_BUZZ_FEED,
     GET_LIKE,
     GET_DISLIKE,
-    DELETE_BUZZ
+    DELETE_BUZZ,
+    CLEAR_BUZZ
 } from '../constants/actionTypes';
 import { BASE_URL } from '../constants/urlConstants';
 import { successAlert, errorAlert } from '../utils/actionAlert'
@@ -17,14 +18,14 @@ export const addBuzzFeedToState = (data) => {
     }
 }
 
-export const addBuzz = (formData) => dispatch => {
+export const addBuzz = (formData, filter) => dispatch => {
     axiosInstance({
         method: 'post',
         url: `${BASE_URL}/dashboard/buzz`,
         data: formData,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     }).then((res) => {
-        dispatch(addBuzzFeedToState(res.data.data));
+        dispatch(addBuzzFeedToState({ addBuzz: res.data.data, filter: filter }));
         successAlert("Buzz Created")
     }).catch((err) => {
         console.log("Error occured at adding buzz => ", err);
@@ -40,10 +41,14 @@ export const getBuzzFromDb = (data) => {
     }
 }
 
-export const getBuzz = (skip) => dispatch => {
+export const getBuzz = (skip, filter) => (dispatch) => {
+    if (skip === 0) {
+        dispatch({ type: CLEAR_BUZZ })
+    }
+    console.log("filter: ", filter);
     axiosInstance({
         method: 'get',
-        url: `${BASE_URL}/dashboard/buzz?offset=${skip}`,
+        url: `${BASE_URL}/dashboard/buzz?offset=${skip}&filter=${filter}`,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     }).then(res => {
         dispatch(getBuzzFromDb(res.data))

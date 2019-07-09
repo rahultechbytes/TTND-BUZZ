@@ -28,7 +28,7 @@ class BuzzForm extends Component {
             warningAlert("Text area left Empty")
         }
         else {
-            this.props.addBuzz(formData);
+            this.props.addBuzz(formData, this.props.filter);
             loadingAlert("Your Buzz is getting saved")
         }
     }
@@ -56,8 +56,7 @@ class BuzzForm extends Component {
             attachment: event.target.files[0]
         });
     }
-
-
+    
     render() {
         const pen = <FontAwesomeIcon icon={faPen} />
         const image = <FontAwesomeIcon icon={faImage} />

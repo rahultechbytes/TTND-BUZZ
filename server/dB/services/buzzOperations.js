@@ -4,11 +4,21 @@ createFeed = (feeds) => {
     return feeds.save();
 }
 
-fetchFeed = (sk) => {
-    return userFeeds.find({}).sort({createdAt: -1}).limit(5).skip(sk);
+fetchFeed = (sk, filter, emailId) => {
+    console.log("emailId===>", emailId);
+    console.log('filter====>', filter);
+    if (filter === 'My Buzz') {
+        return userFeeds.find({ emailId: emailId }).sort({ createdAt: -1 }).limit(5).skip(sk);
+    }
+    else if (filter === 'Activity' || filter === 'Lost and Found') {
+        return userFeeds.find({ category: filter }).sort({ createdAt: -1 }).limit(5).skip(sk);
+    }
+    else {
+        return userFeeds.find({}).sort({ createdAt: -1 }).limit(5).skip(sk);
+    }
 }
 
-deletePost = (id)=>{
+deletePost = (id) => {
     return userFeeds.findByIdAndRemove({ _id: id });
 }
 
@@ -34,7 +44,7 @@ likeBuzz = (id, emailId, status) => {
             }
         )
     }
-    else{
+    else {
         return userFeeds.findOneAndUpdate(
             { _id: id },
             {
@@ -52,7 +62,7 @@ likeBuzz = (id, emailId, status) => {
     }
 }
 
-dislikeBuzz = (id, emailId,status) => {
+dislikeBuzz = (id, emailId, status) => {
     if (status) {
         return userFeeds.findOneAndUpdate(
             { _id: id },
@@ -74,7 +84,7 @@ dislikeBuzz = (id, emailId,status) => {
             }
         )
     }
-    else{
+    else {
         return userFeeds.findOneAndUpdate(
             { _id: id },
             {
@@ -91,8 +101,8 @@ dislikeBuzz = (id, emailId,status) => {
         )
     }
 }
-const getBuzzById = (id)=>{
-    return userFeeds.findOne({_id:id});
+const getBuzzById = (id) => {
+    return userFeeds.findOne({ _id: id });
 }
 
 module.exports = {

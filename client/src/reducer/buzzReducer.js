@@ -5,16 +5,25 @@ const InitialState = {
 const buzzReducer = (state = InitialState, action) => {
     switch (action.type) {
         case "POST_BUZZ_FEED": {
-            return {
-                ...state,
-                buzzfeed: [action.data, ...state.buzzfeed]
-            };
+            if (action.data.filter === action.data.addBuzz.category || action.data.filter === "Most Recent") {
+                return {
+                    ...state,
+                    buzzfeed: [action.data.addBuzz, ...state.buzzfeed]
+                };
+            }
+
         }
         case "GET_BUZZ_FEED": {
             const morePost = state.buzzfeed.concat(...action.data);
             return {
                 ...state,
                 buzzfeed: morePost
+            }
+        }
+        case "CLEAR_BUZZ": {
+            return {
+                ...state,
+                buzzfeed: []
             }
         }
         case "GET_LIKE": {
@@ -32,7 +41,7 @@ const buzzReducer = (state = InitialState, action) => {
             }
         }
         case "DELETE_BUZZ": {
-            const deleteBuzz = state.buzzfeed.filter(item=>
+            const deleteBuzz = state.buzzfeed.filter(item =>
                 action.data !== item._id
             );
             return {

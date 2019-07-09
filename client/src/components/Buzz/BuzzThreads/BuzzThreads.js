@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { postLike, postDislike, postDelete } from '../../../action/buzz.action'
+// import { connect } from 'react-redux'
+// import { postLike, postDislike, postDelete } from '../../../action/buzz.action'
 import moment from 'moment';
 import './buzzthreadStyle.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -88,10 +88,10 @@ class BuzzThreads extends Component {
 }
 
 
-const mapDispatchToProps = {
-    postLike,
-    postDislike,
-    postDelete
-}
+// const mapDispatchToProps = {
+//     postLike,
+//     postDislike,
+//     postDelete
+// }
 
-export default connect(null, mapDispatchToProps)(BuzzThreads);
+export default BuzzThreads;

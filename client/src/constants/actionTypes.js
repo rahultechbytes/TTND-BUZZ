@@ -5,6 +5,7 @@ export const GET_BUZZ_FEED = "GET_BUZZ_FEED";
 export const GET_LIKE = "GET_LIKE";
 export const GET_DISLIKE = "GET_DISLIKE";
 export const DELETE_BUZZ = "DELETE_BUZZ";
+export const CLEAR_BUZZ = "CLEAR_BUZZ" ;
 
 //COMPLAINT ACTION TYPE
 export const ADD_COMPLAINT = "ADD_COMPLAINT";
