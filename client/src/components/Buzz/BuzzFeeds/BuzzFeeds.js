@@ -69,7 +69,7 @@ class BuzzFeeds extends Component {
                                     loginUser={emailId} 
                                     key={index} 
                                     postDelete={this.props.postDelete}
-                                    postLike= {this.props.postLike}
+                                    postLike={this.props.postLike}
                                     postDislike={this.props.postDislike} 
                                 />
                             )

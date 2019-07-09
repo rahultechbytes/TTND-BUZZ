@@ -25,7 +25,7 @@ export const addBuzz = (formData, filter) => dispatch => {
         data: formData,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     }).then((res) => {
-        dispatch(addBuzzFeedToState({ addBuzz: res.data.data, filter: filter }));
+        dispatch(addBuzzFeedToState({ addBuzz: res.data, filter: filter }));
         successAlert("Buzz Created")
     }).catch((err) => {
         console.log("Error occured at adding buzz => ", err);

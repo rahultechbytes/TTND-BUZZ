@@ -5,8 +5,6 @@ createFeed = (feeds) => {
 }
 
 fetchFeed = (sk, filter, emailId) => {
-    console.log("emailId===>", emailId);
-    console.log('filter====>', filter);
     if (filter === 'My Buzz') {
         return userFeeds.find({ emailId: emailId }).sort({ createdAt: -1 }).limit(5).skip(sk);
     }

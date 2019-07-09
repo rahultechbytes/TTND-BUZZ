@@ -59,7 +59,6 @@ class Buzz extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("state: ", state);
     return {
         userFeeds: state.buzzReducer.buzzfeed,
         loginUserData: state.userReducer.userData

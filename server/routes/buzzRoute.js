@@ -23,7 +23,7 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
         thumbNail: req.user.thumbnail
     });
     buzzOperations.createFeed(buzzData).then(data => {
-        res.send({ message: "Data Saved", data });
+        res.send(data);
     }).catch(err => {
         res.status(400).send(err);
     });
@@ -33,7 +33,7 @@ router.get('/', verifyToken, (req, res) => {
     const skip = parseInt(req.query.offset);
     const filter = req.query.filter
     let emailId = req.user.emailId;
-    buzzOperations.fetchFeed(skip,filter,emailId).then(success => {
+    buzzOperations.fetchFeed(skip, filter, emailId).then(success => {
         res.send(success);
     }).catch(err => {
         res.status(400).send(err);
