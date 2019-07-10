@@ -5,7 +5,8 @@ const verifyToken = require('../middlewares/jwtVerification');
 const mailer = require('../config/nodeMailer');
 
 router.get('/', verifyToken, (req, res) => {
-    resolveOperation.fetchComplaint(req.user.emailId).then((data) => {
+    const filter = req.query.filter;
+    resolveOperation.fetchComplaint(req.user.emailId, filter).then((data) => {
         res.send(data)
     }).catch((err) => {
         res.status(400).send(err);

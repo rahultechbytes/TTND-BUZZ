@@ -45,7 +45,6 @@ export const getBuzz = (skip, filter) => (dispatch) => {
     if (skip === 0) {
         dispatch({ type: CLEAR_BUZZ })
     }
-    console.log("filter: ", filter);
     axiosInstance({
         method: 'get',
         url: `${BASE_URL}/dashboard/buzz?offset=${skip}&filter=${filter}`,

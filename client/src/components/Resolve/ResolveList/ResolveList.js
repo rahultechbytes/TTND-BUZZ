@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { showComplaintList } from '../../../action/resolve.action';
+import { showComplaintList, updateComplaint } from '../../../action/resolve.action';
 import { connect } from 'react-redux'
 import ResolveThread from '../ResolveThread/ResolveThread';
-import './resolveListStyle.css' 
+import './resolveListStyle.css'
 
 class ResolveList extends Component {
     constructor(props) {
@@ -12,12 +12,14 @@ class ResolveList extends Component {
         }
     }
     componentDidMount() {
-        this.props.showComplaintList()
+        this.props.showComplaintList(this.state.filter)
     }
 
     handleOnChange = (event) => {
         this.setState({
             filter: event.target.value
+        },()=>{
+            this.props.showComplaintList(this.state.filter)
         })
     }
 
@@ -49,15 +51,13 @@ class ResolveList extends Component {
                     </thead>
                     <tbody>
                         {this.props.list.map((data, index) => {
-                            if (this.state.filter === "All Complaints") {
-                                return (
-                                    <ResolveThread list={data} key={index} />
-                                )
-                            } else if (this.state.filter === data.status) {
-                                return (
-                                    <ResolveThread list={data} key={index} />
-                                )
-                            }
+                            return (
+                                <ResolveThread
+                                    list={data}
+                                    key={index} 
+                                    updateComplaint={this.props.updateComplaint} 
+                                />
+                            )
                         })}
 
                     </tbody>
@@ -72,7 +72,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    showComplaintList
+    showComplaintList,
+    updateComplaint
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResolveList)

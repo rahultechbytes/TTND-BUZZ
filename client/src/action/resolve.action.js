@@ -15,10 +15,10 @@ const getComplaintListToState = data => {
     }
 }
 
-export const showComplaintList = () => (dispatch) => {
+export const showComplaintList = (filter) => (dispatch) => {
     axiosInstance({
         method: 'GET',
-        url: `${BASE_URL}/dashboard/resolve`,
+        url: `${BASE_URL}/dashboard/resolve?filter=${filter}`,
     }).then(res => {
         dispatch(getComplaintListToState(res.data));
     }).catch((err) => {
