@@ -13,3 +13,7 @@
     background: transparent;
     border: none;
 }
+
+.arrow{
+    cursor: pointer;
+}
