@@ -1,8 +1,5 @@
-// import React, { Component } from 'react';
 import React from 'react';
-// import { connect } from 'react-redux';
 import IssueId from '../../IssueId/IssueId';
-// import { updateComplaint } from '../../../action/resolve.action';
 import '../ResolveList/resolveListStyle.css'
 
 const ResolveThread = (props) => {
@@ -29,9 +26,4 @@ const ResolveThread = (props) => {
     )
 }
 
-// const mapDispatchToProps = {
-//     updateComplaint
-// }
-
-// export default connect(null, mapDispatchToProps)(ResolveThread);
 export default ResolveThread;

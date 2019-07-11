@@ -1,27 +1,8 @@
 import React from 'react';
-// import React, { Component } from 'react'
-// import { showComplaintList } from '../../../action/complaint.action';
-// import { connect } from 'react-redux'
 import ComplaintThread from '../ComplaintThread/ComplaintThread';
 import './table.css';
 
 const ComplaintList = (props) => {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         filter: "All Complaints"
-    //     }
-    // }
-    // componentDidMount() {
-    //     this.props.showComplaintList();
-    // }
-
-    // handleOnChange = (event) => {
-    //     this.setState({
-    //         filter: event.target.value
-    //     })
-    // }
-
     return (
         <div className="table-wrapper">
             <header className="table-header">
@@ -47,7 +28,6 @@ const ComplaintList = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {console.log("complain list",props.list)}
                     {props.list.map((data, index) => {
                         return (
                             <ComplaintThread list={data} key={index} />
@@ -60,13 +40,4 @@ const ComplaintList = (props) => {
     )
 }
 
-// const mapStateToProps = (state) => {
-//     return { list: state.complaintReducer.complaintList }
-// }
-
-// const mapDispatchToProps = {
-//     showComplaintList
-// }
-
-// export default connect(null, mapDispatchToProps)(ComplaintList)
 export default ComplaintList;

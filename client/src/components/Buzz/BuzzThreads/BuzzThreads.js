@@ -1,6 +1,4 @@
 import React from 'react'
-// import { connect } from 'react-redux'
-// import { postLike, postDislike, postDelete } from '../../../action/buzz.action'
 import moment from 'moment';
 import './buzzthreadStyle.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -85,12 +83,5 @@ const BuzzThreads = (props) => {
         </div>
     )
 }
-
-
-// const mapDispatchToProps = {
-//     postLike,
-//     postDislike,
-//     postDelete
-// }
 
 export default BuzzThreads;
