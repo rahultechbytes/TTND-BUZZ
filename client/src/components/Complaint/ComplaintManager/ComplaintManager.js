@@ -13,19 +13,23 @@ class ComplaintManager extends Component {
     }
 
     componentDidMount() {
-        this.props.showComplaintList();
+        this.props.showComplaintList(this.state.filter);
     }
 
     handleOnChange = (event) => {
         this.setState({
             filter: event.target.value
+        },()=>{
+            this.props.showComplaintList(this.state.filter);
         })
     }
 
     render() {
         return (
             <div>
-                <ComplaintForm />
+                <ComplaintForm 
+                    filter={this.state.filter}
+                />
                 <ComplaintList
                     list={this.props.list}
                     handleOnChange={this.handleOnChange}

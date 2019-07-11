@@ -64,7 +64,8 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
 });
 
 router.get('/', verifyToken, (req, res) => {
-    complaintOperations.fetchComplaint(req.user.emailId).then(success => {
+    const filter = req.query.filter;
+    complaintOperations.fetchComplaint(req.user.emailId,filter).then(success => {
         res.send(success);
     }).catch(err => {
         res.status(400).send(err);

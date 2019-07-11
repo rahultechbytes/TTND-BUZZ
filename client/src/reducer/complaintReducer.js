@@ -5,10 +5,15 @@ const initialState = {
 const complaintReducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADD_COMPLAINT": {
-            return {
-                ...state,
-                complaintList: [action.data, ...state.complaintList]
+            if (action.data.filter === action.data.addComplain.status || action.data.filter === "All Complaints") {
+                return {
+                    ...state,
+                    complaintList: [action.data.addComplain, ...state.complaintList]
+                }
             }
+            return {
+                ...state
+            };
         }
         case "SHOW_COMPLAINT": {
             return {

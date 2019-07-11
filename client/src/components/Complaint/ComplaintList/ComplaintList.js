@@ -47,16 +47,11 @@ const ComplaintList = (props) => {
                     </tr>
                 </thead>
                 <tbody>
+                    {console.log("complain list",props.list)}
                     {props.list.map((data, index) => {
-                        if (props.filter === "All Complaints") {
-                            return (
-                                <ComplaintThread list={data} key={index} />
-                            )
-                        } else if (props.filter === data.status) {
-                            return (
-                                <ComplaintThread list={data} key={index} />
-                            )
-                        }
+                        return (
+                            <ComplaintThread list={data} key={index} />
+                        )
                     })}
                 </tbody>
             </table>

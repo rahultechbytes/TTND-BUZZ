@@ -14,14 +14,14 @@ export const addComplaintToState = (data) => {
     }
 }
 
-export const addComplaint = (formData) => (dispatch) => {
+export const addComplaint = (formData, filter) => (dispatch) => {
     axiosInstance({
         method: 'post',
         url: `${BASE_URL}/dashboard/complaint`,
         data: formData,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
     }).then(res => {
-        dispatch(addComplaintToState(res.data));
+        dispatch(addComplaintToState({ addComplain: res.data, filter: filter }));
         successAlert("Complaint Registered");
     }).catch((err) => {
         console.log("Error occured in adding complaint", err);
@@ -37,10 +37,10 @@ export const getComplaintListToState = (data) => {
     }
 }
 
-export const showComplaintList = () => (dispatch) => {
+export const showComplaintList = (filter) => (dispatch) => {
     axiosInstance({
         method: 'get',
-        url: `${BASE_URL}/dashboard/complaint`,
+        url: `${BASE_URL}/dashboard/complaint?filter=${filter}`,
     }).then((res) => {
         dispatch(getComplaintListToState(res.data));
     }).catch((err) => {

@@ -11,6 +11,7 @@ const buzzReducer = (state = InitialState, action) => {
                     buzzfeed: [action.data.addBuzz, ...state.buzzfeed]
                 };
             }
+            return state;
 
         }
         case "GET_BUZZ_FEED": {

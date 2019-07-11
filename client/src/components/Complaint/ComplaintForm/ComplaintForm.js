@@ -34,7 +34,7 @@ class ComplaintForm extends Component {
         } else if (this.state.title.replace(/^\s+|\s+$/gm, '') === "") {
             warningAlert("Title left empty")
         } else {
-            this.props.addComplaint(formData);
+            this.props.addComplaint(formData, this.props.filter);
             loadingAlert("Complaint is getting saved");
         }
     }
