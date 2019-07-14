@@ -30,7 +30,7 @@ router.post('/', verifyToken, upload.single('attachment'), async (req, res) => {
 });
 
 router.get('/', verifyToken, (req, res) => {
-    const skip = parseInt(req.query.offset);
+    const skip = parseInt(req.query.offset);        // offset value for buzz post
     const filter = req.query.filter
     let emailId = req.user.emailId;
     buzzOperations.fetchFeed(skip, filter, emailId).then(success => {

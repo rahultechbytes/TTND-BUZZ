@@ -8,10 +8,11 @@ import { successAlert, errorAlert } from '../utils/actionAlert';
 
 
 // GET REQUEST FOR COMPLAINT LIST
-const getComplaintListToState = data => {
+const getComplaintListToState = (data, filter) => {
     return {
         type: SHOW_COMPLAINT,
-        data
+        data,
+        filter
     }
 }
 
@@ -20,7 +21,7 @@ export const showComplaintList = (filter) => (dispatch) => {
         method: 'GET',
         url: `${BASE_URL}/dashboard/resolve?filter=${filter}`,
     }).then(res => {
-        dispatch(getComplaintListToState(res.data));
+        dispatch(getComplaintListToState(res.data, filter));
     }).catch((err) => {
         console.log("Error occured while fetching complaints", err);
         errorAlert("Something went wrong while Getting Complaints");

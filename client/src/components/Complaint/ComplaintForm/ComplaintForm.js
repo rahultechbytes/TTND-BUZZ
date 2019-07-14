@@ -28,19 +28,26 @@ class ComplaintForm extends Component {
         });
     }
 
-    loading = (formData) => {
+    validate = (formData, event) => {
         if (this.state.concern.replace(/^\s+|\s+$/gm, '') === "") {
             warningAlert("Concern left empty")
         } else if (this.state.title.replace(/^\s+|\s+$/gm, '') === "") {
             warningAlert("Title left empty")
         } else {
             this.props.addComplaint(formData, this.props.filter);
+            this.setState({
+                department: "",
+                title: "",
+                concern: "",
+                attachment: ""
+            });
+            event.target.reset();
             loadingAlert("Complaint is getting saved");
         }
     }
 
-    handleOnSubmit = (e) => {
-        e.preventDefault();
+    handleOnSubmit = (event) => {
+        event.preventDefault();
         const complaintData = this.state;
         const formData = new FormData();
         formData.append("department", complaintData.department);
@@ -48,15 +55,7 @@ class ComplaintForm extends Component {
         formData.append("concern", complaintData.concern);
         formData.append("attachment", complaintData.attachment);
 
-        this.loading(formData);
-
-        this.setState({
-            department: "",
-            title: "",
-            concern: "",
-            attachment: ""
-        });
-        e.target.reset();
+        this.validate(formData, event);
     }
 
     render() {

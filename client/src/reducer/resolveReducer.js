@@ -1,5 +1,6 @@
 const InitialState = {
-    resolveList: []
+    resolveList: [],
+    currentFilter: "All Complaints"
 }
 
 const resolveReducer = (state = InitialState, action) => {
@@ -7,11 +8,17 @@ const resolveReducer = (state = InitialState, action) => {
         case "SHOW_COMPLAINT": {
             return {
                 ...state,
-                resolveList: action.data
+                resolveList: action.data,
+                currentFilter: action.filter
             }
         }
         case "UPDATE_COMPLAINT_STATUS": {
-            const list = state.resolveList.map((item) => action.data.issueId === item.issueId ? action.data : item);
+            let list = [];
+            if(state.currentFilter === "All Complaints"){
+                list = state.resolveList.map((item) => action.data.issueId === item.issueId ? action.data : item);
+            } else {
+                list = state.resolveList.filter((item) => action.data.issueId !== item.issueId);
+            }
             return {
                 ...state,
                 resolveList: list
