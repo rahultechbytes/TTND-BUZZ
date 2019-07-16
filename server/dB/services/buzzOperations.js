@@ -5,15 +5,19 @@ createFeed = (feeds) => {
 }
 
 fetchFeed = (sk, filter, emailId) => {
+    const findObj = {};
+
     if (filter === 'My Buzz') {
-        return userFeeds.find({ emailId: emailId }).sort({ createdAt: -1 }).limit(5).skip(sk);
+        findObj.emailId = emailId;
     }
-    else if (filter === 'Activity' || filter === 'Lost and Found') {
-        return userFeeds.find({ category: filter }).sort({ createdAt: -1 }).limit(5).skip(sk);
+    else if(filter === 'Activity' || filter === 'Lost And Found') {
+        findObj.category = filter;
     }
     else {
-        return userFeeds.find({}).sort({ createdAt: -1 }).limit(5).skip(sk);
+        findObj
     }
+    return userFeeds.find(findObj).sort({ createdAt: -1 }).limit(5).skip(sk);
+
 }
 
 deletePost = (id) => {

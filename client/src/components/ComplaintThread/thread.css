@@ -1,0 +1,19 @@
+.status-pending{
+    color: red;
+    background: transparent;
+    border: none;
+}
+.status-in-progress{
+    color: #ffcb0c;
+    background: transparent;
+    border: none;
+}
+.status-resolved{
+    color: green;
+    background: transparent;
+    border: none;
+}
+
+.arrow{
+    cursor: pointer;
+}

@@ -19,7 +19,7 @@ class ComplaintManager extends Component {
     handleOnChange = (event) => {
         this.setState({
             filter: event.target.value
-        },()=>{
+        }, () => {
             this.props.showComplaintList(this.state.filter);
         })
     }
@@ -27,20 +27,24 @@ class ComplaintManager extends Component {
     render() {
         return (
             <div>
-                <ComplaintForm 
+                <ComplaintForm
                     filter={this.state.filter}
                 />
                 <ComplaintList
                     list={this.props.list}
                     handleOnChange={this.handleOnChange}
                     filter={this.state.filter}
+                    role={this.props.role}
                 />
             </div>
         )
     }
 }
 const mapStateToProps = (state) => {
-    return { list: state.complaintReducer.complaintList }
+    return {
+        list: state.complaintReducer.complaintList,
+        role: state.userReducer.userData.role
+    }
 }
 
 const mapDispatchToProps = {

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { showComplaintList, updateComplaint } from '../../../action/resolve.action';
 import { connect } from 'react-redux'
-import ResolveThread from '../ResolveThread/ResolveThread';
+// import ResolveThread from '../ResolveThread/ResolveThread';
+import ComplaintThread from '../../ComplaintThread/ComplaintThread';
 import './resolveListStyle.css'
 
 class ResolveList extends Component {
@@ -18,7 +19,7 @@ class ResolveList extends Component {
     handleOnChange = (event) => {
         this.setState({
             filter: event.target.value
-        },()=>{
+        }, () => {
             this.props.showComplaintList(this.state.filter)
         })
     }
@@ -52,10 +53,12 @@ class ResolveList extends Component {
                     <tbody>
                         {this.props.list.map((data, index) => {
                             return (
-                                <ResolveThread
+                                <ComplaintThread
                                     list={data}
-                                    key={index} 
-                                    updateComplaint={this.props.updateComplaint} 
+                                    key={index}
+                                    updateComplaint={this.props.updateComplaint}
+                                    role={this.props.role}
+                                    resolve={"true"}
                                 />
                             )
                         })}
@@ -68,7 +71,10 @@ class ResolveList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { list: state.resolveReducer.resolveList }
+    return {
+        list: state.resolveReducer.resolveList,
+        role: state.userReducer.userData.role
+    }
 }
 
 const mapDispatchToProps = {

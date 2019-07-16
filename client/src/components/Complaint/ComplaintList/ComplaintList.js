@@ -1,5 +1,6 @@
 import React from 'react';
-import ComplaintThread from '../ComplaintThread/ComplaintThread';
+// import ComplaintThread from '../ComplaintThread/ComplaintThread';
+import ComplaintThread from '../../ComplaintThread/ComplaintThread';
 import './table.css';
 
 const ComplaintList = (props) => {
@@ -30,7 +31,11 @@ const ComplaintList = (props) => {
                 <tbody>
                     {props.list.map((data, index) => {
                         return (
-                            <ComplaintThread list={data} key={index} />
+                            <ComplaintThread
+                                list={data}
+                                key={index}
+                                role={props.role}
+                            />
                         )
                     })}
                 </tbody>

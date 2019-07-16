@@ -110,7 +110,7 @@ export const deletePostFromDb = (data) => {
 export const postDelete = (buzzId) => (dispatch) => {
     axiosInstance({
         method: 'DELETE',
-        url: `${BASE_URL}/dashboard/buzz/${buzzId}`,
+        url: `${BASE_URL}/dashboard/buzz?buzzId=${buzzId}`,
     }).then(res => {
         dispatch(deletePostFromDb(res.data));
     }).catch((err) => {

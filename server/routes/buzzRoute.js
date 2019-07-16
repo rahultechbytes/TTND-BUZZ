@@ -77,8 +77,8 @@ router.patch('/dislike', verifyToken, async (req, res) => {
     })
 });
 
-router.delete('/:buzzId', verifyToken, (req, res) => {
-    const id = req.params.buzzId;
+router.delete('/', verifyToken, (req, res) => {
+    const id = req.query.buzzId;
     buzzOperations.deletePost(id).then((data) => {
         res.status(200).send(data.id);
     }).catch(err => {
