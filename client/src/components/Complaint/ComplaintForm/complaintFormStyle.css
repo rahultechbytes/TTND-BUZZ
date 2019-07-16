@@ -15,6 +15,10 @@
     background-color: #ff3f00cf;
 }
 
+.complaintForm textarea {
+    resize: none;
+}
+
 .extra {
     padding: 7px 20px 0px 20px;
     margin-bottom: 0px;
