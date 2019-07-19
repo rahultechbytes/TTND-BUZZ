@@ -7,7 +7,7 @@ import './complaintFormStyle.css';
 import { loadingAlert } from '../../../utils/actionAlert'
 import validate from '../../../validations/index';
 class ComplaintForm extends Component {
-    constructor(props) {
+    constructor(props) {        
         super(props);
         this.state = {
             department: "",
@@ -29,6 +29,7 @@ class ComplaintForm extends Component {
             attachment: event.target.files[0]
         });
     }
+
 
     handleOnSubmit = (event) => {
         event.preventDefault();
@@ -58,7 +59,6 @@ class ComplaintForm extends Component {
 
     render() {
         const image = <FontAwesomeIcon icon={faImage} />
-        console.log("error",this.state.error);
         return (
             <div className="form-container">
                 <form method="POST" className="complaintForm" onSubmit={this.handleOnSubmit} encType='multipart/form-data'>
@@ -95,7 +95,7 @@ class ComplaintForm extends Component {
                             }
                             {image}
                         </label>
-                        <input type="file" id="file-input" onChange={this.fileUpload} name="attachment" accept="image/*" />
+                        <input type="file" id="file-input" onChange={this.fileUpload}  name="attachment" accept="image/*" />
                         <span className="error">{this.state.error.attachment}</span>
                     </div>
                     <button type="submit" className="btn btn-secondary ml-auto complainBtn">Submit</button>
