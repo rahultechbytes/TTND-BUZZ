@@ -23,7 +23,7 @@ const ComplaintThread = (props) => {
                         </select>
                     </td>
                     :
-                <td data-label="Status" className={(status === 'Pending' ? "status-pending" : (status === 'In Progress') ? "status-in-progress" : "status-resolved")}>{status}</td>
+                    <td data-label="Status" className={(status === 'Pending' ? "status-pending" : (status === 'In Progress') ? "status-in-progress" : "status-resolved")}>{status}</td>
             }
 
         </tr>

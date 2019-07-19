@@ -1,5 +1,4 @@
 import React from 'react';
-// import ComplaintThread from '../ComplaintThread/ComplaintThread';
 import ComplaintThread from '../../ComplaintThread/ComplaintThread';
 import './table.css';
 

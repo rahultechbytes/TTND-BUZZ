@@ -65,10 +65,18 @@
     border: 1.2px solid #ff3f00cf;
 }
 
+.error {
+    color: red;
+    font-size: 0.9em;
+}
+
 @media(min-width:992px) and (max-width:1024px) {
     .complaint-hd {
         font-size: 1em;
         padding: 4px 18px;
+    }
+    .error{
+        font-size: 0.75em;
     }
     .extra {
         padding: 6px 18px 0px 18px;
@@ -95,6 +103,9 @@
     .complaint-hd {
         font-size: 0.9em;
         padding: 4px 18px;
+    }
+    .error{
+        font-size: 0.65em;
     }
     .extra {
         padding: 4px 15px 0px 15px;
@@ -128,6 +139,9 @@
         font-size: 0.9em;
         padding: 4px 18px;
     }
+    .error{
+        font-size: 0.7em;
+    }
     .extra {
         padding: 4px 15px 0px 15px;
         margin-bottom: 0px;
@@ -155,6 +169,9 @@
 @media(min-width:320px) and (max-width:480px) {
     .form-container {
         margin-top: 20px;
+    }
+    .error{
+        font-size: 0.6em;
     }
     .complaint-hd {
         font-size: 0.85em;
