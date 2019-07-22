@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
-require('./dB/utils/connection');                          //db connection establishment
+const dataBase = require('./dB/utils/connection');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const PORT = process.env.PORT;
@@ -9,6 +9,7 @@ require('./config/cloudinary');
 const cors = require('cors');
 const routes = require('./routes/routeManager');
 
+dataBase.connect();                                             //db connection establishment
 
 app.use(bodyParser.urlencoded({ extended: false }));            //bodyParser
 app.use(bodyParser.json());
