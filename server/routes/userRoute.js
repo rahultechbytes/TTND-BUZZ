@@ -15,10 +15,9 @@ router.get(
     function(req, res) {
         let UserDetails = req.user;
 
-        jwt.sign(UserDetails.toJSON(), process.env.SECRET ,{ expiresIn: '10h' },(err,token)=>{
+        jwt.sign(UserDetails.toJSON(), process.env.SECRET ,{ expiresIn: '10s' },(err,token)=>{
             if(err){
-                // console.log("err:",err);
-                res.status(400).send(err);
+                res.status(440).send({errtype:'session timeout'});
             }
             else{
                 res.redirect(`http://localhost:3000/token?q=${token}`);

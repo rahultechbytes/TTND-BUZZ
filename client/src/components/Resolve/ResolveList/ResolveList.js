@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { showComplaintList, updateComplaint } from '../../../action/resolve.action';
 import { connect } from 'react-redux'
-// import ResolveThread from '../ResolveThread/ResolveThread';
 import ComplaintThread from '../../ComplaintThread/ComplaintThread';
 import './resolveListStyle.css'
 

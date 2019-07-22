@@ -10,7 +10,9 @@ const ComplaintThread = (props) => {
     return (
         <tr>
             <td data-label="department">{department}</td>
-            <td data-label="Issue Id"><IssueId complaintDetails={props.list} /></td>
+            <td data-label="Issue Id">
+                <IssueId complaintDetails={props.list} />
+            </td>
             {props.role === 'admin' && props.resolve === 'true' ? <td data-label="Locked By">{name}</td> : ''}
             <td data-label="Assigned to">{username}</td>
             {
