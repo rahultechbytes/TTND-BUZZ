@@ -15,7 +15,7 @@ router.get(
     function(req, res) {
         let UserDetails = req.user;
 
-        jwt.sign(UserDetails.toJSON(), process.env.SECRET ,{ expiresIn: '10s' },(err,token)=>{
+        jwt.sign(UserDetails.toJSON(), process.env.SECRET ,{ expiresIn: '10h' },(err,token)=>{
             if(err){
                 res.status(440).send({errtype:'session timeout'});
             }
