@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const dbConfig = require('./config');
 
+let dbConnection;
+dbConnection = mongoose.connection;
 function connect() {
     mongoose.connect(dbConfig.dbURL, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
-    const dbConnection = mongoose.connection;
     dbConnection.once('open', () => {
         console.log('db started..');
     });
@@ -12,5 +13,7 @@ function connect() {
 // mongoose.set("debug",true);
 
 module.exports = {
-    connect
+    connect,
+    dbConnection
+
 }

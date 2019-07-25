@@ -8,8 +8,10 @@ const PORT = process.env.PORT;
 require('./config/cloudinary');
 const cors = require('cors');
 const routes = require('./routes/routeManager');
+const seeder = require('./dB/utils/seeder');
 
 dataBase.connect();                                             //db connection establishment
+seeder();                                                       //seed data during App Bootstrap
 
 app.use(bodyParser.urlencoded({ extended: false }));            //bodyParser
 app.use(bodyParser.json());
@@ -18,7 +20,6 @@ app.use(passport.initialize());                         //passport
 require('./auth/google-auth');
 
 app.use(cors());                    //cors
-
 
 app.use('/', routes);               //Routes
 
