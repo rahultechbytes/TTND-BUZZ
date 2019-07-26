@@ -3,12 +3,15 @@ import { showComplaintList, updateComplaint } from '../../../action/resolve.acti
 import { connect } from 'react-redux'
 import ComplaintThread from '../../ComplaintThread/ComplaintThread';
 import './resolveListStyle.css'
+import IssueIdModal from '../../IssueId/IssueId';
+
 
 class ResolveList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            filter: "All Complaints"
+            filter: "All Complaints",
+            showModal: false
         }
     }
     componentDidMount() {
@@ -20,6 +23,20 @@ class ResolveList extends Component {
             filter: event.target.value
         }, () => {
             this.props.showComplaintList(this.state.filter)
+        })
+    }
+
+    showIssueIdModal = (complaintDetail) => {
+        this.setState({
+            showModal: true,
+            complaintDetail: complaintDetail
+        })
+
+    }
+
+    onModalClose = () => {
+        this.setState({
+            showModal: false
         })
     }
 
@@ -58,12 +75,13 @@ class ResolveList extends Component {
                                     updateComplaint={this.props.updateComplaint}
                                     role={this.props.role}
                                     resolve={"true"}
+                                    showIssueIdModal={this.showIssueIdModal}
                                 />
                             )
                         })}
-
                     </tbody>
                 </table>
+                {this.state.showModal && <IssueIdModal onClose={this.onModalClose} complaintDetail={this.state.complaintDetail} />}
             </div>
         )
     }

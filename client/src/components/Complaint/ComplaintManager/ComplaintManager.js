@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import ComplaintForm from '../ComplaintForm/ComplaintForm'
 import ComplaintList from '../ComplaintList/ComplaintList';
 import { showComplaintList } from '../../../action/complaint.action'
+import IssueIdModal from '../../IssueId/IssueId';
 
 class ComplaintManager extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            filter: "All Complaints"
+            filter: "All Complaints",
+            showModal: false,
         }
     }
 
@@ -24,6 +26,19 @@ class ComplaintManager extends Component {
         })
     }
 
+    showIssueIdModal = (complaintDetail) => {
+        this.setState({
+            showModal: true,
+            complaintDetail: complaintDetail
+        })
+
+    }
+
+    onModalClose=()=>{
+        this.setState({
+            showModal:false
+        })
+    }
     render() {
         return (
             <div>
@@ -35,7 +50,9 @@ class ComplaintManager extends Component {
                     handleOnChange={this.handleOnChange}
                     filter={this.state.filter}
                     role={this.props.role}
+                    showIssueIdModal={this.showIssueIdModal}
                 />
+                {this.state.showModal && <IssueIdModal onClose={this.onModalClose}  complaintDetail={this.state.complaintDetail}/> }
             </div>
         )
     }

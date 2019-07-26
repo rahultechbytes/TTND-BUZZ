@@ -34,6 +34,7 @@ const ComplaintList = (props) => {
                                 list={data}
                                 key={index}
                                 role={props.role}
+                                showIssueIdModal={(complaintDetails)=>{props.showIssueIdModal(complaintDetails)}}
                             />
                         )
                     })}

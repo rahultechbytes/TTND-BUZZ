@@ -1,17 +1,23 @@
 import React from 'react'
-import IssueId from '../IssueId/IssueId'
+// import IssueId from '../IssueId/IssueId'
 import './thread.css';
 
 const ComplaintThread = (props) => {
     const handleOnChange = (event) => {
         props.updateComplaint({ status: event.target.value, issueId: props.list.issueId });
     }
-    const { department, name, assignedTo: { username }, status } = props.list;
+
+    const handleOnClick = (complainDetail) => {
+        props.showIssueIdModal(complainDetail);
+    }
+
+    const { department, name, assignedTo: { username }, status, issueId } = props.list;
     return (
         <tr>
             <td data-label="department">{department}</td>
-            <td data-label="Issue Id">
-                <IssueId complaintDetails={props.list} />
+            <td data-label="Issue Id" onClick={() => handleOnClick(props.list)}>
+                {/* <IssueId complaintDetails={props.list} /> */}
+                {issueId}
             </td>
             {props.role === 'admin' && props.resolve === 'true' ? <td data-label="Locked By">{name}</td> : ''}
             <td data-label="Assigned to">{username}</td>
