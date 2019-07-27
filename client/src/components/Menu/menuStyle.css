@@ -36,9 +36,39 @@ a.nav-link.active {
     color: white;
 }
 
+.menu_footer {
+    font-size: 1em;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 40%;
+    color: #777575;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.menuFooter_rt{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+    flex-basis: 25%;
+    color: #2999ea;
+}
+.menuFooter_rt li{
+    cursor: pointer;
+}
+
 @media(min-width:992px) and (max-width:1024px) {
     .nav-item a {
         padding: 18px 18px;
+    }
+    .menu_footer{
+        font-size: 0.9em;
+        padding: 8px;
+        flex-basis: 30%;
+    }
+    .menuFooter_rt{
+        flex-basis: 30%;
     }
 }
 
@@ -46,6 +76,13 @@ a.nav-link.active {
     .nav-item a {
         font-size: 0.9em;
         padding: 12px 12px;
+    }
+    .menu_footer{
+        font-size: 0.7em;
+        padding: 6px;
+    }
+    .menuFooter_rt{
+        flex-basis: 30%;
     }
 }
 
@@ -65,6 +102,9 @@ a.nav-link.active {
     a.nav-link {
         font-size: 0.8em;
         padding: 15px
+    }
+    .menu_footer{
+        display: none;
     }
 }
 

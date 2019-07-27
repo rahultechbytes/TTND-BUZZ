@@ -6,13 +6,11 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 
 class Menu extends Component {
-    
+
     render() {
-        //console.log("hello")
         const rightArrow = <FontAwesomeIcon icon={faChevronRight} />
         return (
             <div>
-
                 <ul className="nav flex-column">
                     <li className="nav-item">
                         <NavLink to="/dashboard/buzz" className="nav-link">
@@ -30,11 +28,16 @@ class Menu extends Component {
                                 <NavLink to="/dashboard/resolve" className="nav-link">
                                     Resolve {rightArrow}
                                 </NavLink>
-                            </li>: null
+                            </li> : null
                     }
                 </ul>
-
-
+                <div className="menu_footer">
+                    <span className="menuFooter_lt"> &copy; to the new digital</span>
+                    <ul className="menuFooter_rt">
+                        <li>About</li>
+                        <li>Help</li>
+                    </ul>
+                </div>
             </div>
         )
     }

@@ -1,6 +1,9 @@
 .table-row {
     background-color: white;
 }
+.table-container{
+    border: 1px solid lightgrey;
+}
 
 @media(min-width:992px) and (max-width:1024px) {
     .table-container {

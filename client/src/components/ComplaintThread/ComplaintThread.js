@@ -12,7 +12,7 @@ const ComplaintThread = (props) => {
 
     const { department, name, assignedTo: { username }, status, issueId } = props.list;
     return (
-        <tr>
+        <tr className="table-row">
             <td data-label="department">{department}</td>
             <td data-label="Issue Id" className="hoverLink" onClick={() => handleOnClick(props.list)}>
                 {issueId}

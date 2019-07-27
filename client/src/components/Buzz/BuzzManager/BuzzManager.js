@@ -27,7 +27,6 @@ class Buzz extends Component {
     }
 
     loadFunc = () => {
-        console.log("loadFunc called...");
         this.setState({
             skip: this.state.skip + 5
         }, () => {
